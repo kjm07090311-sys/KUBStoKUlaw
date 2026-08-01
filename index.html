@@ -59,6 +59,8 @@ h2 .n{font-size:12px;font-weight:400;color:var(--mut)}
 .chk em{font-style:normal;font-size:11px;padding:3px 7px;border-radius:6px;background:#f2ece0;color:var(--mut);border:1px solid var(--line);cursor:pointer;transition:.12s}
 .chk em:hover{background:#eadfca;color:var(--crimson)}
 .chk em.y{background:#e4f3ea;color:var(--ok);border-color:#bfe3ce;font-weight:600}
+.chk em.ing{background:#fdf0d8;color:#b3780a;border-color:#f0d9a8;font-weight:600}
+.chk em.ing:hover{background:#fbe6bf;color:#8a5c00}
 .big{background:var(--crimson);color:#fff;border:none}
 .big .sub{color:#f0d9df}
 .big .pb{background:rgba(255,255,255,.22)}
@@ -788,7 +790,11 @@ function bar(label, got, need, extra, done){
 }
 function fmt(n){ return Number.isInteger(n)? n : n.toFixed(1); }
 function chips(list, has){
-  return `<div class="chk">${list.map(([c,n])=>`<em class="${has(c)?'y':''}" onclick="openSearchFor('${c}')" title="이 과목 검색하기">${has(c)?'✓ ':''}${n}</em>`).join('')}</div>`;
+  // 이수 완료 = 초록(✓) / 수강중 = 주황(…) / 미이수 = 회색
+  return `<div class="chk">${list.map(([c,n])=>{
+    const ok = has(c), ing = !ok && takingCode(c);
+    return `<em class="${ok?'y':(ing?'ing':'')}" onclick="openSearchFor('${c}')" title="${ing?'수강중':'이 과목 검색하기'}">${ok?'✓ ':(ing?'… ':'')}${n}</em>`;
+  }).join('')}</div>`;
 }
 
 const POOL_OPEN = new Set();
