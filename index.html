@@ -621,12 +621,12 @@ function avgOf(filterFn){
 const MAJOR_GPA_CATS = ["전공필수","전공선택","융전-전공필수","융전-1영역","융전-2영역","융전-3영역"];
 const LIB_GPA_CATS   = ["교양필수","핵심교양","교양선택","학문의기초","융전-교양선택필수"];
 // ── 학점 환산표 (4.5 만점 기준) ───────────────────────────
-//   100점 만점 = 평점 × 10 + 60   (4.00 이상은 100점)
-//   4.3 만점  = 평점 + 0.3        (4.00 이상은 4.30)
-//   4.0 만점  = 평점 + 0.5        (3.50 이상은 4.00)
-function to100(v){ return Math.min(100, v*10 + 60); }
-function to43(v){  return Math.min(4.3, v + 0.3); }
-function to40(v){  return Math.min(4.0, v + 0.5); }
+//   100점 만점 = 평점 × 10 + 55   (4.50 → 100, 4.49 → 99.9 …)
+//   4.3 만점  = 평점 − 0.2
+//   4.0 만점  = 평점 − 0.5
+function to100(v){ return Math.max(0, Math.min(100, v*10 + 55)); }
+function to43(v){  return Math.max(0, v - 0.2); }
+function to40(v){  return Math.max(0, v - 0.5); }
 function gpa(){      return avgOf(null).avg; }
 function gpaMajor(){ return avgOf(c=>MAJOR_GPA_CATS.includes(c.cat)); }
 function gpaLib(){   return avgOf(c=>LIB_GPA_CATS.includes(c.cat)); }
@@ -1007,7 +1007,7 @@ function renderStats(){
   const conv = o => `<div class="st gp cv">
     <b>${o.n? to100(o.avg).toFixed(1) : '–'}<i>/100</i></b>
     <span>GPA 환산 (100점)</span>
-    <em>${o.n? `4.3만점 ${to43(o.avg).toFixed(2)} · 4.0만점 ${to40(o.avg).toFixed(2)}` : '100점 = 평점×10+60'}</em></div>`;
+    <em>${o.n? `4.3만점 ${to43(o.avg).toFixed(2)} · 4.0만점 ${to40(o.avg).toFixed(2)}` : '100점 = 평점×10+55'}</em></div>`;
   document.getElementById('stats').innerHTML = `
     <div class="st"><b>${fmt(totalCredits())}</b><span>총 취득학점</span></div>
     ${gcard('전체 평균', all, '성적 입력 필요')}
