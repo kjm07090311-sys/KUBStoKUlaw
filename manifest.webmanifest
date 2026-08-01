@@ -1,0 +1,17 @@
+{
+  "name": "고경에서 고로까지",
+  "short_name": "고경고로",
+  "description": "고려대 경영학과 + 공공거버넌스와 리더십 융합전공 졸업요건 트래커",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF6E9",
+  "theme_color": "#8B0029",
+  "lang": "ko",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "./icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

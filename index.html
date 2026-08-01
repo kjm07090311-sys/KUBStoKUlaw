@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#8B0029">
+<meta name="description" content="고려대학교 26학번 경영학과 + 공공거버넌스와 리더십 융합전공 졸업요건 트래커">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="고경고로">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<title>고경에서 고로까지 · 26학번 경영학과 + 공공거버넌스와 리더십</title>
+<style>
+:root{
+  --crimson:#8B0029; --crimson-d:#5c001b; --crimson-l:#b3123f;
+  --cream:#FBF6E9; --sand:#EFE2C6; --sand-d:#e2d0ab;
+  --ink:#241014; --mut:#7a6a63;
+  --ok:#2e7d4f; --warn:#c98a00; --bad:#b83232;
+  --card:#fff; --line:#e6dcc6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;background:var(--cream);color:var(--ink);}
+header{background:linear-gradient(180deg,#96072F 0%,var(--crimson) 55%,#7A0024 100%);color:#fff;padding:30px 22px 28px;text-align:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:0;width:100%;max-width:740px;margin:0 auto}
+.hd .mid{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.hd .tiger{height:76px;width:auto;margin-bottom:9px;filter:drop-shadow(0 3px 7px rgba(0,0,0,.3))}
+.hd .crest{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;padding-bottom:22px}
+.hd .crest img{height:104px;width:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+header h1{margin:0;font-size:27px;font-weight:800;letter-spacing:-.8px;text-shadow:0 2px 5px rgba(0,0,0,.25)}
+@media(max-width:860px){.hd{gap:0}.hd .crest{display:none}header h1{font-size:22px}}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 80px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--sand);border:1px solid var(--sand-d);border-radius:12px;padding:10px 12px;margin-bottom:18px}
+.bar .sp{flex:1}
+button{font:inherit;cursor:pointer;border-radius:9px;border:1px solid var(--sand-d);background:#fff;padding:7px 13px;transition:.12s}
+button:hover{background:#f6efdd}
+button.p{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+button.p:hover{background:var(--crimson-l)}
+button.gh{background:transparent;border-color:transparent;color:var(--crimson);padding:6px 8px}
+h2{font-size:16px;margin:26px 0 10px;display:flex;align-items:center;gap:8px}
+h2 .n{font-size:12px;font-weight:400;color:var(--mut)}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tabs button{flex:1;padding:11px;font-weight:600;color:var(--mut)}
+.tabs button.on{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px}
+.card .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card .t b{font-size:14px}
+.card .t span{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.pb{height:9px;border-radius:99px;background:#eee7d5;margin:10px 0 8px;overflow:hidden}
+.pb i{display:block;height:100%;border-radius:99px;background:var(--crimson);transition:width .35s}
+.card.done .pb i{background:var(--ok)}
+.card.done .t span{color:var(--ok)}
+.sub{font-size:12px;color:var(--mut);line-height:1.65}
+.chk{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.chk em{font-style:normal;font-size:11px;padding:3px 7px;border-radius:6px;background:#f2ece0;color:var(--mut);border:1px solid var(--line);cursor:pointer;transition:.12s}
+.chk em:hover{background:#eadfca;color:var(--crimson)}
+.chk em.y{background:#e4f3ea;color:var(--ok);border-color:#bfe3ce;font-weight:600}
+.big{background:var(--crimson);color:#fff;border:none}
+.big .sub{color:#f0d9df}
+.big .pb{background:rgba(255,255,255,.22)}
+.big .pb i{background:#fff}
+.big.done .pb i{background:#7ce0a5}
+.big.done .t span{color:#7ce0a5}
+.sem .h em.ss{font-style:normal;font-size:9.5px;background:#fde8ef;color:var(--crimson);border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:middle}
+.sems{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px}
+.sem{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px}
+.sem>.h{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;margin-bottom:8px}
+.sem>.h .m{font-size:11px;font-weight:500;color:var(--mut)}
+.sem>.h .rt{display:flex;align-items:center;gap:6px}
+.sem>.h .sx{border:none;background:transparent;color:#c9bcae;font-size:14px;line-height:1;cursor:pointer;padding:2px 3px;border-radius:5px}
+.sem>.h .sx:hover{background:#fde8ef;color:var(--crimson)}
+.co{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:8px;background:#faf7ef;margin-bottom:5px;font-size:12.5px}
+.co .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.co .bd{font-size:10px;padding:2px 5px;border-radius:5px;background:var(--sand);color:var(--crimson-d);white-space:nowrap}
+.co .bd.e{background:#dfe9f7;color:#1e4b86}
+.co .gr{font-weight:700;font-variant-numeric:tabular-nums;color:var(--crimson)}
+.co .x{border:none;background:none;color:#c3b6a6;padding:0 2px;font-size:15px}
+.co .x:hover{color:var(--bad)}
+.add{width:100%;border-style:dashed;color:var(--mut);margin-top:4px}
+dialog{border:none;border-radius:16px;padding:0;max-width:560px;width:calc(100% - 32px);box-shadow:0 20px 60px rgba(0,0,0,.28)}
+dialog::backdrop{background:rgba(30,10,15,.45)}
+.dh{background:var(--crimson);color:#fff;padding:14px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.db{padding:16px 18px 18px}
+input,select{font:inherit;width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff}
+.row{display:flex;gap:8px;margin-top:9px}
+.row>*{flex:1}
+label{display:block;font-size:11.5px;color:var(--mut);margin-bottom:3px}
+.res{max-height:210px;overflow:auto;margin-top:9px;border:1px solid var(--line);border-radius:9px}
+.res div{padding:8px 11px;cursor:pointer;font-size:13px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #f2ece0}
+.res div:hover{background:#faf3e4}
+.res div small{color:var(--mut);font-size:11px}
+.res div .tg{margin-left:auto;font-size:10px;background:var(--sand);padding:2px 6px;border-radius:5px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.st{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.st b{display:block;font-size:21px;font-variant-numeric:tabular-nums}
+.st span{font-size:11.5px;color:var(--mut)}
+.st.gp{background:linear-gradient(180deg,#fff,#fdf7ef)}
+.st.gp b{color:var(--crimson)}
+.st.gp span{display:block;font-weight:600;color:#5c4a3d}
+.st em{display:block;margin-top:2px;font-style:normal;font-size:10px;color:#a99b8d}
+/* 성적 추이 탭 */
+.chart{width:100%;overflow-x:auto;margin-top:10px;-webkit-overflow-scrolling:touch}
+.chart svg{display:block;max-width:100%;height:auto;min-width:320px}
+.lgd{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:11.5px;color:var(--mut)}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd .ln{width:16px;height:3px;border-radius:2px;display:inline-block}
+.lgd .ln.dash{background:repeating-linear-gradient(90deg,#c98a00 0 5px,transparent 5px 9px)!important}
+.lgd .bx{width:11px;height:11px;border-radius:2px;background:var(--sand);display:inline-block}
+.gtab{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;font-variant-numeric:tabular-nums}
+.gtab th{font-size:11px;color:var(--mut);font-weight:600;padding:6px 4px;border-bottom:1px solid var(--line);text-align:right}
+.gtab th:first-child{text-align:left}
+.gtab td{padding:7px 4px;border-bottom:1px solid #f2ece0;text-align:right}
+.gtab td.l{text-align:left;font-weight:600}
+.gtab td.b{font-weight:700;color:var(--crimson)}
+.gtab td.up{color:var(--ok);font-weight:600}
+.gtab td.dn{color:var(--bad);font-weight:600}
+.gtab tr:last-child td{border-bottom:none}
+.note{font-size:11.5px;color:var(--mut);background:#fff8e6;border:1px solid #f0e2b8;border-radius:9px;padding:9px 12px;margin-top:10px;line-height:1.6}
+.empty{font-size:12px;color:#bcaea0;text-align:center;padding:8px 0}
+details.pool{margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+details.pool>summary{cursor:pointer;font-size:12px;color:var(--crimson);font-weight:600;list-style:none;display:flex;align-items:center;gap:5px;user-select:none}
+details.pool>summary::-webkit-details-marker{display:none}
+details.pool>summary::before{content:'▸';font-size:10px;transition:.15s}
+details[open].pool>summary::before{content:'▾'}
+.plist{margin-top:8px;max-height:230px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.plist .pi{display:flex;align-items:center;gap:7px;padding:5px 8px;font-size:11.5px;border-bottom:1px solid #f4efe3;line-height:1.35;cursor:pointer}
+.plist .pi:hover{background:#faf3e4}
+.plist .pi:last-child{border-bottom:none}
+.plist .pi small{color:#a99b8d;font-size:10px;flex:0 0 62px;font-variant-numeric:tabular-nums}
+.plist .pi .pn{flex:1;min-width:0}
+.plist .pi.y{background:#f0f9f3;color:var(--ok);font-weight:600}
+.plist .pi.y small{color:#63a97f}
+.plist .pi .mk{flex:0 0 auto;font-size:10px}
+.plist .pi .dl{flex:0 0 auto;font-size:9.5px;background:#fde8ef;color:var(--crimson);border-radius:4px;padding:1px 4px}
+.big details.pool>summary{color:#ffd9e2}
+.big details.pool{border-top-color:rgba(255,255,255,.28)}
+
+/* ═══════════ 웹/모바일 레이어 ═══════════ */
+html{-webkit-text-size-adjust:100%}
+body{-webkit-tap-highlight-color:rgba(139,0,41,.12);overscroll-behavior-y:none}
+header{padding-top:calc(30px + env(safe-area-inset-top))}
+
+/* ── 접근키 로그인 화면 ── */
+#lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(165deg,#96072F 0%,#5c001b 100%);
+  display:flex;align-items:center;justify-content:center;padding:22px;
+  padding-top:calc(22px + env(safe-area-inset-top));padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+#lock.off{display:none}
+#lock .box{background:#fff;border-radius:20px;padding:28px 22px 24px;width:100%;max-width:390px;
+  box-shadow:0 26px 70px rgba(0,0,0,.45);text-align:center}
+#lock .ic{width:72px;height:72px;border-radius:18px;display:block;margin:0 auto 12px;box-shadow:0 6px 18px rgba(139,0,41,.28)}
+#lock h1{margin:0;font-size:22px;font-weight:800;letter-spacing:-.6px;color:var(--crimson)}
+#lock p.s{margin:6px 0 0;font-size:12px;color:var(--mut);line-height:1.6}
+#lock input{margin-top:18px;text-align:center;font-size:16px;letter-spacing:1.2px;text-transform:uppercase;
+  padding:14px 12px;border:1.5px solid var(--sand-d);border-radius:11px;font-variant-numeric:tabular-nums}
+#lock input:focus{outline:none;border-color:var(--crimson)}
+#lock button.go{width:100%;margin-top:10px;padding:14px;font-weight:700;font-size:15px;
+  background:var(--crimson);color:#fff;border-color:var(--crimson)}
+#lock button.go:hover{background:var(--crimson-l)}
+#lock button.go:disabled{opacity:.6;cursor:default}
+#lock .msg{min-height:19px;margin-top:11px;font-size:12.5px;color:var(--mut);line-height:1.5}
+#lock .msg.err{color:var(--bad);font-weight:600}
+#lock .msg.ok{color:var(--ok);font-weight:600}
+#lock .hint{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:11px;color:#a99b8d;line-height:1.7;text-align:left}
+#lock .hint b{color:var(--mut)}
+
+/* ── 동기화 표시 ── */
+.sync{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;white-space:nowrap;
+  padding:6px 11px;border-radius:99px;background:#fff;border:1px solid var(--sand-d);color:var(--mut)}
+.sync i{width:7px;height:7px;border-radius:99px;background:#c3b6a6;flex:0 0 auto}
+.sync.ok i{background:var(--ok)}
+.sync.busy i{background:var(--warn);animation:bl 1s infinite}
+.sync.err i{background:var(--bad)}
+@keyframes bl{50%{opacity:.25}}
+.who{font-size:11px;color:var(--mut);font-variant-numeric:tabular-nums}
+
+/* ── 터치 최적화 ── */
+@media(hover:none){
+  button:hover{background:#fff}
+  button.p:hover{background:var(--crimson)}
+}
+@media(max-width:760px){
+  .wrap{padding:14px 12px calc(86px + env(safe-area-inset-bottom))}
+  header{padding:22px 14px 20px;padding-top:calc(22px + env(safe-area-inset-top))}
+  .hd .tiger{height:60px;margin-bottom:7px}
+  header h1{font-size:21px}
+
+  button{min-height:44px;padding:10px 14px;font-size:13.5px}
+  button.gh{min-height:40px}
+  .bar{gap:7px;padding:9px 10px;margin-bottom:14px}
+  .bar .sp{display:none}
+  .bar button{flex:1 1 auto}
+  .sync{flex:1 1 100%;justify-content:center;min-height:34px}
+
+  .stats{grid-template-columns:repeat(2,1fr);gap:8px}
+  .st b{font-size:19px}
+  .grid,.sems{grid-template-columns:1fr;gap:10px}
+
+  /* 하단 고정 탭바 */
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;margin:0;gap:0;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);box-shadow:0 -3px 14px rgba(0,0,0,.07);
+    padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+  .tabs button{flex:1;border:none;background:transparent;border-radius:10px;
+    padding:9px 4px;font-size:11.5px;line-height:1.35;font-weight:700;min-height:48px;
+    white-space:normal;word-break:keep-all}
+  .tabs button.on{background:var(--crimson);color:#fff}
+
+  /* 과목 줄 — 이름 줄바꿈 + 큰 터치영역 */
+  .co{padding:10px 9px;font-size:13px;flex-wrap:wrap;gap:6px}
+  .co .nm{white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;flex:1 1 auto;min-width:120px}
+  .co .x{padding:4px 8px;font-size:19px;margin-left:auto}
+  .chk em{padding:7px 10px;font-size:11.5px}
+  .plist{max-height:44vh}
+  .plist .pi{padding:9px 9px;font-size:12px}
+  details.pool>summary{padding:6px 0}
+
+  /* 다이얼로그 = 하단 시트 */
+  dialog{width:100%;max-width:none;margin:0;margin-top:auto;border-radius:18px 18px 0 0;
+    max-height:92vh;display:flex;flex-direction:column}
+  dialog[open]{display:flex}
+  .dh{position:sticky;top:0;z-index:2;flex:0 0 auto}
+  .db{overflow:auto;-webkit-overflow-scrolling:touch;
+    padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+  .res{max-height:38vh}
+  .res div{padding:11px}
+  input,select{font-size:16px;padding:11px}  /* iOS 자동 확대 방지 */
+  .row{flex-wrap:wrap}
+  .row>*{min-width:calc(50% - 4px)}
+  .chart svg{min-width:300px}
+}
+@media(max-width:400px){
+  .stats{grid-template-columns:1fr 1fr}
+  .tabs button{font-size:10.5px}
+}
+@media(min-width:761px){
+  dialog{max-height:88vh;display:flex;flex-direction:column}
+  dialog[open]{display:flex}
+  .db{overflow:auto}
+}
+@media print{#lock,.bar,.tabs{display:none}}
+</style>
+</head>
+<body>
+<div id="lock">
+  <div class="box">
+    <img class="ic" src="./icon-192.png" alt="">
+    <h1>고경에서 고로까지</h1>
+    <p class="s">고려대학교 졸업요건 트래커<br>발급받은 접근키를 입력해 주세요</p>
+    <input id="lkey" type="text" inputmode="latin" autocapitalize="characters" autocomplete="off"
+           spellcheck="false" placeholder="GOGYEONG-XXXX-XXXX" maxlength="24">
+    <button class="go" id="lgo" onclick="doLogin()">시작하기</button>
+    <div class="msg" id="lmsg"></div>
+    <div class="hint">
+      <b>접근키란?</b> 키 하나가 곧 내 계정입니다. 같은 키로 로그인하면
+      휴대폰·태블릿·노트북 어디서든 같은 기록을 볼 수 있어요.<br>
+      비밀번호가 없으니 <b>키를 남과 공유하지 마세요.</b>
+    </div>
+  </div>
+</div>
+<header>
+  <div class="hd">
+    <div class="crest"><img src="data:image/webp;base64,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" alt="고려대학교 경영대학"></div>
+    <div class="mid">
+      <img class="tiger" src="data:image/webp;base64,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" alt="고려대학교 호랑이">
+      <h1>고경에서 고로까지</h1>
+    </div>
+    <div class="crest"><img src="data:image/webp;base64,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" alt="고려대학교 법과대학"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <button class="p" onclick="openAdd()">+ 과목 추가</button>
+    <button onclick="addSem()">학기 추가</button>
+    <button onclick="openSeason('S')">여름계절 추가</button>
+    <button onclick="openSeason('W')">겨울계절 추가</button>
+    <span class="sp"></span>
+    <span class="sync off" id="sync"><i></i>준비 중</span>
+    <button onclick="exportJSON()">내보내기</button>
+    <button onclick="document.getElementById('imp').click()">불러오기</button>
+    <input type="file" id="imp" accept=".json" hidden onchange="importJSON(this)">
+    <button class="gh" onclick="logout()">키 변경</button>
+    <button class="gh" onclick="resetAll()">초기화</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="tabs">
+    <button id="t1" class="on" onclick="setTab(1)">제1전공 · 경영학과</button>
+    <button id="t2" onclick="setTab(2)">융합전공 · 공공거버넌스와 리더십</button>
+    <button id="t3" onclick="setTab(3)">📈 성적 추이</button>
+  </div>
+  <div class="grid" id="dash"></div>
+  <div id="dashnote"></div>
+
+  <h2>수강 내역 <span class="n">과목을 클릭하면 성적을 수정할 수 있습니다</span></h2>
+  <div class="sems" id="sems"></div>
+</div>
+
+<dialog id="seasonDlg">
+  <div class="dh"><span id="seasonTitle">계절학기 추가</span><button class="gh" style="color:#fff" onclick="seasonDlg.close()">✕</button></div>
+  <div class="db">
+    <label>몇 학년 계절학기인가요?</label>
+    <select id="seasonYear">
+      <option value="1">1학년</option>
+      <option value="2">2학년</option>
+      <option value="3">3학년</option>
+      <option value="4">4학년</option>
+    </select>
+    <div class="row"><button class="p" style="padding:11px" onclick="saveSeason()">추가</button></div>
+  </div>
+</dialog>
+
+<dialog id="dlg">
+  <div class="dh"><span id="dlgTitle">과목 추가</span><button class="gh" style="color:#fff" onclick="dlg.close()">✕</button></div>
+  <div class="db">
+    <label>과목 검색 (과목명 또는 학수번호)</label>
+    <input id="q" placeholder="예: 마케팅원론, BUSS205, 헌법, 행정학원론" oninput="search()" autocomplete="off">
+    <div class="res" id="res"></div>
+    <div class="row">
+      <div><label>과목명</label><input id="fName"></div>
+      <div style="flex:0 0 120px"><label>학수번호</label><input id="fCode"></div>
+    </div>
+    <div class="row">
+      <div><label>이수구분</label><select id="fCat"></select></div>
+      <div style="flex:0 0 84px"><label>학점</label><input id="fCr" type="number" step="0.5" value="3"></div>
+      <div style="flex:0 0 96px"><label>성적</label><select id="fGr"></select></div>
+    </div>
+    <div class="row">
+      <div><label>학기</label><select id="fSem"></select></div>
+      <div style="flex:0 0 110px"><label>영어강의</label><select id="fEng"><option value="0">아니오</option><option value="1">예</option></select></div>
+    </div>
+    <div class="row"><button class="p" style="padding:11px" onclick="saveCourse()">저장</button></div>
+  </div>
+</dialog>
+
+<script>
+/* ═══════════ 1. 과목 DB ═══════════ */
+const BIZ = [{"code":"BUSS003","name":"TopicCourse","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS004","name":"TopicCourseⅠ","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS152","name":"회계학원리","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS154","name":"경영통계","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS164","name":"경영과사회","cat":"학문의기초","eng":true,"sem":[1],"cr":3},{"code":"BUSS165","name":"창업가의마인드셋","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS166","name":"통합적사고와경영학입문","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS202","name":"사회적가치와지속가능경영","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS203","name":"경영수학","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS205","name":"마케팅원론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS207","name":"재무관리","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS211","name":"오퍼레이션스관리","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS213","name":"중급회계I","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS214","name":"중급회계II","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS215","name":"경영정보시스템","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS216","name":"비즈니스애널리틱스I","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS217","name":"비즈니스애널리틱스II","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS220","name":"AI비즈니스모델","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS221","name":"AI와경영의수리적원리Ⅰ","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS223","name":"반도체경영","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS236","name":"ESG경영","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS244","name":"관리회계","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS246","name":"경영과학","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS248","name":"기업경제학","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS252","name":"마케팅조사론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS254","name":"투자론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS256","name":"빅데이터분석과해석의기초","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS259","name":"벤처경영","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS260","name":"글로벌전략","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS302","name":"파이낸셜애널리틱스","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS303","name":"디자인씽킹과디지털혁신","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS305","name":"인공지능과비즈니스","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS306","name":"전략적기술사업화","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS307","name":"플랫폼비즈니스모델과디지털대전환","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS308","name":"알고리즘기반경영의사결정","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS310","name":"경영을위한AI이해와활용","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS311","name":"조직행동론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS312","name":"데이터기반마케팅","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS313","name":"국제경영론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS316","name":"오퍼레이션스애널리틱스","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS317","name":"소셜미디어애널리틱스","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS322","name":"지역연구(일본)","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS325","name":"Korean Business & Management in the Global Context","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS328","name":"거시경제와글로벌비즈니스이해","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS331","name":"국제무역론","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS332","name":"무역분쟁과글로벌기업","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS340","name":"국제마케팅론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS342","name":"소비자행동","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS344","name":"국제금융론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS352","name":"세무회계","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS355","name":"노사관계론","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS356","name":"혁신과전략","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS358","name":"인적자원관리","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS361","name":"고급회계","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS362","name":"유통관리","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS363","name":"마케팅전략","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS365","name":"조직디자인과경쟁우위","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS369","name":"마케팅사례분석","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS376","name":"서비스운영관리","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS382","name":"보험과위험관리","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS384","name":"기업재무","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS386","name":"선물옵션","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS393","name":"현대기아차글로벌마케팅전략","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS394","name":"비즈니스협상","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS395","name":"마케팅애널리틱스","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS397","name":"벤처투자운용론","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS402","name":"경영전략","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS407","name":"신상품개발과마케팅","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS409","name":"소셜벤처창업","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS410","name":"기술혁신관리:성공적Entrepreneurship의기초","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS413","name":"기업지배구조의이론과실제","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS414","name":"채권론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS415","name":"위험관리","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS416","name":"기업가치평가","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS420","name":"리더쉽:이론과실제","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS425","name":"소셜네트워크와경쟁우위","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS426","name":"AI와자산관리","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS431","name":"회계감사","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS435","name":"경영의철학적이해","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS438","name":"금융기관경영론","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS447","name":"로지스틱스관리","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS448","name":"오퍼레이션스전략","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS453","name":"데이터관리와지적경영","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS454","name":"제품및브랜드관리","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS475","name":"인터넷마케팅","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS484","name":"글로벌CEO특강","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS488","name":"구매,공급관리","cat":"전공선택","eng":false,"sem":[2],"cr":3}];
+
+const CONV_POOL = {
+  "융전-전공필수":[["JURA241","헌법"],["JURA242","민법"],["JURA244","형법"]],
+  "융전-교양선택필수":[["HANM110","동양의지혜"],["PHIL131","희랍어"],["HOEW132","라틴어"],
+    ["JURA105","규범적논증과추론"],["JURA106","디지털사회와법"],["JURA107","인공지능과법"],
+    ["JURA108","한국법입문"],["JURA109","분석적 독해와 Legal Mind"],
+    ["GECE035","법과인권"],["GECE058","Ancient Chinese Law and Philosophy"],["GECE103","죽음과법"],
+    ["GECE105","법철학과유가사상"],["GEHI087","대한민국헌법사"],["GEQR079","IT와사회규범"],
+    ["GESO018","생활속의지적재산권"],["GESO019","고령사회와법"],["GESO026","사회적이슈와인권"],
+    ["GESO071","차별없는세상을위한차별금지법"],["GESO101","범죄와사회"],["GESO114","국제사회와법,그리고한국"],
+    ["GESO115","창작과소유의법"],["GESO137","회사법제와 비지니스생태계"],["GESO140","General International Economic Law"],
+    ["GESO142","정보사회와윤리"],["GESO144","헌법과정의"],["GESO147","독일문화와독일법"],
+    ["GESO149","The Role of International Law in Northeast Asia"],["GESO151","법학적사고의이해"],
+    ["GESO152","한국회사제도의이해"],["GESO160","시대정신과인권"]],
+  "융전-1영역":[["JURA204","회사법"],["JURA206","형사소송법"],["JURA238","기본권론"],["JURA245","민사소송법"],
+    ["JURA249","국제법"],["JURA251","행정법"],["JURA252","고용복지와법"],["JURA256","법사상과법철학"],
+    ["JURA301","상법"],["JURA304","보험·해상법"],["JURA330","경제법"],["JURA333","가족과 법"],
+    ["JURA356","지적재산권법개론"],["JURA420","국제거래법"],["JURA424","조세법"],["JURA485","금융법"],
+    ["JURA158","기업법Ⅰ"],["JURA159","기업법Ⅱ"],["JURA207","상법총칙·상행위법"],["JURA247","기업의설립·운영과법"],
+    ["JURA303","어음·수표법"],["JURA305","행정법총론"],["JURA306","행정법각론"],["JURA332","행정구제법"]],
+  "융전-2영역":[["PAPP151","행정학원론"],["PAPP203","정책학"],["PAPP239","예산과재무관리"],["PAPP240","조직이론"],
+    ["PAPP241","공공철학과윤리"],["PAPP250","공공행정과민주적거버넌스"],["PAPP314","과학기술정책"],
+    ["PAPP338","복지국가론"],["PAPP344","정부와시장"],["PAPP353","공공정책형성"],["PAPP354","정부관료제"],
+    ["PAPP356","행정과리더십"],["PAPP362","위험사회와정책"],["PAPP366","정책분석및평가"],
+    ["PAPP369","지역개발론"],["PAPP379","공공부문의양적분석"],["PAPP381","디지털기술과데이터기반정부"]],
+  "융전-3영역":[["ECON171","경제원론Ⅰ"],["ECON172","경제원론Ⅱ"],["ECON173","경제수학"],["ECON201","미시경제이론"],
+    ["ECON202","거시경제이론"],["ECON240","산업조직론"],["ECON329","한국경제사"],["ECON331","화폐금융론"],
+    ["ECON333","재정학"],["ECON334","조세론"],["ECON335","국제금융론"],["ECON336","국제무역론"],
+    ["ECON339","경제발전론"],["ECON356","경제정책"],["ECON361","도시공공경제학"],["ECON376","정치와경제"],
+    ["ECON434","한국경제론"]]
+};
+
+/* 경영학과 전공선택으로 인정되는 타학과 과목 (2021학년도~) */
+const BIZ_ALT = [
+  ["JURA158","기업법Ⅰ"],["JURA159","기업법Ⅱ"],["JURA204","회사법"],["JURA207","상법총칙·상행위법"],
+  ["JURA247","기업의설립·운영과법"],["JURA251","행정법"],["JURA301","상법"],["JURA303","어음·수표법"],
+  ["JURA305","행정법총론"],["JURA306","행정법각론"],["JURA332","행정구제법"],
+  ["PAPP150","행정학원론"],["PAPP151","행정학원론"],
+  ["ECON201","미시경제이론"],["ECON202","거시경제이론"],["ECON333","재정학"],["ECON334","조세론"],["ECON335","국제금융론"],
+  ["IFLS161","기업영어"],["IFLS162","기업영어실습"],["IFLS309","비즈니스영어"],["IFLS808","비즈니스영어"],
+  ["ENGL121","기업영어실습"],
+  ["EGRN320","경영자를 위한 테크놀로지 이해"],["EGRN322","창업과경영을위한공학기술경향"]
+];
+
+const GEN_REQ = [
+  ["GEN001","학문세계의탐구 I",3],["GEN002","글쓰기",3],["GEN003","Academic English I",2],
+  ["GEN004","[진로·창업] 1학년 세미나 I",1],["GEN005","[진로·창업] 1학년 세미나 II",1],
+  ["GEN006","[진로·창업] SW프로그래밍의기초",3],["GEN007","[진로·창업] 데이터과학과인공지능",3],
+  ["GEN008","[진로·창업] 생명과학의세계",3]
+];
+
+/* 2026학년도 개설 교양과목 (학수번호 · 과목명 · 학점) */
+const GYO = [["CHIN105","중국문학산책",3],["CHIN106","시사중국어",3],["CHIN107","영상중국어",3],["CHIN108","실용중국어작문",3],["CHIN120","중국어번역연습",3],["CHIN160","AI-디지털비즈니스중국어",3],["CHIN161","중국문화속젠더와사랑",3],["CHIN162","다큐멘터리로이해하는감정의중국학",3],["CHIN163","한자어로보는동아시아",3],["CHIN164","삼국지의영웅과전쟁",3],["COLA403","인문학과스타트업",3],["COSE156","모두를위한파이썬프로그래밍",3],["ECON110","경제학개론",3],["EGRN400","공학도를위한기업가정신",3],["ELED102","영화로읽는영미문학",3],["ENGL120","영어통역과번역",3],["ENGL121","기업영어실습",1],["ENGL122","시사영어",3],["ENGL124","영어읽기와토론Ⅱ",3],["ENGL125","고급영문법",3],["ENGL126","실용영어읽기와쓰기",3],["ENGL158","심화영어독해Ⅱ",3],["ENGL172","국제영어교류",3],["FRAN133","프랑스문화탐색",3],["FRAN134","프랑스문학탐색",3],["FRAN135","프랑스역사와사회탐색",3],["FRAN136","프랑스공연예술탐색",3],["FRAN137","프랑스영화탐색",3],["GECE013","철학에로의초대:초월,신,자아,인식",3],["GECE058","ANCIENTCHINESELAWANDPHILOSOPHY",3],["GECE102","도덕철학의문제들",3],["GEFC054","동남아시아의지역성과문화",3],["GEFC097","미국사회와세계의미국화",3],["GEFC099","일본의문화콘텐츠와전통문화",3],["GEFC100","번역을통해본근대동아시아문화의형성",3],["GEFC103","슬라브세계의이해",3],["GEHI081","전쟁과인간",3],["GEHI084","대운하를통해본중국의정치경제사",3],["GEHI089","도시로보는중국사",3],["GEHI096","서양근대건축사산책",3],["GELA028","한문소설과야담",3],["GELA050","한국현대시산책",3],["GELA053","한국시속에살아있는독일문학",3],["GELA131","한국의젊은시인들",3],["GELA132","현대음악의이해",3],["GELA142","조선시대문학관의이해",3],["GELA145","책과독서의역사",3],["GELA146","죽음에대한시적성찰",3],["GEOG101","도시와국토",2],["GEOG104","관광의역사와문화",3],["GEOG151","지리학입문",3],["GEQR088","디지털사유와정치경제",3],["GEQR090","디지털인문학을위한데이터처리와분석",3],["GEQR092","웹툰,한류,그리고미래콘텐츠",3],["GERM137","독일문학의탐색",3],["GERM140","독일연극의이해",2],["GERM147","독일도시와문화",3],["GERM165","영상독일어",3],["GESO056","역사로보는환경",3],["GESO068","현대식품생산과소비의사회학",3],["GESO101","범죄와사회",3],["GESO108","일본과동아시아",3],["GESO110","행복의심리학",3],["GESO114","국제사회와법,그리고한국",3],["GESO138","금융과보험",3],["GESO139","체제전환기중국의정치및사회에대한이해",3],["GESO142","정보사회와윤리",3],["GESO144","헌법과정의",3],["GESO160","시대정신과인권",3],["GESO161","행복학개론",3],["GESO162","현대인의정신건강과회복탄력성",3],["GESO163","인간관계와마음건강",3],["GESO164","인간과해양:융합적사고와의식전환",3],["GEST015","생명의이해",3],["GEST028","환경과사회",3],["GEST044","생물자원의산업적응용",3],["GEST123","뇌영상의이해와활용",3],["GEST137","생물다양성과진화",3],["GEST146","움직임과건강",3],["GEST153","숲의이해와관리",3],["GEST157","영화속환경과학",3],["GEST158","토양과문명",3],["GEST160","인간기억과효율적인외국어학습",3],["HANM110","동양의지혜",3],["HANM120","생활한자",3],["HANM134","교양한문Ⅱ",3],["HEED124","패션과미디어",3],["HEED126","패션스타일링과커뮤니케이션",3],["HEED131","한국전통복식의이해와활용",3],["HEED197","결혼과가족",3],["HISE113","쟁점으로보는한국사",3],["HISE141","한국역사와문화입문",3],["HISE142","중국역사와문화입문",3],["HISE143","일본역사와문화입문",3],["HISE145","서양사회사입문",3],["HOEW116","서양기독교사",3],["HOEW125","한일교류의역사",3],["HOEW131","서양문화의전통과유산",3],["HOEW132","라틴어",3],["HOEW133","동아시아20세기국제관계사",3],["HOEW134","유목제국의세계",3],["HOEW137","동아시아사의재조명",3],["HOEW138","중국의역사와인물",3],["HOEW140","새로보는서양의역사",3],["HOKA101","과학과기술로본한국사",3],["HOKA112","한국인의역사인식",3],["HOKA114","한국근현대민족운동사",3],["HOKA119","미래를생각하는한국사",3],["HOKA121","한국의전통과문화유산",3],["HOKA122","조선왕조실록의세계",3],["HOKA123","한국사의국제적환경",3],["HOKA124","인물로본한국사",3],["HOKA153","한국사와개혁운동",3],["IFLS108","한국어초급Ⅰ",3],["IFLS109","한국어초급Ⅱ",3],["IFLS110","한국어중급Ⅰ",3],["IFLS111","한국어중급Ⅱ",3],["IFLS112","한국어고급Ⅰ",3],["IFLS240","한국어초급말하기I",2],["IFLS241","한국어초급말하기II",2],["IFLS242","한국어중급말하기",2],["IFLS243","한국어중급읽기",2],["IFLS245","한국어초급쓰기",2],["IFLS246","한국어중급쓰기",2],["IFLS400","한국어고급Ⅱ",3],["IFLS401","한국어초급읽기",2],["IFLS802","고급영어토론",3],["IFLS805","학술영작문-인문사회계",3],["IFLS806","학술영작문-자연계",3],["IFLS807","미디어영어",3],["IFLS808","비즈니스영어",3],["IFLS809","영어발표와연설",3],["IFLS810","영어를통한비판적사고",3],["IFLS811","학문목적영어",3],["IFLS816","일의세계:진화하는직장에서살아남기",3],["IFLS817","음모론,논쟁,미스터리탐구",3],["IFLS818","성능향상:스포츠과학및영양학적연구",3],["IFLS819","문학속의디스토피아와유토피아:극단의불가능성",3],["IFLS820","중급영어토론",3],["IFLS821","서울:학제간통찰과도시역학",3],["IFLS822","창의적인산문만들기:창의적글쓰기과정",3],["IFLS823","무대와대본:연극을통한영어탐구",3],["IFLS824","논리와웅변:토론마스터과정",3],["IFLS825","학업성공을위한초급영어",3],["JAPN132","대중문화로보는일본문화론",3],["JAPN133","디지털인문학으로보는일본문화와사회",3],["JAPN253","일본어와일본문화",3],["JAPN281","영상일본어",3],["JAPN282","비즈니스일본어",3],["JAPN285","기초일본어독해Ⅰ",3],["JAPN286","기초일본어독해Ⅱ",3],["JAPN289","지역문화와투어리즘일본어",3],["JAPN290","기초일본어작문",3],["JAPN291","뉴미디어일본어",3],["JAPN292","AI와일본어",3],["JAPN293","서브컬처로보는일본어",3],["JAPN390","일본문학으로보는기업가정신",3],["JAPN391","일본문학속의4차산업혁명과인간",3],["JURA105","규범적논증과추론",3],["JURA109","분석적독해와LegalMind",3],["JURA150","법학통론",3],["KORE119","한국문학과세계문학",3],["KORE135","세계속의한국어",3],["KORE137","학업한국어말하기",2],["KORE138","학업한국어강독",2],["KORE139","학업한국어듣기",3],["KORE140","학업한국어작문",2],["KORE142","근대매체와한국문학",3],["KORE143","한국근대문학과역사적기억",3],["KORE146","한국어의사소통능력과리더십",3],["KORE151","한국의언어와문학",3],["KORE152","대중서사장르의이해",3],["KORE154","한국고전문학과역사기행",3],["KORE155","문학과여성",3],["KORE158","한국의미디어언어",3],["KORE159","남북의언어비교",3],["KORE160","한국현대시의미학",3],["KORE163","한국현대비평읽기",3],["LIET102","산림과문화",2],["LING103","언어와인지",3],["LING141","기호학의이해",3],["LING142","언어와시각커뮤니케이션",3],["PAPP111","정부와나",3],["PAPP120","창의적기획과문제해결",3],["PHEK800","축구",1],["PHEK801","호신술",1],["PHEK802","수영",1],["PHEK803","스쿼시",1],["PHEK804","테니스",1],["PHEK805","소프트볼",1],["PHEK806","골프",1],["PHEK807","볼링",1],["PHEK808","빙상",1],["PHEK809","농구",1],["PHEK810","배드민턴",1],["PHEK811","요가",1],["PHEK812","암벽등반",1],["PHEK813","피트니스앤헬스",1],["PHEK814","탁구",1],["PHEK815","현대인의몸과문화",1],["PHEK816","캠핑과안전",1],["PHEK817","댄스스포츠",1],["PHIL104","성과욕망의철학",3],["PHIL109","철학이란무엇인가?",3],["PHIL114","현대철학의탐구",3],["PHIL115","서양고전의이해",3],["PHIL116","동양고전의이해",3],["PHIL120","그리스신화와비극",3],["PHIL121","한국사상산책",3],["PHIL122","문화의철학적이해",3],["PHIL124","현대사회의윤리적쟁점들",3],["PHIL129","영상예술의철학적이해",3],["PHIL131","희랍어",3],["PHIL140","미학입문",3],["PHIL145","불교와현대사회",3],["PHIL147","서양철학입문",3],["PHIL148","동양철학입문",3],["PHIL149","비판적사고와논리",3],["POLI105","현대민주주의의미래",3],["RUSS103","러시아문화의이해",3],["SOCI111","현대사회와가족",3],["SOCI112","사회문제의이해",2],["SOCI116","성과사회",3],["SOCI123","한국현대사회의이해",3],["SOCI124","여가와사회",3],["SOCI126","사회학입문",3],["SPAN104","환상문학의세계",3],["SPAN123","스페인어회화",1],["SPAN124","스페인어작문",1],["SPAN125","스페인어독해",1],["SPAN126","스페인어문법Ⅰ",1],["SPAN127","스페인어문법Ⅱ",1],["SPFL107","말레이인도네시아의언어와문화",3],["SPFL131","심화글쓰기",2],["SPGE108","판소리의이해",2],["SPGE113","이슬람문화와역사",3],["SPGE129","사회봉사의이론과실제",2],["SPGE166","기초음악작곡법",3],["SPGE176","한국의역사와문화",3],["SPGE208","생애설계와자기이해",1],["SPGE209","한국음악의세계",3],["SPGE215","인권의이해",3],["SPGE217","스타트업소셜이노베이션",3],["SPGE218","스타트업글로벌시장진출전략",3],["SPGE220","스타트업CampusCEO2.0(I)",3],["SPGE221","스타트업CAMPUSCEO2.0(II)",3],["SPGE223","다양성과미래사회",3],["SPGE225","합창음악과발성법의이해",3],["SPGE226","앙상블연주",3],["SPGE230","현장실습Ⅰ",3],["SPGE231","현장실습Ⅱ",6],["SPGE232","현장실습III",9],["SPGE233","현장실습IV",12],["SPGE234","메타버스한국어",2],["SPGE236","현장실습Ⅰ-2",3],["SPGE237","현장실습Ⅰ-3",3],["SPGE238","현장실습Ⅰ-4",3],["SPGE239","현장실습Ⅰ-5",3],["SPGE240","현장실습Ⅰ-6",3],["SPGE241","현장실습Ⅱ-2",6],["SPGE242","현장실습Ⅱ-3",6],["SPGE243","현장실습Ⅲ-2",9],["SPGE244","오페라의이해와실현",3],["SPGE248","기초아랍어Ⅱ",3],["SPGE251","동아시아지리와지역",3],["SPGE252","연극의이해",3],["SPGE253","아프리카바로이해하기",3],["SPGE254","사회봉사의기획과실천",2],["SPGE255","인물로보는중동사",3],["SPGE256","현대중동의이해",3],["SPGE257","음악의기초이론",3],["SPGE258","화성의이해",3],["SPGE259","한국대중음악과매체",3],["SPGE260","대중음악장르탐색",3],["SPGE261","클래식음악장르탐구",3],["SPGE262","클래식작곡가탐구",3],["SPGE263","영상예술의이해",3],["SPGE406","KoreanConstitutionalLaw&Politics",3],["SPGE407","AI활용글쓰기",3],["SPGE408","AI활용글쓰기현대기술의문화사",3],["SPGE413","동아시아고령사회에대한이해",3],["SPGE414","데이터로보는미중관계이야기",3],["UNIV100","한국학을통해배우는한국어",3],["UNIV101","콘텐츠로배우는한국문화와한국어",3],["UNIV102","AI로배우는한국어",3],["UNIV200","마음의중요성:건강과마음챙김",3],["UNIV201","KU라운드테이블:심층토론과지식나눔",3],["UNIV202","영어로배우는글로벌이슈",3],["UNIV203","영어로배우는협상역량개발",3],["UNIV204","지구대인간:지속가능한실천과환경인식",3],["UNIV205","NGOs:사회변화를위한언어",3],["UNIV206","소프트파워의세계:언어,문화및글로벌관점",3],["UNIV306","전공한국어",3],["UNIV400","피클볼",1],["UNIV401","한국문화와춤",1],["UNIV402","건강관리와육상",1],["UNIV508","인공지능윤리와안전",3],["UNIV509","데이터로보는국제분쟁이야기",3],["UNIV510","법적사고와방법",3],["UNIV511","지속가능성,이론과적용",3],["UNIV512","스타트업법률",3],["UNIV513","현대미술의이해",3],["UNIV515","한중일시각에서바라본한국노인돌봄",3],["UNIV516","현장실습V",15],["UNIV518","자유정의진리의여정",1],["UNIV521","체인지메이커스",2],["UNIV522","아이디어에서사업화까지AI로창업하기",3],["UNIV523","자유와정의",3],["UNIV524","평화&국제법",3],["UNIV525","고령사회에대한다학제적이해",3],["UNIV527","범죄와인권",3],["UNIV529","이태석리더십과세계시민교육",3],["UNIV530","기초미적분학",3],["UNIV531","콘텐츠기반글쓰기",3],["UNIV533","자기성찰적글쓰기",3],["UNIV534","물리학X",3],["UNIV535","물리학Y",3],["UNIV538","로봇및피지컬AI",3],["UNIV540","AI시대의문제해결기법",3]];
+
+/* 통합 검색 DB */
+
+
+const DB = [];
+BIZ.forEach(c=>DB.push({code:c.code,name:c.name,cat:c.cat,cr:c.cr,eng:c.eng,sem:c.sem}));
+DB.push({code:"ECON171",name:"경제원론Ⅰ",cat:"경제학필수",cr:3,eng:false});
+DB.push({code:"ECON172",name:"경제원론Ⅱ",cat:"경제학필수",cr:3,eng:false});
+GYO.forEach(([code,name,cr])=>{ if(!DB.some(d=>d.code===code)) DB.push({code,name,cat:"교양선택",cr,eng:false}); });
+GEN_REQ.forEach(([code,name,cr])=>{ if(!DB.some(d=>d.code===code)) DB.push({code,name,cat:"교양필수",cr,eng:false}); });
+BIZ_ALT.forEach(([code,name])=>{
+  const ex = DB.find(d=>d.code===code);
+  if(ex) ex.bizAlt = true; else DB.push({code,name,cat:"전공선택",cr:3,eng:false,bizAlt:true});
+});
+Object.entries(CONV_POOL).forEach(([cat,arr])=>arr.forEach(([code,name])=>{
+  const ex = DB.find(d=>d.code===code);
+  if(ex){
+    // 융합전공 교양선택필수 과목은 검색 시 일반 교양선택/핵심교양 선택지를 따로 노출하지 않음
+    if(cat === "융전-교양선택필수"){ ex.cat = cat; delete ex.alt; }
+    else ex.alt = cat;
+  }
+  else DB.push({code,name,cat,cr:3,eng:false});
+}));
+
+const CATS = ["학문의기초","교양필수","핵심교양","교양선택","경제학필수","전공필수","전공선택",
+  "융전-전공필수","융전-교양선택필수","융전-1영역","융전-2영역","융전-3영역","일반선택"];
+const BIZ_CATS = ["학문의기초","교양필수","핵심교양","교양선택","경제학필수","전공필수","전공선택","일반선택"];
+
+const GRADES = {"A+":4.5,"A0":4.0,"B+":3.5,"B0":3.0,"C+":2.5,"C0":2.0,"D+":1.5,"D0":1.0,"F":0,"P":null,"수강중":null};
+/* 표기 흔들림 보정 (붙여넣기/불러오기 대비): A, A-, NP, NR 등 */
+const GRADE_ALIAS = {"A":4.0,"B":3.0,"C":2.0,"D":1.0,"A-":4.0,"B-":3.0,"C-":2.0,"D-":1.0,
+  "NP":null,"NR":null,"S":null,"U":null,"PASS":null,"P/F":null,"":null};
+function gp(gr){
+  const k = String(gr==null?'':gr).trim().toUpperCase();
+  const raw = String(gr==null?'':gr).trim();
+  if(raw in GRADES) return GRADES[raw];
+  if(k in GRADE_ALIAS) return GRADE_ALIAS[k];
+  const up = Object.keys(GRADES).find(x=>x.toUpperCase()===k);
+  return up!==undefined ? GRADES[up] : null;   // 모르는 표기는 평점 제외
+}
+function crOf(c){ const v = parseFloat(c.cr); return isFinite(v) && v>0 ? v : 0; }
+
+/* ═══════════ 2. 요건 정의 ═══════════ */
+const MAJOR_REQ = ["BUSS205","BUSS207","BUSS211","BUSS213","BUSS215","BUSS311","BUSS313","BUSS402"];
+const BASIC_REQ = ["BUSS152","BUSS154","BUSS164","BUSS166"];
+const ECON_REQ  = ["ECON171","ECON172"];
+
+
+/* ═══════════ 0. 접근키 · 클라우드 동기화 ═══════════ */
+/* ↓↓↓ Supabase 프로젝트를 만든 뒤 이 두 줄만 채우면 여러 기기 동기화가 켜집니다.
+       비워두면 이 기기에만 저장되는 오프라인 모드로 동작합니다. ↓↓↓ */
+const SUPABASE_URL  = 'https://znzdldmaezkxdphcfypz.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_Ue5D-FLBXiEwDWYVvu3oWg_BTssEV6A';
+
+const CLOUD   = !!(SUPABASE_URL && SUPABASE_ANON);
+const LS_LAST = 'kugrad2026:lastkey';
+let   KEY     = null;
+
+function lsKey(){ return KEY ? 'kugrad2026:' + KEY : 'kugrad2026'; }
+
+async function rpc(fn, body){
+  const r = await fetch(SUPABASE_URL + '/rest/v1/rpc/' + fn, {
+    method : 'POST',
+    headers: { 'apikey': SUPABASE_ANON,
+               'Authorization': 'Bearer ' + SUPABASE_ANON,
+               'Content-Type': 'application/json' },
+    body   : JSON.stringify(body)
+  });
+  if(!r.ok) throw new Error('rpc ' + fn + ' ' + r.status);
+  return r.json();
+}
+
+/* ── 동기화 상태 표시 ── */
+let syncTimer = null, syncDirty = false;
+function setSync(cls, txt){
+  const e = document.getElementById('sync');
+  if(e){ e.className = 'sync ' + cls; e.innerHTML = '<i></i>' + txt; }
+}
+function queueSync(){
+  if(!CLOUD || !KEY){ if(KEY) setSync('off','이 기기에만 저장'); return; }
+  syncDirty = true;
+  setSync('busy','저장 중…');
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(pushCloud, 1200);
+}
+async function pushCloud(){
+  if(!CLOUD || !KEY || !syncDirty) return;
+  try{
+    const r = await rpc('kg_save', { p_key: KEY, p_data: { sems:S.sems, courses:S.courses, ts: Date.now() } });
+    if(r && r.ok){ syncDirty = false; setSync('ok','저장됨'); }
+    else setSync('err','키를 사용할 수 없습니다');
+  }catch(e){ setSync('err','오프라인 · 이 기기에만 저장됨'); }
+}
+window.addEventListener('online',  ()=>{ if(syncDirty) pushCloud(); });
+window.addEventListener('beforeunload', e=>{ if(syncDirty){ e.preventDefault(); e.returnValue = ''; } });
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden && syncDirty) pushCloud(); });
+
+/* ── 로그인 화면 ── */
+function lockMsg(t, cls){
+  const e = document.getElementById('lmsg');
+  if(e){ e.className = 'msg ' + (cls||''); e.textContent = t; }
+}
+function unlock(){
+  const e = document.getElementById('lock');
+  if(e) e.classList.add('off');
+}
+function useData(d){
+  if(d && Array.isArray(d.sems) && Array.isArray(d.courses)){
+    S.sems = d.sems; S.courses = d.courses;
+  }
+}
+function logout(){
+  if(syncDirty){ pushCloud(); }
+  if(!confirm('다른 접근키로 여시겠어요?\n(이 기기에 저장된 내용은 그대로 남아 있습니다)')) return;
+  localStorage.removeItem(LS_LAST);
+  location.reload();
+}
+
+async function doLogin(silentKey){
+  const inp = document.getElementById('lkey');
+  const btn = document.getElementById('lgo');
+  const raw = (silentKey || (inp ? inp.value : '')).trim().toUpperCase();
+  if(!raw){ lockMsg('접근키를 입력해 주세요', 'err'); return; }
+
+  const finishOffline = (note)=>{
+    KEY = raw;
+    try{ localStorage.setItem(LS_LAST, KEY); }catch(e){}
+    useData(load());
+    unlock(); render();
+    setSync('off', note);
+  };
+
+  if(!CLOUD){ finishOffline('이 기기에만 저장'); return; }
+
+  if(btn) btn.disabled = true;
+  lockMsg('확인 중…', '');
+  try{
+    const r = await rpc('kg_login', { p_key: raw });
+    if(!r || !r.ok){
+      lockMsg('사용할 수 없는 접근키입니다. 다시 확인해 주세요.', 'err');
+      try{ localStorage.removeItem(LS_LAST); }catch(e){}
+      if(btn) btn.disabled = false;
+      return;
+    }
+    KEY = raw;
+    try{ localStorage.setItem(LS_LAST, KEY); }catch(e){}
+
+    const remote = (r.data && (Array.isArray(r.data.sems) || Array.isArray(r.data.courses))) ? r.data : null;
+    const localD = load();
+    const rTs = r.updated_at ? Date.parse(r.updated_at) : (remote && remote.ts ? remote.ts : 0);
+    const lTs = (localD && localD.ts) ? localD.ts : 0;
+
+    let pushAfter = false;
+    if(remote && (!localD || lTs <= rTs + 1000)){ useData(remote); }
+    else if(localD){ useData(localD); pushAfter = !!localD.courses; }
+
+    unlock(); render();
+    setSync('ok','저장됨');
+    if(pushAfter){ syncDirty = true; pushCloud(); }
+  }catch(e){
+    finishOffline('오프라인 · 이 기기에만 저장됨');
+    lockMsg('', '');
+  }finally{
+    if(btn) btn.disabled = false;
+  }
+}
+
+function initAuth(){
+  const inp = document.getElementById('lkey');
+  if(inp){
+    inp.addEventListener('keydown', e=>{ if(e.key === 'Enter') doLogin(); });
+    inp.addEventListener('input', ()=> lockMsg('', ''));
+  }
+  let last = null;
+  try{ last = localStorage.getItem(LS_LAST); }catch(e){}
+  if(last){
+    if(inp) inp.value = last;
+    doLogin(last);
+  }else if(inp){
+    setTimeout(()=>{ try{ inp.focus(); }catch(e){} }, 120);
+  }
+}
+
+/* ═══════════ 3. 상태 ═══════════ */
+let S = load() || {
+  sems:["1-1","1-2","2-1","2-2","3-1","3-2","4-1","4-2"],
+  courses:[], tab:1, editing:null
+};
+let tab = 1;
+const dlg = document.getElementById('dlg');
+
+function save(){ try{ localStorage.setItem(lsKey(), JSON.stringify({sems:S.sems,courses:S.courses,ts:Date.now()})); }catch(e){} queueSync(); }
+function load(){ try{ const r=localStorage.getItem(lsKey()); if(!r) return null; const o=JSON.parse(r); return {sems:o.sems,courses:o.courses,ts:o.ts||0}; }catch(e){ return null; } }
+
+/* ═══════════ 4. 계산 ═══════════ */
+function taken(){ return S.courses.filter(c=>c.gr!=="수강중" && c.gr!=="F"); }
+function hasCode(code){ return taken().some(c=>c.code===code); }
+function totalCredits(){ return taken().reduce((s,c)=>s+crOf(c),0); }
+
+/* ── 평점 계산 ────────────────────────────────────────────────
+   · P / 수강중 / NP 등 평점 없는 과목은 분자·분모 모두 제외
+   · F 는 0.0 으로 분모에 포함 (성적경고 기준과 동일)
+   · 학점이 비었거나 숫자가 아니면 제외 (NaN 방지)
+   · 같은 과목을 재수강한 경우 마지막(늦은 학기) 성적만 반영     */
+function gradedCourses(list){
+  const src = (list||S.courses).filter(c=>{ const g=gp(c.gr); return g!==null && g!==undefined && crOf(c)>0; });
+  const best = {};
+  src.forEach(c=>{
+    const key = (c.code||'').trim().toUpperCase() || ('#'+(c.name||'').trim());
+    const prev = best[key];
+    if(!prev || semIdx(c.sem) >= semIdx(prev.sem)) best[key] = c;
+  });
+  return Object.values(best);
+}
+function avgOf(filterFn){
+  const list = gradedCourses().filter(filterFn||(()=>true));
+  let p=0, t=0;
+  list.forEach(c=>{ const v=crOf(c); p += gp(c.gr)*v; t += v; });
+  return { avg: t? p/t : 0, cr: t, n: list.length };
+}
+/* 전공 = 제1전공(전공필수·전공선택) + 융합전공 을 합쳐 하나로. 학문의기초는 전공 아님 */
+const MAJOR_GPA_CATS = ["전공필수","전공선택","융전-전공필수","융전-1영역","융전-2영역","융전-3영역"];
+const LIB_GPA_CATS   = ["교양필수","핵심교양","교양선택","학문의기초","융전-교양선택필수"];
+function gpa(){      return avgOf(null).avg; }
+function gpaMajor(){ return avgOf(c=>MAJOR_GPA_CATS.includes(c.cat)); }
+function gpaLib(){   return avgOf(c=>LIB_GPA_CATS.includes(c.cat)); }
+/* ── 학기별 성적 ────────────────────────────────────────────
+   · 학기 평점 : 그 학기 과목만으로 계산 (재수강도 그 학기 성적 그대로)
+   · 누적 평점 : 그 학기까지의 전체 과목, 재수강은 마지막 성적만 반영
+   · 취득학점 : F·수강중 제외한 실제 취득 학점                   */
+function semStats(){
+  return sortedSems().map(sm=>{
+    const idx   = semIdx(sm);
+    const inSem = S.courses.filter(c=>c.sem===sm);
+    let p=0, t=0;
+    inSem.forEach(c=>{
+      const g=gp(c.gr), v=crOf(c);
+      if(g!==null && g!==undefined && v>0){ p+=g*v; t+=v; }
+    });
+    let cp=0, ct=0;
+    gradedCourses(S.courses.filter(c=>semIdx(c.sem)<=idx)).forEach(c=>{
+      const v=crOf(c); cp += gp(c.gr)*v; ct += v;
+    });
+    return {
+      sem: sm, label: semLabel(sm), n: inSem.length,
+      gpa: t? p/t : null, gpaCr: t,
+      cum: ct? cp/ct : null,
+      enrolled: inSem.reduce((a,c)=>a+crOf(c),0),
+      earned:   inSem.filter(c=>c.gr!=="수강중" && c.gr!=="F").reduce((a,c)=>a+crOf(c),0)
+    };
+  });
+}
+
+/* 영어강의 8과목: 학수번호가 BUSS로 시작하는 강의만 인정 */
+function engCount(){ return taken().filter(c=>c.eng && /^BUSS/i.test(c.code||'')).length; }
+
+/* ── 중복인정(제1전공 ↔ 융합전공) ────────────────────────────
+   · 규정 한도: 최대 6학점
+   · 융합전공 이수학점 중 30학점을 초과하는 학점만 중복인정 가능
+     → 실제 한도 = min(6, 융합전공 이수학점 − 30)
+   · 융합전공 이수학점은 "어느 카테고리로 등록했든" 융합전공 인정과목이면
+     모두 합산한다. (경영 쪽으로 등록했다고 융전 학점이 사라지면
+     한도가 영원히 0이 되는 순환 문제가 생기기 때문)
+   · 먼저 들은(학기가 빠른) 과목부터 우선 중복인정
+   · 아직 30학점을 넘지 못했어도, 36학점 달성 시 어떤 과목이 인정될지
+     미리 보여준다(예정 목록)                                      */
+const BIZ_ALT_SET = new Set(BIZ_ALT.map(x=>x[0]));
+const BIZ_SEL_SET = new Set(BIZ.filter(c=>c.cat==="전공선택").map(c=>c.code).concat(BIZ_ALT.map(x=>x[0])));
+
+function convCatOf(code){
+  for(const k in CONV_POOL) if(CONV_POOL[k].some(x=>x[0]===code)) return k;
+  return null;
+}
+const TERM_ORD = {"1":1,"S":2,"2":3,"W":4};
+const TERM_LBL = {"1":"1학기","S":"여름계절","2":"2학기","W":"겨울계절"};
+function semIdx(s){
+  const a=String(s||'9-9').split('-');
+  const y=Number(a[0])||9, t=TERM_ORD[String(a[1]||'').toUpperCase()]||9;
+  return y*10+t;
+}
+function semLabel(s){
+  const a=String(s||'').split('-');
+  return (a[0]||'?')+'학년 '+(TERM_LBL[String(a[1]||'').toUpperCase()]||a[1]||'');
+}
+function isConvCat(cat){ return /^융전-/.test(cat); }
+
+const DUAL_CAP = 6;     // 규정상 제1전공 ↔ 융합전공 중복인정 한도
+
+/* 융합전공 이수학점 — 등록 카테고리와 무관하게 융전 인정과목이면 모두 합산
+   (같은 학수번호를 두 번 등록해도 한 번만 센다)                  */
+function convRaw(){
+  const seen = new Set(); let sum = 0;
+  taken().forEach(c=>{
+    if(!convCatOf(c.code)) return;
+    const k = String(c.code||'').toUpperCase();
+    if(seen.has(k)) return;
+    seen.add(k); sum += crOf(c);
+  });
+  return sum;
+}
+/* 중복인정 한도는 항상 6학점.
+   (규정상 "융전 30학점 초과분"이지만, 이수 중에도 반영 상태를 볼 수 있도록
+    6학점을 먼저 적용하고 확정 여부는 안내 문구로 표시한다)            */
+function dualCap(){ return DUAL_CAP; }
+
+/* 학수번호가 제1전공(경영) 교과목이기도 한지 → 그 과목의 경영 쪽 영역 반환 */
+function bizHome(code){
+  const d = DB.find(x=>x.code===code);
+  if(!d) return null;
+  if(d.bizAlt) return "전공선택";
+  return BIZ_CATS.includes(d.cat) ? d.cat : null;
+}
+
+/* 양쪽 모두에 속하는 과목 = 중복인정 후보 (학기 빠른 순, 학수번호 중복 제거) */
+function dualCandidates(){
+  const seen = new Set();
+  return taken().filter(c=>{
+    if(!convCatOf(c.code) || !bizHome(c.code)) return false;
+    const k = String(c.code||'').toUpperCase();
+    if(seen.has(k)) return false;
+    seen.add(k); return true;
+  }).sort((a,b)=> semIdx(a.sem)-semIdx(b.sem) || String(a.id).localeCompare(String(b.id)));
+}
+function allocate(list, cap){
+  const map={}; let left=cap;
+  list.forEach(c=>{ const v=crOf(c); if(v>0 && left>=v){ map[c.id]=true; left-=v; } });
+  return {map, used:cap-left};
+}
+function dualInfo(){
+  const cap  = dualCap();
+  const list = dualCandidates();
+  const A    = allocate(list, cap);
+  const P    = allocate(list, DUAL_CAP);   // 융전 36학점 달성 시 예상 배정
+  return {cap, used:A.used, map:A.map, list,
+          applied: list.filter(c=>A.map[c.id]),
+          preview: list.filter(c=>P.map[c.id]),
+          previewUsed: P.used, raw: convRaw()};
+}
+
+/* 제1전공 학점 — 융전으로 등록한 과목도 중복인정 배정되면 원래 경영 영역으로 가산 */
+function creditsIn(cats){
+  const D = dualInfo();
+  let sum = 0;
+  taken().forEach(c=>{
+    if(cats.includes(c.cat)){ sum += crOf(c); return; }
+    if(isConvCat(c.cat) && D.map[c.id]){
+      const home = bizHome(c.code);
+      if(home && cats.includes(home)) sum += crOf(c);
+    }
+  });
+  return sum;
+}
+
+/* 융합전공 영역별 이수과목 — 등록 카테고리와 무관하게 학수번호로 판정.
+   (경영 쪽 영역으로 등록해 두어도 융합전공 이수 현황에는 그대로 반영된다) */
+function convTaken(cat){
+  const pool = new Set(CONV_POOL[cat].map(x=>x[0]));
+  const seen = new Set(), out = [];
+  taken().forEach(c=>{
+    const k = String(c.code||'').toUpperCase();
+    if(!pool.has(c.code) || seen.has(k)) return;
+    seen.add(k); out.push(c);
+  });
+  return out;
+}
+function convCredits(cat){ return convTaken(cat).reduce((s,c)=>s+crOf(c),0); }
+function convCount(cat){ return convTaken(cat).length; }
+
+/* ═══════════ 5. 렌더 ═══════════ */
+function bar(label, got, need, extra, done){
+  const pct = need? Math.min(100, got/need*100) : 0;
+  const ok = done!==undefined ? done : got>=need;
+  return `<div class="card ${ok?'done':''}">
+    <div class="t"><b>${label}</b><span>${fmt(got)} / ${need}</span></div>
+    <div class="pb"><i style="width:${pct}%"></i></div>
+    ${extra||''}</div>`;
+}
+function fmt(n){ return Number.isInteger(n)? n : n.toFixed(1); }
+function chips(list, has){
+  return `<div class="chk">${list.map(([c,n])=>`<em class="${has(c)?'y':''}" onclick="openSearchFor('${c}')" title="이 과목 검색하기">${has(c)?'✓ ':''}${n}</em>`).join('')}</div>`;
+}
+
+const POOL_OPEN = new Set();
+function poolToggle(d){ if(d.open) POOL_OPEN.add(d.dataset.k); else POOL_OPEN.delete(d.dataset.k); }
+function poolList(title, arr){
+  const D = dualInfo();
+  const dualCodes = new Set(D.applied.map(c=>c.code));
+  const items = arr.map(([code,name])=>{
+    const got  = hasCode(code);
+    const dual = dualCodes.has(code);
+    return `<div class="pi ${got?'y':''}" onclick="openSearchFor('${code}')" title="이 과목 검색하기">
+      <small>${code}</small>
+      <span class="pn">${name}</span>
+      ${dual?'<span class="dl">중복인정</span>':''}
+      <span class="mk">${got?'✓':''}</span>
+    </div>`;
+  }).join('');
+  const n = arr.filter(([c])=>hasCode(c)).length;
+  return `<details class="pool" data-k="${title}" ${POOL_OPEN.has(title)?'open':''} ontoggle="poolToggle(this)">
+    <summary>${title} (${arr.length}과목 · 이수 ${n})</summary>
+    <div class="plist">${items}</div></details>`;
+}
+function bizSelPool(){
+  const a = BIZ.filter(c=>c.cat==="전공선택").map(c=>[c.code, c.name + (c.eng?' 🅔':'')]);
+  const b = BIZ_ALT.map(x=>[x[0], x[1]+' (타학과 인정)']);
+  return a.concat(b);
+}
+
+function renderDash(){
+  const el = document.getElementById('dash');
+  const nt = document.getElementById('dashnote');
+  const D  = dualInfo();
+  const rawConv = convRaw();
+  const dualLine = D.applied.length
+    ? `중복인정 ${fmt(D.used)}/6학점 적용 — ${D.applied.map(c=>c.name).join(', ')}`
+      + (rawConv>30 ? ' (확정)' : ` · 융합전공 ${fmt(rawConv)}학점 → 30학점 초과 시 확정`)
+    : `중복인정 0/6학점 — 제1전공과 융합전공 양쪽에 모두 해당하는 과목을 이수하면 자동 반영됩니다 (현재 융합전공 ${fmt(rawConv)}학점)`;
+
+  if(tab===1){
+    const basic = creditsIn(["학문의기초"]);
+    const gen   = creditsIn(["교양필수"]);
+    const genNeed = GEN_REQ.reduce((s,g)=>s+g[2],0);
+    const econ  = creditsIn(["경제학필수"]);
+    const req   = creditsIn(["전공필수"]);
+    const sel   = creditsIn(["전공선택"]);
+    const tot   = totalCredits();
+    const eng   = engCount();
+    el.innerHTML =
+      `<div class="card big ${tot>=130?'done':''}">
+        <div class="t"><b>총 졸업학점</b><span>${fmt(tot)} / 130</span></div>
+        <div class="pb"><i style="width:${Math.min(100,tot/130*100)}%"></i></div>
+        <div class="sub">평점평균 ${gpa().toFixed(2)} (기준 1.75 이상) · 영어강의(BUSS) ${eng}/8과목</div></div>`
+      + bar("필수교양 (교양필수)", gen, genNeed,
+          `<div class="sub">아래 교양필수 과목 이수 여부</div>` +
+          chips(GEN_REQ.map(g=>[g[0],g[1]]), hasCode),
+          GEN_REQ.every(g=>hasCode(g[0])))
+      + bar("학문의기초", basic, 12,
+          chips(BASIC_REQ.map(c=>[c, nameOf(c)]), hasCode),
+          BASIC_REQ.every(hasCode))
+      + bar("전공필수", req, 24,
+          chips(MAJOR_REQ.map(c=>[c, nameOf(c)]), hasCode),
+          MAJOR_REQ.every(hasCode))
+      + bar("전공선택", sel, 15,
+          `<div class="sub">BUSS 전공선택 + 타학과 전공선택 인정과목<br>${dualLine}</div>`
+          + poolList("전공선택 인정과목 보기", bizSelPool()))
+      + bar("경제학 필수과목", econ, 6,
+          chips(ECON_REQ.map(c=>[c, nameOf(c)]), hasCode),
+          ECON_REQ.every(hasCode))
+      + bar("영어강의 (BUSS 과목 수)", eng, 8,
+          `<div class="sub">학수번호가 <b>BUSS</b>로 시작하는 영어강의만 인정</div>`
+          + poolList("BUSS 영어강의 개설과목 보기", BIZ.filter(c=>c.eng).map(c=>[c.code,c.name])));
+    nt.innerHTML = `<div class="note">※ 26학번 경영학과 제1전공 기준: 학문의기초 12 · 경제학 필수 6 · 제1전공 39(전공필수 24 + 전공선택 15) · 총 130학점 · 평점평균 1.75 이상 · <b>영어강의 8과목(BUSS 학수번호 한정)</b>.<br>
+      ※ 제1전공과 융합전공은 <b>최대 6학점까지 중복인정</b>되며, 융합전공 이수학점 중 <b>30학점을 초과하는 학점</b>에 한해 적용됩니다(36학점 달성 시 6학점 전부). 먼저 들은 과목부터 자동 배정됩니다.<br>
+      교양필수 과목별 학점은 학교 공지에 따라 달라질 수 있으니 과목 추가 시 실제 학점으로 수정하세요.</div>`;
+  } else if(tab===2){
+    const nec = convCredits("융전-전공필수");
+    const lib = convCredits("융전-교양선택필수");
+    const a1 = convCredits("융전-1영역"), a2 = convCredits("융전-2영역"), a3 = convCredits("융전-3영역");
+    const n1 = convCount("융전-1영역"), n2 = convCount("융전-2영역"), n3 = convCount("융전-3영역");
+    const selTot = a1+a2+a3, selCnt = n1+n2+n3;
+    const areasOK = a1>=6 && a2>=6 && a3>=6;
+    const selOK   = selTot>=24 && selCnt>=8 && areasOK;
+    const convTot = nec + Math.min(lib,3) + selTot;
+    const req3 = CONV_POOL["융전-전공필수"];
+    const areaBar = (t,got,cnt,key) => bar(t, got, 6,
+      `<div class="sub">${cnt}과목 이수 · <b>각 영역 최소 6학점(2과목)</b> 필수</div>`
+      + poolList("이 영역 과목 보기", CONV_POOL[key]), got>=6 && cnt>=2);
+    el.innerHTML =
+      `<div class="card big ${convTot>=36?'done':''}">
+        <div class="t"><b>총 이수학점</b><span>${fmt(convTot)} / 36</span></div>
+        <div class="pb"><i style="width:${Math.min(100,convTot/36*100)}%"></i></div>
+        <div class="sub">전공필수 9 + 교양선택필수 3 + 전공선택 24 · ${dualLine}</div></div>`
+      + bar("전공필수 (법학)", nec, 9, chips(req3, hasCode), req3.every(x=>hasCode(x[0])))
+      + bar("교양선택필수", Math.min(lib,3), 3,
+          `<div class="sub">법학관련 핵심교양 / JURA 입문과목 중 1과목(3학점) 이상</div>`
+          + poolList("인정과목 보기 (법학관련 핵심교양)", CONV_POOL["융전-교양선택필수"]))
+      + bar("전공선택 합계", selTot, 24,
+          `<div class="sub">${selCnt}과목 / 8과목 · ${selOK?'✅ 영역별 최소요건 충족':'⚠️ 1·2·3영역 각 6학점(2과목) 이상 필요'}</div>`
+          + poolList("전공선택 전체 과목 보기", CONV_POOL["융전-1영역"].concat(CONV_POOL["융전-2영역"],CONV_POOL["융전-3영역"])), selOK)
+      + areaBar("전공선택 1영역 (법학)", a1, n1, "융전-1영역")
+      + areaBar("전공선택 2영역 (행정학)", a2, n2, "융전-2영역")
+      + areaBar("전공선택 3영역 (경제학)", a3, n3, "융전-3영역");
+    nt.innerHTML = `<div class="note">※ 2026학번~ 공공거버넌스와 리더십 융합전공: 총 36학점.<br>
+      ※ <b>“전공선택 영역에서 24학점(8과목) 이상을 이수해야 함. 다만, 전공선택 1영역(법학), 2영역(행정학), 3영역(경제학)의 각 영역에서 각각 최소한 6학점(2과목) 이상을 이수해야 함.”</b><br>
+      ※ <b>“자유전공학부 ‘공공거버넌스와리더십’ 융합전공의 이수학점 중에서 30학점을 초과하는 학점에 대해서는 제1전공 교과목과 중복 인정할 수 있다.”</b><br>
+      → 중복인정 한도는 <b>최대 6학점</b>이며, 융합전공 이수학점이 <b>30학점을 초과한 만큼</b>만 인정됩니다. 즉 36학점을 채우면 6학점 전부 인정. 어느 카테고리로 등록했든 융합전공 인정과목이면 융합전공 이수학점에 합산되고, 먼저 들은 과목부터 자동 배정됩니다.<br>
+      ※ 추가 졸업요건으로 <b>공인영어성적</b> 제출이 필요합니다 (TOEIC 750 / TOEFL iBT 80 / TEPS 285 / IELTS 6.0 / TOSEL(A) 620, 입학 후 취득).</div>`;
+  } else {
+    renderGpaTab(el, nt);
+  }
+}
+
+function renderGpaTab(el, nt){
+  const rows = semStats().filter(r=>r.n>0);
+  if(!rows.length){
+    el.innerHTML = `<div class="card"><div class="t"><b>📈 성적 추이</b></div>
+      <div class="sub" style="margin-top:8px">아직 등록된 과목이 없습니다. 과목을 추가하면 학기별 평점 그래프가 그려집니다.</div></div>`;
+    nt.innerHTML = ''; return;
+  }
+
+  /* ── 좌표계 ── */
+  const n=rows.length, step=Math.max(64, Math.min(110, 620/n)),
+        padL=42, padR=42, padT=20, padB=48,
+        W=Math.round(padL+padR+step*n), H=286, plotH=H-padT-padB;
+  const maxCr = Math.max(21, ...rows.map(r=>r.earned));
+  const x  = i => padL + step*i + step/2;
+  const yG = v => padT + plotH*(1 - v/4.5);
+  const yB = v => padT + plotH*(1 - v/maxCr);
+
+  /* 가로 눈금 (평점) */
+  let grid='';
+  [0,1,2,3,4,4.5].forEach(v=>{
+    const y=yG(v);
+    grid += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="#e6dcc6" stroke-width="1"${v===0?'':' stroke-dasharray="3 4"'}/>`
+          + `<text x="${padL-8}" y="${y+3.5}" text-anchor="end" font-size="9.5" fill="#a99b8d">${v.toFixed(1)}</text>`;
+  });
+
+  /* 취득학점 막대 */
+  const bw=Math.min(30, step*0.42);
+  const bars = rows.map((r,i)=>{
+    const h=Math.max(0, plotH*(r.earned/maxCr));
+    return `<rect x="${x(i)-bw/2}" y="${yB(r.earned)}" width="${bw}" height="${h}" rx="3" fill="#EFE2C6"/>`
+         + (r.earned? `<text x="${x(i)}" y="${yB(r.earned)-4}" text-anchor="middle" font-size="9.5" fill="#a99b8d">${fmt(r.earned)}</text>` : '');
+  }).join('');
+
+  /* 선 그래프 */
+  const line = (key,color,dash) => {
+    const pts = rows.map((r,i)=>r[key]==null?null:[x(i),yG(r[key])]).filter(Boolean);
+    if(!pts.length) return '';
+    const d = pts.map(p=>`${p[0]},${p[1]}`).join(' ');
+    return `<polyline points="${d}" fill="none" stroke="${color}" stroke-width="2.2"
+             stroke-linejoin="round" stroke-linecap="round"${dash?` stroke-dasharray="${dash}"`:''}/>`
+         + pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.6" fill="#fff" stroke="${color}" stroke-width="2.2"/>`).join('');
+  };
+  const labels = rows.map((r,i)=> r.gpa==null? '' :
+    `<text x="${x(i)}" y="${yG(r.gpa)-11}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8B0029">${r.gpa.toFixed(2)}</text>`).join('');
+
+  /* x축 */
+  const xs = rows.map((r,i)=>{
+    const a=String(r.sem).split('-');
+    const t={"1":"1학기","S":"여름","2":"2학기","W":"겨울"}[String(a[1]||'').toUpperCase()]||a[1];
+    return `<text x="${x(i)}" y="${H-padB+17}" text-anchor="middle" font-size="10" fill="#7a6a63">${a[0]}-${t}</text>`;
+  }).join('');
+
+  const svg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="학기별 평점 그래프">
+    ${grid}${bars}
+    ${line('cum','#c98a00','5 4')}
+    ${line('gpa','#8B0029','')}
+    ${labels}${xs}
+    <line x1="${padL}" y1="${padT+plotH}" x2="${W-padR}" y2="${padT+plotH}" stroke="#d9cbb0" stroke-width="1.2"/>
+  </svg>`;
+
+  const last = rows[rows.length-1];
+  const withG = rows.filter(r=>r.gpa!=null);
+  const best  = withG.length? withG.reduce((a,b)=>b.gpa>a.gpa?b:a) : null;
+
+  /* 표 */
+  const tbl = `<table class="gtab"><thead><tr>
+      <th>학기</th><th>신청</th><th>취득</th><th>학기 평점</th><th>누적 평점</th><th>증감</th></tr></thead><tbody>`
+    + rows.map((r,i)=>{
+        const prev = i>0? rows[i-1].gpa : null;
+        const dv   = (r.gpa!=null && prev!=null)? r.gpa-prev : null;
+        const dcls = dv==null? '' : (dv>0.001?'up':(dv<-0.001?'dn':''));
+        const dtxt = dv==null? '–' : (dv>0.001?'▲ ':(dv<-0.001?'▼ ':'— '))+Math.abs(dv).toFixed(2);
+        return `<tr><td class="l">${r.label}</td><td>${fmt(r.enrolled)}</td><td>${fmt(r.earned)}</td>
+          <td class="b">${r.gpa!=null? r.gpa.toFixed(2):'–'}</td>
+          <td>${r.cum!=null? r.cum.toFixed(2):'–'}</td>
+          <td class="${dcls}">${dv==null?'–':dtxt}</td></tr>`;
+      }).join('')
+    + `</tbody></table>`;
+
+  el.innerHTML =
+    `<div class="card big">
+      <div class="t"><b>📈 학기별 성적 추이</b><span>누적 ${last.cum!=null? last.cum.toFixed(2):'–'}</span></div>
+      <div class="sub">총 ${rows.length}개 학기 · 취득 ${fmt(rows.reduce((a,r)=>a+r.earned,0))}학점`
+      + (best? ` · 최고 학기 ${best.label} (${best.gpa.toFixed(2)})` : '') + `</div>
+      <div class="lgd">
+        <span><i class="ln" style="background:#8B0029"></i>학기 평점</span>
+        <span><i class="ln dash" style="background:#c98a00"></i>누적 평점</span>
+        <span><i class="bx"></i>취득학점</span>
+      </div>
+      <div class="chart">${svg}</div>
+    </div>
+    <div class="card"><div class="t"><b>학기별 상세</b></div>${tbl}</div>`;
+
+  nt.innerHTML = `<div class="note">
+    ※ <b>학기 평점</b>은 그 학기에 들은 과목만으로, <b>누적 평점</b>은 그 학기까지의 전체 과목으로 계산합니다. 재수강한 과목은 누적 평점에서 마지막 학기 성적만 반영됩니다.<br>
+    ※ P(Pass)·수강중 과목은 평점 계산에서 제외되고, F는 0.0으로 분모에 포함됩니다.<br>
+    ※ 막대는 그 학기 <b>취득학점</b>(F·수강중 제외)입니다.</div>`;
+}
+
+function nameOf(code){ const d=DB.find(x=>x.code===code); return d? d.name : code; }
+
+function renderStats(){
+  const all = avgOf(null), maj = gpaMajor(), lib = gpaLib();
+  const gcard = (label, o, hint) => `<div class="st gp">
+    <b>${o.n? o.avg.toFixed(2) : '–'}</b>
+    <span>${label}</span>
+    <em>${o.n? `${o.n}과목 · ${fmt(o.cr)}학점` : hint}</em></div>`;
+  document.getElementById('stats').innerHTML = `
+    <div class="st"><b>${fmt(totalCredits())}</b><span>총 취득학점</span></div>
+    ${gcard('전체 평균', all, '성적 입력 필요')}
+    ${gcard('전공 평균', maj, '전공필수·전공선택')}
+    ${gcard('교양 평균', lib, '교양·학문의기초')}
+    <div class="st"><b>${engCount()}</b><span>영강 과목수 (BUSS)</span></div>
+    <div class="st"><b>${fmt(dualInfo().used)}</b><span>중복인정 학점</span><em>한도 6학점</em></div>
+    <div class="st"><b>${S.courses.length}</b><span>등록 과목수</span></div>`;
+}
+
+function renderSems(){
+  const el = document.getElementById('sems');
+  el.innerHTML = sortedSems().map(s=>{
+    const cs = S.courses.filter(c=>c.sem===s);
+    const cr = cs.filter(c=>c.gr!=="수강중"&&c.gr!=="F").reduce((a,c)=>a+ +c.cr,0);
+    return `<div class="sem">
+      <div class="h"><span>${semLabel(s)}${/-(S|W)$/.test(s)?' <em class="ss">계절</em>':''}</span>
+        <span class="rt"><span class="m">${fmt(cr)}학점</span>
+        <button class="sx" title="학기 삭제" onclick="delSem('${s}')">✕</button></span></div>
+      ${cs.length? cs.map(c=>`
+        <div class="co" onclick="editCourse('${c.id}')">
+          <span class="nm">${c.name}</span>
+          ${c.eng?'<span class="bd e">영강</span>':''}
+          <span class="bd">${c.cat.replace('융전-','융')}</span>
+          <span class="gr">${c.gr}</span>
+          <button class="x" onclick="event.stopPropagation();delCourse('${c.id}')">✕</button>
+        </div>`).join('') : '<div class="empty">과목 없음</div>'}
+      <button class="add" onclick="openAdd('${s}')">+ 추가</button>
+    </div>`;
+  }).join('');
+}
+
+function render(){ renderStats(); renderDash(); renderSems(); save(); }
+
+/* ═══════════ 6. 과목 추가/수정 ═══════════ */
+function fillSelects(){
+  document.getElementById('fCat').innerHTML = CATS.map(c=>`<option>${c}</option>`).join('');
+  document.getElementById('fGr').innerHTML  = Object.keys(GRADES).map(g=>`<option>${g}</option>`).join('');
+  document.getElementById('fSem').innerHTML = sortedSems().map(s=>`<option value="${s}">${semLabel(s)}</option>`).join('');
+}
+function openSearchFor(code){
+  openAdd();
+  const d = DB.find(x=>x.code===code);
+  q.value = code;
+  if(d){
+    fName.value = d.name;
+    fCode.value = d.code;
+    fCr.value   = d.cr;
+    fEng.value  = d.eng ? '1' : '0';
+    if(CATS.includes(d.cat)) fCat.value = d.cat;
+  }
+  search();
+}
+function openAdd(sem){
+  S.editing=null; fillSelects();
+  document.getElementById('dlgTitle').textContent='과목 추가';
+  q.value=''; res.innerHTML=''; fName.value=''; fCode.value=''; fCr.value=3;
+  fGr.value='A0'; fEng.value='0'; fCat.value='전공선택';
+  if(sem) fSem.value=sem;
+  dlg.showModal(); q.focus();
+}
+function editCourse(id){
+  const c = S.courses.find(x=>x.id===id); if(!c) return;
+  S.editing=id; fillSelects();
+  document.getElementById('dlgTitle').textContent='과목 수정';
+  q.value=''; res.innerHTML='';
+  fName.value=c.name; fCode.value=c.code; fCr.value=c.cr; fCat.value=c.cat;
+  fGr.value=c.gr; fSem.value=c.sem; fEng.value=c.eng?'1':'0';
+  dlg.showModal();
+}
+function search(){
+  const v = q.value.trim().toLowerCase().replace(/\s/g,'');
+  if(!v){ res.innerHTML=''; return; }
+  const hit = DB.filter(d=>d.name.toLowerCase().replace(/\s/g,'').includes(v) || d.code.toLowerCase().includes(v)).slice(0,60);
+  const row = (d,cat,label=cat) => `
+    <div onclick="pick('${d.code}','${cat}')">
+      <small>${d.code}</small><span>${d.name}</span>
+      <span class="tg">${d.cr}학점</span>
+      ${d.eng?'<span class="tg">영강</span>':''}
+      <span class="tg">${label}</span>
+    </div>`;
+  const html = hit.map(d=>{
+    if(!d.alt) return row(d,d.cat);
+    const isConvElectiveArea = /^융전-[123]영역$/.test(d.alt);
+    const convLabel = isConvElectiveArea
+      ? d.alt
+      : d.alt;
+    // 융합전공 전공선택 1·2·3영역 과목은 별도의 '전공선택' 행을 중복 표시하지 않음
+    if(isConvElectiveArea && d.cat === '전공선택') return row(d,d.alt,convLabel);
+    return row(d,d.cat) + row(d,d.alt,convLabel);
+  }).join('');
+  res.innerHTML = hit.length? html : '<div style="padding:10px;color:#aaa;font-size:12px">검색 결과 없음 — 아래에 직접 입력하세요</div>';
+}
+function pick(code,cat){
+  const d = DB.find(x=>x.code===code); if(!d) return;
+  fName.value = d.name;
+  fCode.value = d.code;
+  fCr.value   = d.cr;
+  fCat.value  = CATS.includes(cat) ? cat : d.cat;
+  fEng.value  = d.eng ? '1' : '0';
+  res.innerHTML=''; q.value='';
+}
+function saveCourse(){
+  if(!fName.value.trim()){ alert('과목명을 입력하세요'); return; }
+  const o = { id:S.editing||('c'+Date.now()+Math.random().toString(36).slice(2,6)),
+    name:fName.value.trim(), code:fCode.value.trim().toUpperCase(),
+    cat:fCat.value, cr:+fCr.value||0, gr:fGr.value, sem:fSem.value, eng:fEng.value==='1' };
+  if(S.editing){ const i=S.courses.findIndex(x=>x.id===S.editing); S.courses[i]=o; }
+  else S.courses.push(o);
+  dlg.close(); render();
+}
+function delCourse(id){ S.courses = S.courses.filter(c=>c.id!==id); render(); }
+function sortedSems(){ return S.sems.slice().sort((a,b)=>semIdx(a)-semIdx(b)); }
+function addSem(){
+  const reg = sortedSems().filter(s=>/-(1|2)$/.test(s));
+  const last = reg[reg.length-1] || "0-2";
+  let [y,t] = last.split('-').map(Number);
+  if(t===1) t=2; else { y++; t=1; }
+  const nw = y+'-'+t;
+  if(!S.sems.includes(nw)) S.sems.push(nw);
+  S.sems = sortedSems(); render();
+}
+/* 계절학기 추가: 버튼을 누르면 학년을 직접 선택 */
+let pendingSeasonKind = null;
+function openSeason(kind){
+  pendingSeasonKind = kind;
+  seasonTitle.textContent = kind==='S' ? '여름계절 추가' : '겨울계절 추가';
+  seasonYear.value = '1';
+  seasonDlg.showModal();
+}
+function saveSeason(){
+  const kind = pendingSeasonKind;
+  const y = Number(seasonYear.value);
+  if(!kind || ![1,2,3,4].includes(y)) return;
+  const nw = y+'-'+kind;
+  if(S.sems.includes(nw)){ alert('이미 있는 계절학기입니다'); return; }
+  S.sems.push(nw);
+  S.sems = sortedSems();
+  seasonDlg.close();
+  render();
+}
+/* 학기 삭제 — 계절학기는 자유롭게, 정규학기는 마지막 학기만 삭제 가능.
+   과목이 남아 있으면 함께 삭제할지 확인받는다.                     */
+function delSem(sem){
+  const season = /-(S|W)$/.test(sem);
+  if(!season){
+    const reg = sortedSems().filter(x=>/-(1|2)$/.test(x));
+    if(reg.length<=1){ alert('정규학기는 최소 1개는 남아 있어야 합니다.'); return; }
+    if(reg[reg.length-1]!==sem){ alert('정규학기는 마지막 학기부터 삭제할 수 있습니다.\n(삭제하려는 학기: '+semLabel(reg[reg.length-1])+')'); return; }
+  }
+  const cs = S.courses.filter(c=>c.sem===sem);
+  const msg = cs.length
+    ? semLabel(sem)+'에 등록된 과목 '+cs.length+'개도 함께 삭제됩니다.\n계속할까요?'
+    : semLabel(sem)+'를 삭제할까요?';
+  if(!confirm(msg)) return;
+  S.courses = S.courses.filter(c=>c.sem!==sem);
+  S.sems = S.sems.filter(x=>x!==sem);
+  render();
+}
+function setTab(n){ tab=n; t1.className = n===1?'on':''; t2.className = n===2?'on':''; t3.className = n===3?'on':''; renderDash(); }
+function resetAll(){ if(confirm('모든 입력 내용을 지울까요?')){ S.courses=[]; render(); } }
+function exportJSON(){
+  const b = new Blob([JSON.stringify({sems:S.sems,courses:S.courses},null,1)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download='졸업요건_'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+}
+function importJSON(inp){
+  const f=inp.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=e=>{ try{ const o=JSON.parse(e.target.result); if(o.sems) S.sems=o.sems; S.courses=o.courses||[]; render(); }catch(err){ alert('파일을 읽을 수 없습니다'); } };
+  r.readAsText(f); inp.value='';
+}
+render();
+initAuth();
+
+/* ── PWA: 홈 화면에 추가 / 오프라인 ── */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
