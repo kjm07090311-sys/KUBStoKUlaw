@@ -136,6 +136,9 @@ details[open].pool>summary::before{content:'▾'}
 .plist .pi .pn{flex:1;min-width:0}
 .plist .pi.y{background:#f0f9f3;color:var(--ok);font-weight:600}
 .plist .pi.y small{color:#63a97f}
+.plist .pi.ing{background:#fff7e8;color:#b3780a;font-weight:600}
+.plist .pi.ing small{color:#c9a05a}
+.plist .pi.ing .mk{font-size:9.5px;background:#ffe9c2;color:#a06c00;border-radius:4px;padding:1px 4px}
 .plist .pi .mk{flex:0 0 auto;font-size:10px}
 .plist .pi .dl{flex:0 0 auto;font-size:9.5px;background:#fde8ef;color:var(--crimson);border-radius:4px;padding:1px 4px}
 .big details.pool>summary{color:#ffd9e2}
@@ -594,6 +597,8 @@ function load(){ try{ const r=localStorage.getItem(lsKey()); if(!r) return null;
 /* ═══════════ 4. 계산 ═══════════ */
 function taken(){ return S.courses.filter(c=>c.gr!=="수강중" && c.gr!=="F"); }
 function hasCode(code){ return taken().some(c=>c.code===code); }
+// 현재 수강중인 과목 (아직 성적이 안 나온 과목) — 목록에서 주황색 표시용
+function takingCode(code){ return S.courses.some(c=>c.code===code && c.gr==="수강중"); }
 function totalCredits(){ return taken().reduce((s,c)=>s+crOf(c),0); }
 
 /* ── 평점 계산 ────────────────────────────────────────────────
@@ -793,12 +798,13 @@ function poolList(title, arr){
   const dualCodes = new Set(D.applied.map(c=>c.code));
   const items = arr.map(([code,name])=>{
     const got  = hasCode(code);
+    const ing  = !got && takingCode(code);
     const dual = dualCodes.has(code);
-    return `<div class="pi ${got?'y':''}" onclick="openSearchFor('${code}')" title="이 과목 검색하기">
+    return `<div class="pi ${got?'y':(ing?'ing':'')}" onclick="openSearchFor('${code}')" title="이 과목 검색하기">
       <small>${code}</small>
       <span class="pn">${name}</span>
       ${dual?'<span class="dl">중복인정</span>':''}
-      <span class="mk">${got?'✓':''}</span>
+      <span class="mk">${got?'✓':(ing?'수강중':'')}</span>
     </div>`;
   }).join('');
   const n = arr.filter(([c])=>hasCode(c)).length;
