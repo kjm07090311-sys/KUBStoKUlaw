@@ -620,6 +620,13 @@ function avgOf(filterFn){
 /* 전공 = 제1전공(전공필수·전공선택) + 융합전공 을 합쳐 하나로. 학문의기초는 전공 아님 */
 const MAJOR_GPA_CATS = ["전공필수","전공선택","융전-전공필수","융전-1영역","융전-2영역","융전-3영역"];
 const LIB_GPA_CATS   = ["교양필수","핵심교양","교양선택","학문의기초","융전-교양선택필수"];
+// ── 학점 환산표 (4.5 만점 기준) ───────────────────────────
+//   100점 만점 = 평점 × 10 + 60   (4.00 이상은 100점)
+//   4.3 만점  = 평점 + 0.3        (4.00 이상은 4.30)
+//   4.0 만점  = 평점 + 0.5        (3.50 이상은 4.00)
+function to100(v){ return Math.min(100, v*10 + 60); }
+function to43(v){  return Math.min(4.3, v + 0.3); }
+function to40(v){  return Math.min(4.0, v + 0.5); }
 function gpa(){      return avgOf(null).avg; }
 function gpaMajor(){ return avgOf(c=>MAJOR_GPA_CATS.includes(c.cat)); }
 function gpaLib(){   return avgOf(c=>LIB_GPA_CATS.includes(c.cat)); }
@@ -996,11 +1003,11 @@ function renderStats(){
     <b>${o.n? o.avg.toFixed(2) : '–'}</b>
     <span>${label}</span>
     <em>${o.n? `${o.n}과목 · ${fmt(o.cr)}학점` : hint}</em></div>`;
-  // 4.5 만점 → 4.3 / 4.0 만점 · 백분율 선형 환산
+  // 4.5 만점 → 100점 만점 환산 (환산표 기준: 100점 = 평점×10+60, 4.0 이상은 100점)
   const conv = o => `<div class="st gp cv">
-    <b>${o.n? (o.avg/4.5*4.0).toFixed(2) : '–'}<i>/4.0</i></b>
-    <span>GPA 환산</span>
-    <em>${o.n? `4.3만점 ${(o.avg/4.5*4.3).toFixed(2)} · 백분율 ${(o.avg/4.5*100).toFixed(1)}` : '4.5만점 기준 선형 환산'}</em></div>`;
+    <b>${o.n? to100(o.avg).toFixed(1) : '–'}<i>/100</i></b>
+    <span>GPA 환산 (100점)</span>
+    <em>${o.n? `4.3만점 ${to43(o.avg).toFixed(2)} · 4.0만점 ${to40(o.avg).toFixed(2)}` : '100점 = 평점×10+60'}</em></div>`;
   document.getElementById('stats').innerHTML = `
     <div class="st"><b>${fmt(totalCredits())}</b><span>총 취득학점</span></div>
     ${gcard('전체 평균', all, '성적 입력 필요')}
@@ -1059,7 +1066,7 @@ function openAdd(sem){
   S.editing=null; fillSelects();
   document.getElementById('dlgTitle').textContent='과목 추가';
   q.value=''; res.innerHTML=''; fName.value=''; fCode.value=''; fCr.value=3;
-  fGr.value='A0'; fEng.value='0'; fCat.value='전공선택';
+  fGr.value='A+'; fEng.value='0'; fCat.value='전공선택';
   if(sem) fSem.value=sem;
   dlg.showModal(); q.focus();
 }
