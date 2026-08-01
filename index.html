@@ -1187,7 +1187,21 @@ initAuth();
 /* ── PWA: 홈 화면에 추가 / 오프라인 ── */
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    // updateViaCache:'none' → sw.js를 절대 HTTP 캐시에서 읽지 않음 (업데이트 누락 방지)
+    navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'}).then(reg=>{
+      reg.update().catch(()=>{});
+      // 앱을 다시 켤 때마다 새 버전 확인
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.visibilityState==='visible') reg.update().catch(()=>{});
+      });
+      // 새 버전이 설치되면 자동으로 새로고침
+      reg.addEventListener('updatefound', ()=>{
+        const nw = reg.installing; if(!nw) return;
+        nw.addEventListener('statechange', ()=>{
+          if(nw.state==='activated' && navigator.serviceWorker.controller) location.reload();
+        });
+      });
+    }).catch(()=>{});
   });
 }
 </script>
