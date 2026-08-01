@@ -83,6 +83,7 @@ h2 .n{font-size:12px;font-weight:400;color:var(--mut)}
 .add{width:100%;border-style:dashed;color:var(--mut);margin-top:4px}
 dialog{border:none;border-radius:16px;padding:0;max-width:560px;width:calc(100% - 32px);box-shadow:0 20px 60px rgba(0,0,0,.28)}
 dialog::backdrop{background:rgba(30,10,15,.45)}
+dialog:not([open]){display:none!important}
 .dh{background:var(--crimson);color:#fff;padding:14px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
 .db{padding:16px 18px 18px}
 input,select{font:inherit;width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff}
@@ -102,6 +103,7 @@ label{display:block;font-size:11.5px;color:var(--mut);margin-bottom:3px}
 .st.gp b{color:var(--crimson)}
 .st.gp span{display:block;font-weight:600;color:#5c4a3d}
 .st em{display:block;margin-top:2px;font-style:normal;font-size:10px;color:#a99b8d}
+.st.cv b i{font-style:normal;font-size:12px;color:#a99b8d;font-weight:600;margin-left:2px}
 /* 성적 추이 탭 */
 .chart{width:100%;overflow-x:auto;margin-top:10px;-webkit-overflow-scrolling:touch}
 .chart svg{display:block;max-width:100%;height:auto;min-width:320px}
@@ -221,8 +223,8 @@ header{padding-top:calc(30px + env(safe-area-inset-top))}
 
   /* 다이얼로그 = 하단 시트 */
   dialog{width:100%;max-width:none;margin:0;margin-top:auto;border-radius:18px 18px 0 0;
-    max-height:92vh;display:flex;flex-direction:column}
-  dialog[open]{display:flex}
+    max-height:92vh}
+  dialog[open]{display:flex;flex-direction:column}
   .dh{position:sticky;top:0;z-index:2;flex:0 0 auto}
   .db{overflow:auto;-webkit-overflow-scrolling:touch;
     padding-bottom:calc(18px + env(safe-area-inset-bottom))}
@@ -238,8 +240,8 @@ header{padding-top:calc(30px + env(safe-area-inset-top))}
   .tabs button{font-size:10.5px}
 }
 @media(min-width:761px){
-  dialog{max-height:88vh;display:flex;flex-direction:column}
-  dialog[open]{display:flex}
+  dialog{max-height:88vh}
+  dialog[open]{display:flex;flex-direction:column}
   .db{overflow:auto}
 }
 @media print{#lock,.bar,.tabs{display:none}}
@@ -994,9 +996,15 @@ function renderStats(){
     <b>${o.n? o.avg.toFixed(2) : '–'}</b>
     <span>${label}</span>
     <em>${o.n? `${o.n}과목 · ${fmt(o.cr)}학점` : hint}</em></div>`;
+  // 4.5 만점 → 4.3 / 4.0 만점 · 백분율 선형 환산
+  const conv = o => `<div class="st gp cv">
+    <b>${o.n? (o.avg/4.5*4.0).toFixed(2) : '–'}<i>/4.0</i></b>
+    <span>GPA 환산</span>
+    <em>${o.n? `4.3만점 ${(o.avg/4.5*4.3).toFixed(2)} · 백분율 ${(o.avg/4.5*100).toFixed(1)}` : '4.5만점 기준 선형 환산'}</em></div>`;
   document.getElementById('stats').innerHTML = `
     <div class="st"><b>${fmt(totalCredits())}</b><span>총 취득학점</span></div>
     ${gcard('전체 평균', all, '성적 입력 필요')}
+    ${conv(all)}
     ${gcard('전공 평균', maj, '전공필수·전공선택')}
     ${gcard('교양 평균', lib, '교양·학문의기초')}
     <div class="st"><b>${engCount()}</b><span>영강 과목수 (BUSS)</span></div>
