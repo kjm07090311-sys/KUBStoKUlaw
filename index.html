@@ -2,26 +2,1768 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="0; url=https://kubstokulaw.github.io/">
-<link rel="canonical" href="https://kubstokulaw.github.io/">
-<title>고경에서 고로까지 · 이사했어요</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f2f4f6" id="metaTheme">
+<script>/* 화면 모드: 첫 화면 깜빡임 막으려고 head에서 먼저 적용 */
+function themePref(){ try{ return localStorage.getItem('kugrad3:theme') || 'auto'; }catch(e){ return 'auto'; } }
+function applyTheme(){ const p = themePref(), dark = p==='dark' || (p==='auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  const m = document.getElementById('metaTheme'); if(m) m.setAttribute('content', dark ? '#0f1012' : '#f2f4f6'); }
+applyTheme();
+try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme); }catch(e){}
+</script>
+<meta name="description" content="고려대학교 26학번 경영학과 졸업요건 트래커 — 이중·융합·심화전공, LEET 기록">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="고경고로">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<title>고경에서 고로까지</title>
 <style>
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f2f4f6;color:#191f28;font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;padding:16px}
-.c{background:#fff;border-radius:20px;padding:28px 24px;max-width:360px;width:100%;text-align:center}
-h1{font-size:19px;margin:0 0 8px}p{color:#4e5968;font-size:14px;line-height:1.6;margin:0 0 20px}
-a{display:block;background:#8B0029;color:#fff;text-decoration:none;font-weight:700;padding:14px;border-radius:12px}
+
+:root{--bg:#f2f4f6;--card:#fff;--ink:#191f28;--sub:#4e5968;--mut:#8b95a1;--faint:#b0b8c1;--line:#eef0f3;--track:#eef0f3;
+  --brand:#8B0029;--brand-soft:#fbeef2;--ok:#1b9c5a;--ok-soft:#e8f7ef;--ing:#e08a00;--ing-soft:#fff4e0;--blue:#3182f6;--blue-soft:#e8f3ff;
+  --soft:#f2f4f6;--soft2:#f9fafb;--line2:#e5e8eb;--bd:#d1d6db;--seg:#e9ecef;--blue-ink:#1b64da;--blue-soft2:#f5f9ff;--warn-bg:#fdecec;--warn-ink:#c0392b;
+  --ing-ink:#8a5600;--ing-bar:#f2b8c6;--navbg:rgba(242,244,246,.92);--on-ink:#fff;color-scheme:light}
+/* ── 다크모드 (2026-11): 설정에서 자동/라이트/다크, 자동이면 기기 설정 따라감 ── */
+:root[data-theme="dark"]{--bg:#0f1012;--card:#1b1c20;--ink:#eceef1;--sub:#b3b9c2;--mut:#8a919b;--faint:#5e646d;--line:#2a2c31;--track:#2c2e34;
+  --brand:#d0345f;--brand-soft:#3a1621;--ok:#34c47c;--ok-soft:#14321f;--ing:#f2a33a;--ing-soft:#3a2a12;--blue:#4c93ff;--blue-soft:#172640;
+  --soft:#25272c;--soft2:#202226;--line2:#31333a;--bd:#474a52;--seg:#25272c;--blue-ink:#86b6ff;--blue-soft2:#151e2c;--warn-bg:#3b1a1c;--warn-ink:#ff8d8d;
+  --ing-ink:#f2b866;--ing-bar:#7a3a4d;--navbg:rgba(15,16,18,.86);--on-ink:#fff;color-scheme:dark}
+:root[data-theme="dark"] .box, :root[data-theme="dark"] .sheet{box-shadow:none}
+:root[data-theme="dark"] .fab{box-shadow:0 8px 24px rgba(0,0,0,.5)}
+:root[data-theme="dark"] .nav-in img, :root[data-theme="dark"] .g-logo{background:#8B0029}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.2px}
+button{font:inherit;cursor:pointer}
+
+/* ── 상단 바 ── */
+.nav{position:sticky;top:0;z-index:20;background:var(--navbg);backdrop-filter:saturate(1.6) blur(12px);-webkit-backdrop-filter:saturate(1.6) blur(12px);padding-top:env(safe-area-inset-top)}
+.nav-in{max-width:1200px;margin:0 auto;height:56px;padding:0 16px;display:flex;align-items:center;gap:10px}
+.nav-in img{width:28px;height:28px;border-radius:8px;background:var(--brand);padding:3px;object-fit:contain}
+.nav-in b{font-size:17px;font-weight:700}
+.nav-in .who{font-size:12.5px;color:var(--mut);font-weight:500}
+.nav-in .sp{flex:1}
+.nav-in .ic{width:40px;height:40px;border:none;background:none;border-radius:12px;color:var(--sub);display:flex;align-items:center;justify-content:center}
+.nav-in .ic:hover{background:var(--line2)}
+.nav-in .ic svg{width:22px;height:22px}
+.nav-in .addd{display:none;border:none;background:var(--brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:12px}
+.sync{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mut)}
+.sync i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+
+/* ── 레이아웃: 모바일 1열 ── */
+.page{max-width:560px;margin:0 auto;padding:4px 16px 120px}
+.colL,.colR{display:contents}
+@media (max-width:1023px){.page{display:flex;flex-direction:column}.hero{order:1}.colL>.box:nth-child(2){order:2}.seg{order:3}#box1,#box2,#boxT{order:4}#boxS{order:6}}
+.box{background:var(--card);border-radius:22px;padding:22px 20px;margin-bottom:12px}
+.box h2{margin:0 0 14px;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.box h2 .sp{flex:1}
+.box h2 small{font-size:13px;color:var(--mut);font-weight:500}
+.box h2 .tag{font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:3px 8px;border-radius:7px}
+
+.hero{padding:18px 4px 22px}
+.hero .k{font-size:15px;color:var(--sub);font-weight:600}
+.hero h1{margin:6px 0 0;font-size:28px;line-height:1.35;font-weight:700;letter-spacing:-.8px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.big-pb{height:10px;background:var(--line2);border-radius:99px;margin-top:18px;overflow:hidden;display:flex}
+.big-pb i{display:block;height:100%;background:var(--brand)}
+.big-pb i.ing{background:var(--ing-bar)}
+.legend{display:flex;gap:14px;font-size:12.5px;color:var(--mut);margin-top:9px}
+.legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--brand);vertical-align:1px}
+.legend span.ing::before{background:var(--ing-bar)}
+
+.nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.nums small{display:block;font-size:12.5px;color:var(--mut);margin-bottom:5px}
+.nums b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.nums em{display:block;font-style:normal;font-size:11.5px;color:var(--faint);margin-top:3px}
+
+.seg{display:flex;background:var(--seg);border-radius:13px;padding:4px;margin:6px 0 12px}
+.seg button{flex:1;border:none;background:none;font-size:14px;font-weight:600;color:var(--mut);padding:10px 4px;border-radius:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+/* 모바일: 선택한 탭만 보이기 */
+body[data-seg="1"] #box2, body[data-seg="1"] #boxT,
+body[data-seg="2"] #box1, body[data-seg="2"] #boxT,
+body[data-seg="3"] #box1, body[data-seg="3"] #box2{display:none}
+
+.row{display:flex;align-items:center;gap:12px;padding:13px 0;cursor:pointer}
+.row + .row, .detail + .row{border-top:1px solid var(--line)}
+.row .ic{width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;flex:none}
+.row.done .ic{background:var(--ok-soft);color:var(--ok)}
+.row .m{flex:1;min-width:0}
+.row .m b{display:block;font-size:15.5px;font-weight:600}
+.row .m small{display:block;font-size:13px;color:var(--mut);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .m .pb{height:4px;background:var(--track);border-radius:99px;margin-top:8px;overflow:hidden}
+.row .m .pb i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.row.done .m .pb i{background:var(--ok)}
+.row .r{text-align:right;font-variant-numeric:tabular-nums;font-size:15px;font-weight:700;min-width:36px}
+.row .r small{display:block;font-size:12px;color:var(--faint);font-weight:500}
+.row.done .r{color:var(--ok)}
+.detail{display:none;padding:0 0 12px 52px}
+.detail.on{display:block}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:13px;padding:6px 10px;border-radius:9px;background:var(--soft);color:var(--sub)}
+.tags span.y{background:var(--ok-soft);color:var(--ok);font-weight:600}
+.tags span.i{background:var(--ing-soft);color:var(--ing);font-weight:600}
+.dualline{font-size:13px;color:var(--sub);background:var(--soft2);border-radius:12px;padding:12px 14px;margin-top:8px;line-height:1.55}
+.dualline b{color:var(--ink)}
+.none2{text-align:center;padding:26px 8px;color:var(--mut);font-size:14px;line-height:1.6}
+.none2 b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+
+/* 수강 내역 아코디언 */
+.need .grp{margin-bottom:12px}
+.need .grp small{display:block;font-size:12.5px;color:var(--mut);font-weight:600;margin-bottom:7px}
+.need .tags span{cursor:pointer}
+.alltog{font-size:13px;color:var(--blue);font-weight:600;cursor:pointer}
+.sems{display:block}
+.sem + .sem{border-top:1px solid var(--line)}
+.sem .h{display:flex;align-items:center;gap:8px;padding:16px 0;cursor:pointer;user-select:none;-webkit-user-select:none}
+.sem .h b{font-size:16px}
+.sem .h small{color:var(--mut);font-size:13px}
+.sem .h .sp{flex:1}
+.sem .h .g{font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums;font-size:15px}
+.sem .h .ingb{font-size:12px;font-weight:700;color:var(--ing);background:var(--ing-soft);padding:3px 8px;border-radius:7px}
+.sem .h .chev{width:20px;height:20px;color:var(--faint);transition:transform .2s;flex:none}
+.sem.open .h .chev{transform:rotate(180deg)}
+.sem .body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease}
+.sem.open .body{grid-template-rows:1fr}
+.sem .body>div{overflow:hidden}
+.sem .peek{font-size:12.5px;color:var(--faint);margin:-10px 0 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sem.open .peek{display:none}
+.co{display:flex;align-items:center;gap:10px;padding:9px 0;font-size:15px}
+.co .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.co .n small{display:block;font-size:12px;color:var(--mut);margin-top:2px}
+.co .gr{font-weight:700;font-variant-numeric:tabular-nums}
+.co .gr.ing{color:var(--ing);font-size:13px}
+.addc{display:block;width:100%;margin:6px 0 16px;border:none;background:var(--soft);border-radius:12px;padding:12px;font-size:14px;font-weight:600;color:var(--sub)}
+.kpi2{margin:-4px 0 10px}
+.kpi2 b{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.6px}
+.kpi2 b i{font-style:normal;font-size:14px;color:var(--faint);font-weight:500;margin-left:2px}
+.kpi2 span{display:block;font-size:13px;color:var(--mut);margin-top:2px}
+.mini-seg{display:flex;background:var(--soft);border-radius:9px;padding:3px}
+.mini-seg button{border:none;background:none;font-size:12.5px;font-weight:600;color:var(--mut);padding:5px 10px;border-radius:7px}
+.mini-seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.lg{display:flex;gap:14px;font-size:12.5px;color:var(--sub);margin-bottom:4px}
+.lg span{display:flex;align-items:center;gap:6px}
+.lg i{display:inline-block;width:16px;height:2px;border-radius:2px}
+.lg i.dash,.tip i.dash{height:0;border-top:2px dashed currentColor;background:none}
+.chart{position:relative;touch-action:pan-y}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .gl.base{stroke:var(--bd)}
+.chart .ax{font-size:11.5px;fill:var(--mut);font-variant-numeric:tabular-nums}
+.chart .dl{font-size:13px;font-weight:700;fill:var(--ink);font-variant-numeric:tabular-nums}
+.chart .dl.mut{fill:var(--sub);font-weight:600}
+.chart .xh{stroke:var(--faint);stroke-width:1}
+.chart .bar{transition:opacity .12s}
+.chart .bar.hi{opacity:.8}
+.tip{display:none;position:absolute;top:0;background:var(--card);border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.14);padding:10px 12px;pointer-events:none;min-width:150px;font-size:12.5px}
+.tip .th{font-size:12px;color:var(--mut);margin-bottom:6px;font-weight:600}
+.tip .tr2{display:flex;align-items:center;gap:7px;padding:2px 0}
+.tip .tr2 i{width:12px;height:2px;border-radius:2px;flex:none}
+.tip .tr2 b{font-size:14px;font-variant-numeric:tabular-nums;min-width:42px}
+.tip .tr2 span{color:var(--mut)}
+.demo{font-size:12px;color:var(--faint);margin:8px 0 0}
+details.tbl{margin-top:10px}
+details.tbl summary{font-size:13px;color:var(--blue);font-weight:600;cursor:pointer;list-style:none}
+details.tbl table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;font-variant-numeric:tabular-nums}
+details.tbl th{font-size:12px;color:var(--mut);font-weight:600;text-align:right;padding:6px 4px;border-bottom:1px solid var(--line)}
+details.tbl td{text-align:right;padding:7px 4px;border-bottom:1px solid var(--line)}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+.trend .tr{display:flex;align-items:center;gap:12px;padding:10px 0}
+.trend .tr b{width:92px;font-size:14px;font-weight:600}
+.trend .tr .pb{flex:1;height:8px;background:var(--track);border-radius:99px;overflow:hidden}
+.trend .tr .pb i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.trend .tr span{font-weight:700;font-variant-numeric:tabular-nums;width:40px;text-align:right}
+.trend p{font-size:13px;color:var(--mut);margin:10px 0 0}
+
+.fab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom));width:calc(100% - 32px);max-width:528px;border:none;border-radius:16px;background:var(--brand);color:#fff;font-size:16px;font-weight:700;padding:17px;box-shadow:0 8px 24px rgba(139,0,41,.28);z-index:15}
+
+/* ── 데스크톱: 3단 대시보드 ── */
+@media (min-width:1024px){
+  .nav-in{padding:0 28px}
+  .nav-in .addd{display:block}
+  .page{max-width:1200px;padding:8px 28px 60px;display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+  .colL{display:block;position:sticky;top:72px}
+  .colR{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start}
+  .colR .box{margin:0}
+  .seg,.fab{display:none}
+  body[data-seg] #box1, body[data-seg] #box2{display:block!important}
+  #boxT{display:none!important}
+  .colL #boxT2{display:block}
+  #boxS{grid-column:1/-1}
+  .hero{background:var(--card);border-radius:22px;padding:24px 22px;margin-bottom:12px}
+  .hero h1{font-size:25px}
+  .sems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;align-items:start}
+  .sem + .sem{border-top:none}
+  .sem{border-bottom:1px solid var(--line)}
+  body.solo .colR{grid-template-columns:1fr}
+}
+#boxT2{display:none}
+/* ── 졸업/LEET 전환 ── */
+.mode-sw{display:none;background:var(--line2);border-radius:10px;padding:3px;margin-left:4px}
+body.leet-on .mode-sw{display:flex}
+.mode-sw button{border:none;background:none;font-size:13px;font-weight:700;color:var(--mut);padding:6px 11px;border-radius:8px}
+.mode-sw button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+#lpage{display:none}
+body.m-leet #gpage{display:none!important}
+body.m-leet #lpage{display:block}
+@media (min-width:1024px){ body.m-leet #lpage{display:grid} }
+body.m-leet .fab.g, body:not(.m-leet) .fab.l{display:none}
+.lhero{padding:18px 4px 18px}
+.lhero .k{font-size:14px;color:var(--sub);font-weight:600}
+.lhero h1{margin:6px 0 16px;font-size:34px;font-weight:700;letter-spacing:-1px}
+.lhero h1 em{font-style:normal;color:var(--brand)}
+.lhero h1 .u{font-size:16px;color:var(--mut);font-weight:600;letter-spacing:0}
+.nums3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card);border-radius:18px;padding:16px 18px}
+.nums3 small{display:block;font-size:12.5px;color:var(--mut);margin-bottom:4px}
+.nums3 b{font-size:20px;font-variant-numeric:tabular-nums}
+@media (min-width:1024px){.lhero{background:var(--card);border-radius:22px;padding:24px 22px;margin-bottom:12px}.nums3{padding:14px 0 0;border-top:1px solid var(--line);border-radius:0}}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 12px}
+.mini-seg.wide{display:flex;margin-bottom:14px}
+.mini-seg.wide button{flex:1;padding:9px}
+.rk{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--sub);margin-bottom:10px}
+.rk span{display:flex;align-items:center;gap:6px}
+.rk i{width:12px;height:3px;border-radius:2px;display:inline-block}
+.rk b{color:var(--ink);font-variant-numeric:tabular-nums}
+.rk em{font-style:normal;font-weight:700;font-size:12px}
+.rk em.up{color:var(--ok)} .rk em.dn{color:#e5484d}
+.lg{flex-wrap:wrap}
+.lg i{height:3px!important}
+.lempty{padding:40px 0;text-align:center;color:var(--faint)}
+.lrec{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.lrec .m{flex:1;min-width:0}
+.lrec .m b{display:block;font-size:15px;font-weight:600}
+.lrec .m small{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.lrec .r{text-align:right;font-variant-numeric:tabular-nums}
+.lrec .r b{font-size:16px}
+.lrec .r small{display:block;font-size:12px;color:var(--faint)}
+.frow{display:flex;gap:10px;margin-bottom:10px}
+.frow label,.dt{flex:1;display:block;font-size:12.5px;color:var(--mut);font-weight:600}
+.frow label em{font-style:normal;color:var(--faint);font-weight:500}
+.frow input,.frow select,.dt input,.ftab input{display:block;width:100%;margin-top:5px;font:inherit;font-size:16px;padding:11px 12px;border:none;border-radius:11px;background:var(--soft);color:var(--ink)}
+.dt{margin:10px 0 0}
+.ftab{width:100%;border-collapse:collapse;margin-bottom:8px}
+.ftab th{font-size:12px;color:var(--mut);font-weight:600;padding:0 3px 4px;text-align:left}
+.ftab td{padding:3px}
+.ftab td:first-child{font-size:13.5px;font-weight:600;width:40px}
+.ftab input{margin:0;padding:10px}
+.pv{background:var(--soft2);border-radius:12px;padding:12px 14px;font-size:13px}
+.pv.muted,.pv .muted{color:var(--mut);line-height:1.5}
+.pvg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pvg small{display:block;font-size:12px;color:var(--mut)}
+.pvg b{font-size:20px;font-variant-numeric:tabular-nums}
+.pvg em{display:block;font-style:normal;font-size:11px;color:var(--faint);margin-top:1px}
+.savebtn{width:100%;margin-top:14px;border:none;border-radius:13px;background:var(--brand);color:#fff;font-weight:700;font-size:15.5px;padding:14px}
+/* 입력 폼: 폰=바텀시트, 컴퓨터=왼쪽 칸 */
+@media (max-width:1023px){
+  #lform{position:fixed;left:0;right:0;bottom:0;z-index:60;max-width:560px;margin:0 auto;border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .25s ease;max-height:90vh;overflow:auto;box-shadow:0 -10px 40px rgba(0,0,0,.15)}
+  body.lf-open #lform{transform:none}
+  #lfbg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:55;display:none}
+  body.lf-open #lfbg{display:block}
+  #lpage{display:none}
+  body.m-leet #lpage{display:flex;flex-direction:column}
+  #lhero{order:1}#lseg{order:2}#lchartBox{order:3}#llist{order:4}
+}
+.set-sw{width:46px;height:28px;border-radius:99px;background:var(--bd);position:relative;flex:none;transition:.15s}
+.set-sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:.15s}
+.set-sw.on{background:var(--brand)}
+.set-sw.on::after{left:21px}
+
+
+/* ── 시트 / 모달 ── */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:50}
+.sheet-bg.on{display:block}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-width:560px;margin:0 auto;background:var(--card);border-radius:24px 24px 0 0;padding:12px 20px calc(24px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+@media (min-width:1024px){.sheet{bottom:auto;top:50%;transform:translateY(-50%);border-radius:24px;max-width:460px}}
+.sheet .grab{width:40px;height:5px;border-radius:99px;background:var(--line2);margin:0 auto 16px}
+.sheet h3{margin:0 0 14px;font-size:20px}
+.menu-i{display:flex;align-items:center;gap:12px;padding:15px 4px;cursor:pointer;font-size:16px}
+.menu-i + .menu-i{border-top:1px solid var(--line)}
+.menu-i .m{flex:1}
+.menu-i small{display:block;font-size:13px;color:var(--mut);margin-top:2px}
+.menu-i .go{color:var(--faint);font-size:18px}
+.menu-i.danger{color:#e5484d}
+
+/* ── 로그인 + 전공 선택 (온보딩) ── */
+#gate{position:fixed;inset:0;z-index:100;background:var(--card);overflow:auto;display:flex;justify-content:center}
+#gate.off{display:none}
+.g-in{width:100%;max-width:440px;padding:calc(56px + env(safe-area-inset-top)) 24px calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+@media (min-width:1024px){#gate{background:var(--bg);align-items:center}.g-in{background:var(--card);border-radius:28px;padding:44px 36px 36px;margin:40px 0;box-shadow:0 20px 60px rgba(0,0,0,.08)}}
+.g-logo{width:56px;height:56px;border-radius:16px;background:var(--brand);padding:6px;object-fit:contain;margin-bottom:22px}
+.steps{display:flex;gap:6px;margin-bottom:22px}
+.steps i{flex:1;height:4px;border-radius:99px;background:var(--line2)}
+.steps i.on{background:var(--brand)}
+.g-in h1{margin:0;font-size:26px;line-height:1.38;font-weight:700;letter-spacing:-.7px}
+.g-in p.s{margin:8px 0 26px;font-size:15px;color:var(--mut);line-height:1.55}
+.g-in input{width:100%;font:inherit;font-size:18px;letter-spacing:1px;text-transform:uppercase;padding:16px;border:none;border-bottom:2px solid var(--line2);outline:none;border-radius:0;background:transparent}
+.g-in input:focus{border-color:var(--brand)}
+.g-in .hint{font-size:13px;color:var(--faint);margin-top:10px;line-height:1.6}
+.g-btn{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom));width:calc(100% - 48px);max-width:392px;border:none;border-radius:16px;background:var(--brand);color:#fff;font-size:17px;font-weight:700;padding:17px}
+.g-btn:disabled{background:var(--line2);color:var(--faint)}
+@media (min-width:1024px){.g-btn{position:static;transform:none;width:100%;max-width:none;margin-top:28px}}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.types button{border:1.5px solid var(--line2);background:var(--card);border-radius:14px;padding:14px 12px;text-align:left}
+.types button b{display:block;font-size:15.5px}
+.types button small{font-size:12.5px;color:var(--mut)}
+.types button.on{border-color:var(--brand);background:var(--brand-soft)}
+.types button.on b{color:var(--brand)}
+.search{display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:12px;padding:12px 14px;margin-bottom:6px}
+.search input{border:none!important;padding:0!important;font-size:15px!important;letter-spacing:0!important;text-transform:none!important}
+.mlist .mi{display:flex;align-items:center;gap:10px;padding:14px 4px;cursor:pointer;border-bottom:1px solid var(--line)}
+.mlist .mi .m{flex:1}
+.mlist .mi b{font-size:15.5px;font-weight:600}
+.mlist .mi small{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.mlist .mi .ck{width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);flex:none}
+.mlist .mi.on .ck{border:7px solid var(--brand)}
+.mlist .mi .soon{font-size:11px;font-weight:700;color:var(--mut);background:var(--soft);padding:2px 7px;border-radius:6px}
+.later{text-align:center;font-size:14px;color:var(--mut);margin-top:16px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* ── v3 추가 ── */
+.sync{border:none;background:none;font:inherit;cursor:pointer;padding:4px 6px;border-radius:8px}
+.sync:hover{background:var(--line2)}
+.sync i{background:var(--faint)}
+.sync.ok i{background:var(--ok)} .sync.busy i{background:var(--ing)} .sync.err i{background:#e5484d}
+.sync.err span{color:#e5484d}
+@media (max-width:420px){ .sync span{display:none} }
+.row{position:relative}
+.row .chev{width:18px;height:18px;color:var(--faint);flex:none;transition:transform .2s;margin-left:-4px}
+.row.capr .ic{background:var(--soft);color:var(--sub)}
+.mut{color:var(--mut)} .s{font-size:13px;line-height:1.55}
+.linkbtn{border:none;background:none;color:var(--blue);font-weight:600;font-size:13px;padding:10px 0 0;cursor:pointer}
+.tot{margin:-6px 0 6px}
+.big-pb.sm{height:6px;margin-top:0}
+.semact{display:flex;gap:8px;align-items:center;margin:6px 0 16px}
+.semact .addc{margin:0;flex:1}
+.delsem{border:none;background:none;color:var(--faint);font-size:12.5px;padding:10px 6px;cursor:pointer}
+.delsem:hover{color:#e5484d}
+.co{cursor:pointer;border-radius:10px}
+.co:hover{background:var(--soft2)}
+.legend .plain::before{display:none}
+.legend .plain{margin-left:auto}
+/* 시트 */
+body.noscroll{overflow:hidden}
+.sheet h3{display:flex;align-items:center}
+.search{display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:12px;padding:12px 14px;margin-bottom:6px}
+.search input{flex:1;border:none;background:transparent;font:inherit;font-size:16px;outline:none;min-width:0}
+.res{max-height:210px;overflow:auto;margin-bottom:10px}
+.res div{display:flex;align-items:center;gap:10px;padding:11px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14.5px}
+.res div:hover{background:var(--soft2)}
+.res small{font-size:12px;color:var(--mut);width:64px;flex:none;font-variant-numeric:tabular-nums}
+.res span{flex:1;min-width:0}
+.res em{font-style:normal;font-size:11.5px;color:var(--sub);background:var(--soft);padding:2px 7px;border-radius:6px;white-space:nowrap}
+.res .none{color:var(--mut);cursor:default}
+.frow .w120{flex:0 0 120px} .frow .w84{flex:0 0 84px}
+label.chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--sub);margin:4px 0 6px}
+label.chk input{width:20px;height:20px;accent-color:var(--brand)}
+.ovbox{background:var(--brand-soft);border-radius:14px;padding:13px 14px;margin:10px 0 0}
+.ovbox b{display:block;font-size:14px;color:var(--brand)}
+.ovbox small{display:block;font-size:12.5px;color:var(--sub);margin:3px 0 10px;line-height:1.5}
+.ovbox .mini-seg{background:var(--card);margin:0}
+.delbtn{width:100%;margin-top:8px;border:none;background:none;color:#e5484d;font:inherit;font-weight:600;font-size:14.5px;padding:12px;cursor:pointer}
+.plist{max-height:60vh;overflow:auto}
+.plist .pi{display:flex;align-items:center;gap:10px;padding:11px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14.5px}
+.plist .pi small{width:64px;flex:none;color:var(--mut);font-size:12px}
+.plist .pi span{flex:1}
+.plist .pi em{font-style:normal;font-size:12px;font-weight:700}
+.plist .pi.y{color:var(--ok)} .plist .pi.i{color:var(--ing)}
+.syncbox{border-radius:14px;padding:14px;background:var(--soft);margin-bottom:12px}
+.syncbox b{display:block;font-size:16px;margin-bottom:6px}
+.syncbox small{display:block;font-size:13px;color:var(--sub);line-height:1.6}
+.syncbox small.err{color:#e5484d}
+.syncbox.ok b{color:var(--ok)} .syncbox.err b{color:#e5484d}
+/* 게이트 */
+.g-in{position:relative}
+.gx{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;border:none;background:var(--soft);width:36px;height:36px;border-radius:50%;font-size:15px;color:var(--sub);cursor:pointer}
+@media (min-width:1024px){.gx{top:18px;right:18px}}
+.gx.sm{position:static;width:30px;height:30px;font-size:13px}
+@media (min-width:1024px){ #lform .gx.sm{display:none} }
+.gmsg{min-height:20px;font-size:13.5px;color:var(--mut);margin-top:10px;line-height:1.5}
+.gmsg.err{color:#e5484d}
+.hint{font-size:13px;color:var(--faint);margin-top:6px}
+.g-btn:disabled{cursor:default}
+.lrec .x{border:none;background:none;color:var(--bd);font-size:14px;padding:6px;cursor:pointer}
+.lrec .x:hover{color:#e5484d}
+@media print{.nav,.fab,.seg,#gate{display:none}}
+.detail .dlab{font-size:12px;font-weight:700;color:var(--mut);margin:0 0 6px}
+.detail .tags span{cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,.05)}
+.detail .tags span:active{transform:scale(.97)}
+.detail .tags span:not(.y):not(.i){background:var(--card);border:1px dashed var(--bd)}
+.hint2{font-size:12px;color:var(--faint);margin-top:6px}
+.row{cursor:pointer}
+.row.open .chev{transform:rotate(180deg)}
+.detail + .row{border-top:1px solid var(--line)}
+/* ── 수강계획 · 재수강 ── */
+.big-pb i.pl, .pb i.pl{background:repeating-linear-gradient(135deg,#9ec5fb 0 4px,#d6e7fe 4px 8px)}
+.pb{display:flex}
+.legend span.pl::before{background:#9ec5fb}
+.shortlist{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.shortlist span{font-size:12.5px;background:var(--card)4e0;color:var(--ing-ink);padding:5px 9px;border-radius:8px}
+.shortlist b{font-variant-numeric:tabular-nums}
+.plansw{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;background:var(--card);border-radius:14px;cursor:pointer}
+@media (min-width:1024px){ .plansw{background:var(--soft2)} }
+.plansw>span:first-child{flex:1}
+.plansw b{display:block;font-size:14.5px}
+.plansw small{display:block;font-size:12px;color:var(--mut);margin-top:1px}
+.detail .tags span.p{background:var(--blue-soft);color:var(--blue-ink);font-weight:600}
+#boxR .grp{margin-bottom:12px}
+#boxR .tags span{font-size:13px;padding:6px 10px;border-radius:9px;background:var(--card);border:1px dashed var(--bd);color:var(--sub);cursor:pointer}
+@media (min-width:1024px){ #boxR{grid-column:1/-1} }
+@media (max-width:1023px){ #boxR{order:3} }
+.co.replaced .n, .co.replaced .gr{opacity:.45}
+.co.replaced .n{text-decoration:line-through;text-decoration-color:var(--faint)}
+.co .rt{font-style:normal;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:5px;background:var(--card)4e0;color:var(--ing-ink);margin-left:4px;vertical-align:1px;text-decoration:none;display:inline-block}
+.co .rt.old{background:var(--soft);color:var(--mut)}
+.co .gr.plan{color:var(--blue-ink);font-size:13px}
+.co .gr s{color:var(--faint);font-weight:500;margin-right:2px}
+.sem .h .planb{font-size:12px;font-weight:700;color:var(--blue-ink);background:var(--blue-soft);padding:3px 8px;border-radius:7px}
+.convbtn{width:100%;margin:4px 0 2px;border:1px dashed #9ec5fb;background:var(--blue-soft2);color:var(--blue-ink);font:inherit;font-weight:600;font-size:13.5px;padding:10px;border-radius:12px;cursor:pointer}
+.note{font-size:13px;line-height:1.5;border-radius:12px;padding:10px 12px;margin:6px 0 4px}
+.note.rt{background:var(--card)4e0;color:var(--ing-ink)}
+.note.warn{background:var(--warn-bg);color:var(--warn-ink)}
+.legend{flex-wrap:wrap;row-gap:4px}
+.legend span{white-space:nowrap}
+.nav-in .brand{white-space:nowrap;letter-spacing:-.4px}
+@media (max-width:400px){ .nav-in .brand{font-size:15.5px} .nav-in{gap:7px} .mode-sw button{padding:6px 9px} }
+@media (max-width:350px){ .nav-in .brand{font-size:14px} }
+@media (max-width:350px){ .nav-in img{display:none} .mode-sw button{padding:5px 7px;font-size:12.5px} .nav-in .ic{width:34px} }
+.mode-sw{flex-shrink:0} .mode-sw button{white-space:nowrap}
+.nav-in .brand{overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media (max-width:400px){ body.leet-on .nav-in img{display:none} }
+
+/* ── 교양 탭 (2026-11) ── */
+#box3{display:block}
+.libwrap>.box:last-child{margin-bottom:12px}
+@media (max-width:1023px){ #box3{order:4} }
+body[data-seg="1"] #box3, body[data-seg="2"] #box3, body[data-seg="3"] #box3{display:none}
+body[data-seg="4"] #box1, body[data-seg="4"] #box2, body[data-seg="4"] #boxT{display:none}
+@media (min-width:1024px){ .leg2{grid-template-columns:1fr} body[data-seg] #box3{display:grid!important;grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start} .colR>*{min-width:0} }
+.lnote .alltog{white-space:nowrap}
+.lkpi{font-size:15px;color:var(--sub);font-weight:600}
+.lkpi h1{margin:6px 0 0;font-size:26px;line-height:1.35;color:var(--ink);letter-spacing:-.8px;font-weight:700}
+.lkpi h1 em{font-style:normal;color:var(--brand)}
+.stack{display:flex;height:14px;border-radius:99px;overflow:hidden;margin:18px 0 12px;gap:2px;background:var(--card)}
+.stack i{display:block;height:100%;min-width:3px}
+.leg2{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;font-size:13px;color:var(--sub)}
+.leg2 span{display:flex;align-items:center;gap:7px;min-width:0}
+.leg2 span i{width:9px;height:9px;border-radius:3px;flex:none}
+.leg2 span b{margin-left:auto;color:var(--ink);font-variant-numeric:tabular-nums}
+.lnote{font-size:13px;color:var(--sub);background:var(--soft2);border-radius:12px;padding:12px 14px;margin-top:14px;line-height:1.55}
+.lnote b{color:var(--ink)} .lnote.warn{background:var(--warn-bg);color:var(--warn-ink)} .lnote.warn b{color:var(--warn-ink)}
+.gchk{display:flex;align-items:center;gap:10px;padding:11px 2px;font-size:14.5px;cursor:pointer;border-radius:10px}
+.gchk+.gchk{border-top:1px solid var(--line)}
+.gchk:hover{background:var(--soft2)}
+.gchk .d{width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:800}
+.gchk .d.y{background:var(--ok);border-color:var(--ok)} .gchk .d.i{border-color:var(--ing);background:var(--ing-soft)} .gchk .d.p{border-color:#9ec5fb;background:var(--blue-soft)}
+.gchk .n{flex:1;min-width:0} .gchk .c{color:var(--mut);font-size:13px;font-variant-numeric:tabular-nums}
+.gchk .st{font-size:12px;font-weight:700;color:var(--ing)} .gchk .st.p{color:var(--blue-ink)} .gchk .st.add{color:var(--blue);font-weight:600}
+.gchips{display:flex;gap:6px;overflow-x:auto;margin:2px -2px 6px;padding:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gchips::-webkit-scrollbar{display:none}
+.gchips button{flex:none;border:none;font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:99px;background:var(--soft);color:var(--sub);cursor:pointer;white-space:nowrap}
+.gchips button.on{background:var(--ink);color:var(--card)}
+.gchips button.law{background:var(--blue-soft);color:var(--blue)} .gchips button.law.on{background:var(--blue);color:#fff}
+.gfil{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin:6px 0 4px}
+.gfil button{border:none;background:none;font:inherit;font-size:12.5px;color:var(--mut);padding:4px 0;cursor:pointer}
+.gfil button.on{color:var(--blue);font-weight:600}
+.gcr{display:flex;align-items:center;gap:10px;padding:12px 0}
+.gcr+.gcr{border-top:1px solid var(--line)}
+.gcr .n{flex:1;min-width:0}
+.gcr .n b{display:block;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gcr .n small{display:block;font-size:12.5px;color:var(--mut);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gcr .n small .a{color:var(--brand);font-weight:600} .gcr .n small .l{color:var(--blue);font-weight:600}
+.gcr .add{min-width:34px;height:34px;border-radius:10px;border:none;background:var(--brand-soft);color:var(--brand);font-size:19px;font-weight:700;flex:none;cursor:pointer;padding:0 10px}
+.gcr .add.y{background:var(--ok-soft);color:var(--ok);font-size:12.5px} .gcr .add.i{background:var(--ing-soft);color:var(--ing);font-size:12.5px} .gcr .add.p{background:var(--blue-soft);color:var(--blue-ink);font-size:12.5px}
+.gcount{font-size:12.5px;color:var(--faint);margin:8px 0 0}
+.sheet.tall{min-height:min(88vh,760px)}
+.gmore{display:block;width:100%;border:none;background:var(--soft);border-radius:12px;padding:12px;font:inherit;font-size:14px;font-weight:600;color:var(--sub);margin-top:10px;cursor:pointer}
+
 </style>
 </head>
 <body>
-<div class="c">
-<h1>주소가 바뀌었어요</h1>
-<p>새 주소: <b>kubstokulaw.github.io</b><br>접근키로 다시 로그인하면 기록 그대로 있어요.<br>홈 화면 아이콘은 새 주소에서 다시 추가해 주세요.</p>
-<a href="https://kubstokulaw.github.io/">새 주소로 가기</a>
+<div id="gate"><div class="g-in" id="gin"></div></div>
+
+<div class="nav"><div class="nav-in">
+  <img src="data:image/webp;base64,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" alt=""><b class="brand">고경에서 고로까지</b>
+  <span class="mode-sw" id="modeSw"><button class="on" onclick="setMode('grad')">졸업</button><button onclick="setMode('leet')">LEET</button></span>
+  <button class="sync off" id="sync" onclick="openSyncInfo()" title="동기화 상태"><i></i><span>준비 중</span></button>
+  <span class="sp"></span>
+  <button class="addd" id="addd" onclick="openCourse()">+ 과목 추가</button>
+  <button class="ic" onclick="openMenu()" title="설정"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg></button>
+</div></div>
+
+<div class="page" id="gpage">
+  <div class="colL">
+    <div class="hero" id="hero"></div>
+    <div class="box"><h2>내 성적</h2><div class="nums" id="nums"></div></div>
+    <div class="box trend" id="boxT2"></div>
+  </div>
+  <div class="colR">
+    <div class="box" id="boxR" style="display:none"></div>
+    <div class="seg" id="seg"></div>
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+    <div class="libwrap" id="box3"></div>
+    <div class="box trend" id="boxT"></div>
+    <div class="box" id="boxS">
+      <h2>수강 내역 <span class="sp"></span><span class="alltog" id="alltog" onclick="allTog()"></span></h2>
+      <div class="sems" id="sems"></div>
+      <div class="semact" style="margin-top:12px"><button class="addc" onclick="addSem()">+ 학기 추가</button><button class="addc" onclick="addSeason()">+ 계절학기</button></div>
+    </div>
+  </div>
 </div>
+
+<div class="page" id="lpage">
+  <div class="colL">
+    <div class="lhero" id="lhero"></div>
+    <div class="box" id="lform"></div>
+  </div>
+  <div class="colR" style="grid-template-columns:1fr">
+    <div class="seg" id="lseg"></div>
+    <div class="box" id="lchartBox"></div>
+    <div class="box" id="llist"></div>
+  </div>
+</div>
+<div id="lfbg" onclick="document.body.classList.remove('lf-open')"></div>
+<button class="fab g" onclick="openCourse()">과목 추가하기</button>
+<button class="fab l" onclick="document.body.classList.add('lf-open')">점수 기록하기</button>
+
+<div class="sheet-bg" id="sheet" onclick="if(event.target===this)closeSheet()"><div class="sheet" id="sheetIn"></div></div>
+<input type="file" id="imp" accept=".json" hidden onchange="importJSON(this)">
+
 <script>
-if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}
-setTimeout(function(){location.replace('https://kubstokulaw.github.io/');},1500);
+const TIGER = "data:image/webp;base64,UklGRh4ZAABXRUJQVlA4WAoAAAAQAAAAjQAAhgAAQUxQSPcFAAABd+KgbSNB+iTd3eOP+UFERP7O1qat3W9rhzp/i7GjrXPfzpqUrdpUKZBQBf62bZvL7P+/PQNqVm4lhrsv0cnsVTP10ldeLpcX6f78n0+IOHPkNf4T0f8JgPQ5e7TZH+jdLwZ20UCEa09z3uyOa7GIevn7kd7z0fVD0h0UIsfINn7R7z/9kVw2M/LpVn9zpLrbt4xoWm1H5TsZuYorhnLzUdbl0YrtFcN7fIvLkv44MORH25SjNKGEh66VT5sCpIeUdD/Ih6x+orTlUH1Q3ucwvVHgYogqlNadvJYQ3vxZnArCnDtS3GSYimfKu8iEp06Zp5YRityEYm/CUHMp91G9WI9yu92Ualr9QMErUL24oei6au+U3YHa5oSSnxa9glrxLSX/NKG4Pqfk6zhUH/xDrIlVTEH50i+KvdKgvvabgq8qmnLVo1Dr/okkN1XVJmuZjjoqHvJdrRSPMm0BVPaevVpNCu0AgFEfLJdvas2kOnhCmKBvAOCPENuQNP388IckKGTvgrnddRIqaRs/wtYvYEnuswq16BeyWJfKJF/Vybq+hF0ZF1AcnZ6UMb8o+NslQIOqxpiSL64pa84p+rdqyQVlPyiWcSj8t1ramtJvAWQnHV2ROsX/ApAjLTXijnwsARjwVY0RI/CQA8xVXYkapXdI8jsGaJoKsYN0MwxIsgZFW5S+jDzJTVIR3RHPBDo8ZaBojdKPNUB7TCBg4yZtLdwgh/vqz5bh753CJ3H3ylf3Sb/WovSJ+8GwD6dBLeN5otyuNSD5hTvH4DWaa3I/ens+8rdYNlokO/dKdNtZeLPPn3uS3EvVAWySjXsB5dn2vajDa5N0hfoDwDvJVnCZK0D2dXOavTcbr0eK/Tdc6QSXe+22yikPgGT1dbRyKPdfPC2S0+AAZOu9xWrUaTctq2o13leCpTxFkif9Hl49+9R873/OyNPkJNYCF79IFu/xYBUSAKCXOs6iGcdQrD8vVUkO7gHT6u824+GRw0ombuJRrPYlzEmW76Fla6/d5tto61L21yuZE7nTA0uWq3kDF7VU/smy9+5WqPoV1Ehagd1sOb/517lMpWtokR01slP+kL9GMmV8IG/F7xPLFCr1dmfokqT7Ne5w5crz4Oe+6WKt0WjUrRnXViGbNAC8bzUjt5bGVOVyYbmq4GrOrQF4cG4DQpVXKdUfPuK6tprBm/kKAGHaZJSJ15sJ+P1wUheg1we3IUQcqAP/9X0OPgckAHLvkGTI5srcWJum4Dd5JD1LZF8PJIAQrcKglcq4seoBmQPMN5cEwrMLQ5BvJEGOASC/I4nQnGTAO0mQDQCILxjmmAyoHem1NQDGPExFIfDw7pA8PQOAuQ5RXwoA6UJGw8X0ITy05fBdDRETEmEcog+RMiHis0Toh4i2NGYMyN/rZFeqb5ugOBTmcZUBNvdx8/AWRgExJ0uVbjfzeh8bV/OTALZjG7KWSPL7LmfzGlDofd9wMiFt0nMZAfXgX//0t4W8cxJXEEzpBmiP72cfA4GeSIA/JAkEcdRuAVA4XNq0TYHwSQK4hAAmCDK3J7nNQuYHhwRAkgCgBNILunlI/XgmLzGIRTBAPge5KyTx42EAm6BkX/L6D292oujTR4DHKOrdg1Fk/4uh9f61AFoBnUknmjAJ5ExyFFH9QEhuHyKqHNAuhah+PgexSyG6U+3DTZsUIj3+uvf3GUPU69bi2raBfwmL42/y/PmI/8fXZp2IMmrtquYx7GG34DFsuz1nO1qMfq+dBZDaklzFAEy5O7EJoEhvPlpgk3kAA/JADoASmc+f3BTQ5nen/YSITZExQHPJ3IJMo00H6LAFLDgwELkaqQNxco02aeGNU6DJIeIkj43IwTcTgEH20CBbqHMJfPATyDR2ZCFyNiwAmHKCJllH0mXacPgGAMkTu5GzYhtAxmGpR+aBd24WPKU9mHMROWseACA1oUtHA9A+cFeEV9tzFDnQDA/QJlu4aOLyM93H6LmqrbnWL3ntyWTJs4XI/uBXEn5bg+Wmm0FU612OY/jX8XVXg5AAVlA4IAATAAAwSACdASqOAIcAPjEUiEMiISEV7iTcIAMEtgBrUrx/a9Ui6d+KHsd0/+lfgXffZV/yvnSeKfon+f/vH5M+7f1Aflf/l+4F+o3/A/svrM+oDzAfzr+9f8r+++0X+zPuL/W//if3r/K/IB/RP7j/3+wH/cT2AP3L9W3/ffuB8FH9a/2X7Y/AP+xX/s9gD/yeoBwDHZB/Z/yV86fw35X+rfkX/Y/2b+D3+A8dPOn+A8h/1x+6f3X9uP7J+6fyB3g/Ar+H/HL8mfsF/D/4z/b/yx/sH7feSB4INj/8z6gXq/8z/yn5r/33z9f5v0M+sH+q9wD+R/zT/H/m98G/6fwTKAH8z/p/+z/xn93/bj6Sv4H/pf5P8ufaP+a/3n/if5L95voE/kf9A/z391/xv/f/yP/6/6/3Aey79ufZK/YH78zlvEepq2qCGnOx5FgPN40O9DTlbp1plD/ey9pB8azrk37FFJNa+7GmlCrFcwHvmYEsmm/yYaMCgFQ3LObFpOiOg8U/7vI5A2ll8pQ3fhxVt64FvKnx8+jrftqs6oKdzSkeQW3ommmdb+lLlt295XEBdHKvLWD7E+Kho7EOV06kWX5+yikcAw7B7CYsihBYAQjrbQk+vKuq+4AbJhPNhc9pSxBqxG7HEdu5si49C4pkZWf8CD9cXIAqdVmBAbslYnMwLaB1jqfzCkTUsnrivEujRTFyS8c+EyAo4tb78+4ItnhXXIR1mWBHTZzqVZDLzitAQo9cIemi3h09zNFZeFDT7INGEqBfESpuucgAAP7/DWTt44pxZEy+3DsNsf5laVz70dRLPKtRpq9Ij9dIUovOrjg5orRlB1NafvdDdbHndVOeQDPs7oQRnN81g24AcIsumJhzWv1BTOkqqo1mi15Mu3CxcYxJg17RzC38g1rN3ffwZCKmPB8GYC4KskrII6RmEZdo/lBpAj+BJ9GZepjsT/yVMfhgWjOdbhNeW0VpkGw3atzQD2cW/cYd8arF5zGwC0H6pqgKODCXhg87uV5AA0EDke+KKzARzXzNvaUzjixKT7JVfc9HRGtq6d/zXcjH0Uur+si9ERYvo2Uvz5jfvx25elMxwFehQxK1mk3nPdmaZlEPi49J3p/hv8dtsIg0kV9V8QDuqeVShqZTGaNLdsAp81sn1qZlhUPskTxEG+sr2PKj15Hk4yxDjaqBzJP/Y6xmTXd6LDBna2gzIS5xYggpBberfHA7988C3WfO95UTaLUGlqrUq7z/XiLPhePmqTOe/ScoxmhAa3FZ7Ky4g9yVuF9BkQha6VEZb/MeyqXw2GyYcRAgl/MThxe2SksFqPfTO8GoIotqjP+JjH5qdGF1gsVPWyyi+O1MhVGwn5V6ak9C/H1LHnYlVu60uAWc+0H1B5YBg+p3yn9FJIvG3RpoMQUxudlAh1aZ7jtU8Dsa/wE+vR7JtgeEE6fhvxOPZTg6ciSmIRa+/a6k3Ir4ldjc/z8zmQy/tUfes+C1LnL9jSdUVPZpaf7Z/2zqwz+F7ZnngV1FGSBC22u/rBAC7fU5XAYEbaoEiit0cLsVPl1xSU4CV+YJDEcTifmPuiMS1qpv4af1uOdQXZy9ZrXQNwVl7m2EKrnCNnwef0QlyALpDn3/qK23y7cvOSHbAg0L/+Tlp2x5fRMFPHMrVvSnE/normNW/4+QZxPjx5O7pi8G+W1XT4MnmPw+UMKez710DGf70ErQRvAxwy8MTRbHgiDC2kfly9YoudoWujiqiefaoCzOfiv2jgRxTn+kuWM7QQ8MUG4xsZoyLr/y92i4r0MQ2S+i3Z2aGXOrfqTCJk/amqvRsbYcC+OqZ/GISvSwLynaQIct6XcIhKUiwmVjo3ki8kZTB68FiTsFtwwUV80c2QTurqnLVUf+CxbLn4hteK0OvblbDMJAxDqzs0ki/Wfg7NM6p0spKL2Ro5uPqRuijm7j9+EfFNg1vEVATkastYk0dumRRiwcfRvwjlxfwzhHI4ma/DqJpZvhAnPHp0lZNdxQLvo0hqw/+YcQUxv2CwHIB9MwNPLaZ55Fc4H2NAoCQsbFHHprJih0AAP/affxRX/8l9rqSqyTatdpkgpv0mHvW9+Mdn+6T3W9ySYQv44c7oKvMUXARge2n5KF9k/hgSUBJgz1sImGl93cE3tJ8993j2c09wyJIsi2Y/8JFkGpwsYP6wnso0tWUjIvBWo2ardGxP4IwxRKkdtw1p4xQThWRksNTi5r2ZLwACezhW6/r/qXhyndPFVb3bJJ2phG8w+f2PDb97eeSsX2F916Bf8Kwl4l5HPfcKJ/GQzvktU5x5NHznNgeJz1TcylDBfXgGjxYLMKd3a6jHGTrZsoyHXxnC4esxigAhWUiVGCCD2sNoFCYEDZOeiGpwOpqoUYByiIsl5exg0hKyCdgLzvgUY37E9L2z7MyWisAXK50S8svwnMM/WS+JT/qVYBp5JPwByAj7OqkqZ+rfdBXJlJOR9KfICstU7r+VoIlW87PYL6CH51z7GhLCvUJiznf6SR4vA0P+MIARcPvywJ7rIY9fKKDYiG6lrHG6qHMaWgrORKT0AIJMw70KcInxvToJmDNIH4qYm5GZoww55OdRgEpOu2QbPkHCPyGPGg81OqBdxj6bUfHzMPYyoUpa0Xru5vzyeJepEIO5jkwov2iZwEr5bHhL4KwZcc6nfeKgDxLNOkVj3g2J9JM58eU/u+/cJ6afTXNcjMH2K4MV1QVTwR4GthgftVDz5Rz0W2Rn2pbc6jUMwZ764apdOSoCaU1cxAIen9GpZ2CQG9OcpRJdL1tZIXg/oz1yIcYVN0V+APYE72hGleffAgTNnb1YOcj8zlMbojN7UNFvmQE2rZKWSIOEpdMUtFPvgcTsUAGy7GfvJQy+/cFMMbmurSLElSpHIash6OIUhQS3peKIPCfJ7C3BK78/OfRyBpO+5D9rty9zajJtNfaamEq0oLlk3PUnsm2fhqX1IInWgP8woMV1CgdmNMfGbwHC7f0YeuCYvQ/41zmc0EQFza9v8sy24rd+dutqv+xbU8CBypo1nKouKllBGFts9V8UyCEX5QVZRCSPo2RUsItAT8Wq13u/XbkCWh5h/LWhhUG1jc/SeBLStdaXKm1WKYlj2pV3/WEINDr2QQSEAKM0CnbwFmKVzS11SkjJ4Yia38GeJv876gD40DjBbC7CFYg/SZqw8oCEU4y/AoM1kVM8st9Mx8mspeV12285IQm7Wa0XjwgvjicRSRUz1g7+oSsrhOAHjMQsKU6HiuCvkPk7X1Ed661wcBpqtY2fHAep6iGr//V+nsJJ/QmEmHhxBlYZjG3sBsn1H/ZeYCZs/0dQRpC5w2Q1GgOdbsPdlw7iXhpcMnDvHPXH+LR/2f54tYw7bjtdad6d4VtTK5b5N0TQUZOa6vaHiYtbpb6UVIXaGXqtLP4JYgc88ohY/98t3JFUoWbq49bAbdxIUi7T/fXTfmj1TziOLno3+AA2ejtxA4xrECXnSLeEdF5lWT2e/gvB3JXOfHpNfQemmeDvAPVjS4AD/ibM6xAOJ2lJWMkHhlq1/+GTYlI03y3jLihXxw/GuDlPkv8Aci8YImTaIMSd8qlGVKtPj1YXMZ7aqiGlWDe7AXve/2NweFuvYTwygU0pHjie8Q1sfXTncKuKMhtHR3Xw3EZc30lmd96Us8z0P3hp2G1uohGwiRXqwWkPn1sL56COEENejXK15pNjiQK16pP46sSXeIpYUbY8WtYRxXNjblF+Esx8BJhhgeEwry3b3LXXVRmgV4BmIKTbx9qzYBFnjikLq0xv7jw+nT7TwqLXMiaLlxJuxNts8lQATf+Bw6V2H0td3xZltAfrR6sniYuPTds6xKgCJQ/Tp5YHd1dgi4vUN4YNb8FQaodDs49gVABXEVoj/TnKau5hJykOG96iSBK67hJ66l4mddcTRV9K7UmHEYCi12Zbi3YCc+VvdZranXyLEYFwF1MaKUizzMLQATWyBMcLqm66v/xcGrg1ANRyN5aHDF/fIElHe3FSTAxPMczNt5Axise0rtfop/hbdouVDP71SIwEOkzzUv0/MA9SVnfsFsCz6JbVZlVxIL5GtBPkvHbt9PQu1l3zlfkDgGNHT2ldTUAItkIgLDLbUincoVXIBie/YoAOQrm0TImay1ACXfa5mn2QmCyDhLMcCtfN/0rllOeJK71Vdxxsub9lVgs/omHMvdke6T0uj+Knbh7yV3yAn7dzsURV3egHFyMQHZukrD34cpEgKsgvoxTqF5WP3ibEa79oFjSoTRe5eMNTOl2cUm8KcQVUOoaBpjodl/f/lqN2ednIAr1MkCVuQkALlf2SmZD/GvhYRjUl/8lD8aJVSQg+IRr+oLTgJcA7tHZ0vMD36hUqcNWsZ4xsJQ3csBlP5/r2S61fhfLa9/v7Pghb950+3VUfuEPzxQuNsrCizHpZ1cszObsjIOxE3b1EO2PaLASUcObB2a7WYgUj9YJGt/m3QuJcMrK0MRNi6c4klDcCKNwE0BdQF/Wk/Vks6IQUbdNo8QryLrvqMTAgFpZCAfhKrRfmkWq1jplBb9/be001YJhloA0osJ4F8383/+4Nmx63LQWLC9GdL9FoQHyjktqHRJPbmeLoSHt74dDcWsODlgVJBQUzpkqNNhjsUTb1QqwNN9Rzy3is2hYMjISJRDb42Wut6xw/tV/EhZWd+XE8FPUBBzs/QywH8tLKbFF1SGms1dEmXNkQwvNF/QejP/aek/Ml8TJmJ1iFGshHOfkRmHlq9bDCuvinTgLWuBMhDZjv+k076Icjct84b+5/M5MwUNrlddSTGt9NFjLRtZfM1TC4/mfW0ASukvNWJNrK2lm/IJkL+/ZVGSP02zKB8EWFRxjBojUbkilY3suGHrYIQk2HupDsDpbQmRUSlooRXZ79vccKkWRdnzFCUrxdgc+o0p9QTsRa3E0H/imhLR+v5E02rMOigLXqT/97aEuLzdqLJpugY4txVkZT3Ylu/CH6E9VIOsR2p4AvFXroAOFXPoL7XA1v3WQ11VJAPzn1sZAR/M8Rc4ywHXEz9EB5Lc0HRyuG/Ww+a97KwbuyZZPcEGKoQrkNTYHJScCrP9FHdOnG7us/04FARO7CVhx9W+MqW51dr+fRPAwrVVOMdEETHT//XquHU3uLTBsJhO4oxWcz5KBDmH0rsPMrn4Z5b6U1Ti9uvoGkmumnKvOlX81LNEIhGTdHtndWeerduHAkX9i/44mexwlu1gy//+mUg2H3qNp9tLSnurF/LHdaEewERueN742hmzvXTEy5Vt26mMm6SKM337X2AqrSBFbZjX1Wk37vinTwz4j6TeD3Kp114Y/TAZYnRVPqM5s6L1EIHH6OeQ+m+gbp09Dm61igsFhypWD51arbgEeAwgS0wP5HagG6pgyoftW2jsE1s5rPGOvM4MvSJDODMKO5JuEkYDACFcilFH/FFcPf7UuOisSPCdd2SA5zN49q01aBlWDVLSpklopgqn3GeAmaEr5A2eY6ymaHVKXkJgLjYHS3vZsjtYpJk4nsSYAiMRwAFmcuNynsVwj+uYMJshoivOB2e4Gx8OqRz//LJVjHy2v5wceFJLv1jqiekVJtRMbyW1bQ1kk4HO0jcpzFig8rhPSepiKrsVGKf7/UFIS79rO3hCFeEXk04QMZQO2/MXOxe6JcKw9mLT+LWsBTlwE6VOeAaXKCNmNhvcNQPHszjP4Rt8AbcY1TBux3zhuBrVbWz4fHllMNfU17JXuHvlj2njBGqh8zQ+3pwwkOqesNWOLnDKFHZ4vNz/bbQuEM2rFeIXmF4IS9eD992YTxN0GKQVXI0akYyfJzVezf4OaKS/+Bi/Clyz5B06YjuwdYElPi83mfUHXkLW+SdCF4okpXdNEBMWXOj4NYg6j99X4WcFLSuygDb+svNr/h+5pPbjV/FY+/nQaSZzzcsaEFnnV//V131LJBBogJILTJQEIlr6g0mx31QlommfHLV+r+9q+qGMI44wI5g8P92PRb1wkiK/DtG4HOVtmNUeObSkWDoiiT+l/ge7YU9BkshfNCrSa9pQIDgWLOACsae5evaizWg7uefKfCzdN7AtpQpvKA+2rl8yfTsX7ZgrF/hyeOg+YQacXJ19W9Rle9V9WtQ8/2LKj90KbLypWPjy8dnfQmQvTKMEd5paSaWFCPSLUBp61mWTWv0Uvq4GJDjAUWsCcveZ/y5qOCBxPBSdHhL6uexV18UK6Mi3KHJEhZ4NaV48sstv337r7HC/lY/saY57U64dd+nXeeo+lgveLwAc+m6CK90r0qEMjt33s6Wkv+XxI+7KSzzyy9P6oz3PlUT1wJKBrv15vou33ksNFwMOvm++EjqrOeha8EORn/HHEnh8eV2EmwZeblaj4OC4Etzo3JZ6WXUj3N2vCRjUYj1Z04HtHarpru270j6v7wsa6/mt6njsGDGqtJmluKKQ21Ux6wlITVOCJjlBpXQHYrHgAAAAAAAA";
+const BIZ = [{"code":"BUSS003","name":"TopicCourse","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS004","name":"TopicCourseⅠ","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS152","name":"회계학원리","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS154","name":"경영통계","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS164","name":"경영과사회","cat":"학문의기초","eng":true,"sem":[1],"cr":3},{"code":"BUSS165","name":"창업가의마인드셋","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS166","name":"통합적사고와경영학입문","cat":"학문의기초","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS202","name":"사회적가치와지속가능경영","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS203","name":"경영수학","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS205","name":"마케팅원론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS207","name":"재무관리","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS211","name":"오퍼레이션스관리","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS213","name":"중급회계I","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS214","name":"중급회계II","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS215","name":"경영정보시스템","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS216","name":"비즈니스애널리틱스I","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS217","name":"비즈니스애널리틱스II","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS220","name":"AI비즈니스모델","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS221","name":"AI와경영의수리적원리Ⅰ","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS223","name":"반도체경영","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS236","name":"ESG경영","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS244","name":"관리회계","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS246","name":"경영과학","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS248","name":"기업경제학","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS252","name":"마케팅조사론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS254","name":"투자론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS256","name":"빅데이터분석과해석의기초","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS259","name":"벤처경영","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS260","name":"글로벌전략","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS302","name":"파이낸셜애널리틱스","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS303","name":"디자인씽킹과디지털혁신","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS305","name":"인공지능과비즈니스","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS306","name":"전략적기술사업화","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS307","name":"플랫폼비즈니스모델과디지털대전환","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS308","name":"알고리즘기반경영의사결정","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS310","name":"경영을위한AI이해와활용","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS311","name":"조직행동론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS312","name":"데이터기반마케팅","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS313","name":"국제경영론","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS316","name":"오퍼레이션스애널리틱스","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS317","name":"소셜미디어애널리틱스","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS322","name":"지역연구(일본)","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS325","name":"Korean Business & Management in the Global Context","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS328","name":"거시경제와글로벌비즈니스이해","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS331","name":"국제무역론","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS332","name":"무역분쟁과글로벌기업","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS340","name":"국제마케팅론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS342","name":"소비자행동","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS344","name":"국제금융론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS352","name":"세무회계","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS355","name":"노사관계론","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS356","name":"혁신과전략","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS358","name":"인적자원관리","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS361","name":"고급회계","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS362","name":"유통관리","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS363","name":"마케팅전략","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS365","name":"조직디자인과경쟁우위","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS369","name":"마케팅사례분석","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS376","name":"서비스운영관리","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS382","name":"보험과위험관리","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS384","name":"기업재무","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS386","name":"선물옵션","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS393","name":"현대기아차글로벌마케팅전략","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS394","name":"비즈니스협상","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS395","name":"마케팅애널리틱스","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS397","name":"벤처투자운용론","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS402","name":"경영전략","cat":"전공필수","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS407","name":"신상품개발과마케팅","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS409","name":"소셜벤처창업","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS410","name":"기술혁신관리:성공적Entrepreneurship의기초","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS413","name":"기업지배구조의이론과실제","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS414","name":"채권론","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS415","name":"위험관리","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS416","name":"기업가치평가","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS420","name":"리더쉽:이론과실제","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS425","name":"소셜네트워크와경쟁우위","cat":"전공선택","eng":true,"sem":[1,2],"cr":3},{"code":"BUSS426","name":"AI와자산관리","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS431","name":"회계감사","cat":"전공선택","eng":false,"sem":[2],"cr":3},{"code":"BUSS435","name":"경영의철학적이해","cat":"전공선택","eng":false,"sem":[1,2],"cr":3},{"code":"BUSS438","name":"금융기관경영론","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS447","name":"로지스틱스관리","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS448","name":"오퍼레이션스전략","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS453","name":"데이터관리와지적경영","cat":"전공선택","eng":true,"sem":[2],"cr":3},{"code":"BUSS454","name":"제품및브랜드관리","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS475","name":"인터넷마케팅","cat":"전공선택","eng":true,"sem":[1],"cr":3},{"code":"BUSS484","name":"글로벌CEO특강","cat":"전공선택","eng":false,"sem":[1],"cr":3},{"code":"BUSS488","name":"구매,공급관리","cat":"전공선택","eng":false,"sem":[2],"cr":3}];
+
+const CONV_POOL = {
+  "융전-전공필수":[["JURA241","헌법"],["JURA242","민법"],["JURA244","형법"]],
+  "융전-교양선택필수":[["HANM110","동양의지혜"],["PHIL131","희랍어"],["HOEW132","라틴어"],
+    ["JURA105","규범적논증과추론"],["JURA106","디지털사회와법"],["JURA107","인공지능과법"],
+    ["JURA108","한국법입문"],["JURA109","분석적 독해와 Legal Mind"],
+    ["GECE035","법과인권"],["GECE058","Ancient Chinese Law and Philosophy"],["GECE103","죽음과법"],
+    ["GECE105","법철학과유가사상"],["GEHI087","대한민국헌법사"],["GEQR079","IT와사회규범"],
+    ["GESO018","생활속의지적재산권"],["GESO019","고령사회와법"],["GESO026","사회적이슈와인권"],
+    ["GESO071","차별없는세상을위한차별금지법"],["GESO101","범죄와사회"],["GESO114","국제사회와법,그리고한국"],
+    ["GESO115","창작과소유의법"],["GESO137","회사법제와 비지니스생태계"],["GESO140","General International Economic Law"],
+    ["GESO142","정보사회와윤리"],["GESO144","헌법과정의"],["GESO147","독일문화와독일법"],
+    ["GESO149","The Role of International Law in Northeast Asia"],["GESO151","법학적사고의이해"],
+    ["GESO152","한국회사제도의이해"],["GESO160","시대정신과인권"]],
+  "융전-1영역":[["JURA204","회사법"],["JURA206","형사소송법"],["JURA238","기본권론"],["JURA245","민사소송법"],
+    ["JURA249","국제법"],["JURA251","행정법"],["JURA252","고용복지와법"],["JURA256","법사상과법철학"],
+    ["JURA301","상법"],["JURA304","보험·해상법"],["JURA330","경제법"],["JURA333","가족과 법"],
+    ["JURA356","지적재산권법개론"],["JURA420","국제거래법"],["JURA424","조세법"],["JURA485","금융법"],
+    ["JURA158","기업법Ⅰ"],["JURA159","기업법Ⅱ"],["JURA207","상법총칙·상행위법"],["JURA247","기업의설립·운영과법"],
+    ["JURA303","어음·수표법"],["JURA305","행정법총론"],["JURA306","행정법각론"],["JURA332","행정구제법"]],
+  "융전-2영역":[["PAPP151","행정학원론"],["PAPP203","정책학"],["PAPP239","예산과재무관리"],["PAPP240","조직이론"],
+    ["PAPP241","공공철학과윤리"],["PAPP250","공공행정과민주적거버넌스"],["PAPP314","과학기술정책"],
+    ["PAPP338","복지국가론"],["PAPP344","정부와시장"],["PAPP353","공공정책형성"],["PAPP354","정부관료제"],
+    ["PAPP356","행정과리더십"],["PAPP362","위험사회와정책"],["PAPP366","정책분석및평가"],
+    ["PAPP369","지역개발론"],["PAPP379","공공부문의양적분석"],["PAPP381","디지털기술과데이터기반정부"]],
+  "융전-3영역":[["ECON171","경제원론Ⅰ"],["ECON172","경제원론Ⅱ"],["ECON173","경제수학"],["ECON201","미시경제이론"],
+    ["ECON202","거시경제이론"],["ECON240","산업조직론"],["ECON329","한국경제사"],["ECON331","화폐금융론"],
+    ["ECON333","재정학"],["ECON334","조세론"],["ECON335","국제금융론"],["ECON336","국제무역론"],
+    ["ECON339","경제발전론"],["ECON356","경제정책"],["ECON361","도시공공경제학"],["ECON376","정치와경제"],
+    ["ECON434","한국경제론"]]
+};
+
+/* 경영학과 전공선택으로 인정되는 타학과 과목 (2021학년도~) */
+const BIZ_ALT = [
+  ["JURA158","기업법Ⅰ"],["JURA159","기업법Ⅱ"],["JURA204","회사법"],["JURA207","상법총칙·상행위법"],
+  ["JURA247","기업의설립·운영과법"],["JURA251","행정법"],["JURA301","상법"],["JURA303","어음·수표법"],
+  ["JURA305","행정법총론"],["JURA306","행정법각론"],["JURA332","행정구제법"],
+  ["PAPP150","행정학원론"],["PAPP151","행정학원론"],
+  ["ECON201","미시경제이론"],["ECON202","거시경제이론"],["ECON333","재정학"],["ECON334","조세론"],["ECON335","국제금융론"],
+  ["IFLS161","기업영어"],["IFLS162","기업영어실습"],["IFLS309","비즈니스영어"],["IFLS808","비즈니스영어"],
+  ["ENGL121","기업영어실습"],
+  ["EGRN320","경영자를 위한 테크놀로지 이해"],["EGRN322","창업과경영을위한공학기술경향"]
+];
+
+const GEN_REQ = [
+  ["GEN001","학문세계의탐구 I",3],["GEN002","글쓰기",3],["GEN003","Academic English I",2],
+  ["GEN004","[진로·창업] 1학년 세미나 I",1],["GEN005","[진로·창업] 1학년 세미나 II",1],
+  ["GEN006","[진로·창업] SW프로그래밍의기초",3],["GEN007","[진로·창업] 데이터과학과인공지능",3],
+  ["GEN008","[진로·창업] 생명과학의세계",3]
+];
+
+/* 교양과목 (2024-1학기 ~ 2026-겨울계절, 서울캠)
+   출처: 고려대 수강신청시스템 학부 과목조회 https://sugang.korea.ac.kr (이수구분=교양, 교양영역별 조회) · 수집일 2026-11-08
+   교양필수(학문세계의탐구I·글쓰기·AE I·1학년세미나·SW·데이터과학·생명과학)는 GEN_REQ로 따로 관리해서 여기선 뺌
+   GEST153·SPGE243은 2026 개설과목 PDF 기준 예전 목록에서 유지 */
+const GYO_AREAS = ["세계의문화", "역사의탐구", "문학과예술", "윤리와사상", "사회의이해", "과학과기술", "디지털혁신과인간", "교양선택", "기초과학", "외국어", "학문세계의탐구Ⅱ", "Academic English", "정보적사고"];
+/* [학수번호, 과목명, 학점, 영역(GYO_AREAS 번호), 개설학기 비트(0번=2024-1학기, 1=여름, 2=2학기, 3=겨울, 4=2025-1학기 …), 영강분반 있으면 1] */
+const GYO = [["CHBE153","화공생명공학컴퓨팅및정보학입문(영강)",3,7,273,1],["CHEM150","일반화학및연습(영강)",3,8,1365,1],["CHEM151","일반화학및연습Ⅰ(영강)",3,8,273,1],["CHEM152","일반화학및연습Ⅱ(영강)",3,8,1092,1],["CHEM153","일반화학실험Ⅰ(영강)",1,8,273,1],["CHEM154","일반화학실험Ⅱ(영강)",1,8,1092,1],["CHEM155","일반화학실험",1,8,1365,1],["CHEM156","화학수학(영강)",3,8,1092,1],["CHEM157","일반화학",2,8,321],["CHEM160","고급일반화학실험",1,8,1092],["CHIN103","교양중국어Ⅰ(외국어강의)",3,9,4053],["CHIN104","교양중국어Ⅱ(외국어강의)",3,9,4093],["CHIN105","중국문학산책",3,7,1365],["CHIN106","시사중국어(외국어강의)",3,7,1365],["CHIN107","영상중국어(외국어강의)",3,7,1365],["CHIN108","실용중국어작문(외국어강의)",3,7,341],["CHIN109","비즈니스중국어(외국어강의)",3,7,85],["CHIN120","중국어번역연습",3,7,1365],["CHIN160","AI-디지털비즈니스중국어(외국어강의)",3,7,1280],["CHIN161","중국문화속젠더와사랑",3,7,1280],["CHIN162","다큐멘터리로이해하는감정의중국학",3,7,1280],["CHIN163","한자어로보는동아시아",3,7,1280],["CHIN164","삼국지의영웅과전쟁",3,7,1280],["COLA182","중동아랍문화의이해",3,7,260],["COLA183","중동아랍사회의이해",3,7,81],["COLA401","인문고전세미나",3,7,1365],["COLA402","데이터인문학",3,7,20],["COLA403","인문학과스타트업",3,7,1365],["COSE156","모두를위한파이썬프로그래밍",3,7,1040],["COSE157","3D콘텐츠 이론 및 활용",3,7,260],["CYDF153","과목14",3,8,272],["EAES151","지구환경과학및연습I",3,8,273],["EAES152","지구환경과학및연습II",3,8,1092],["EAES153","지구환경과학실험I",1,8,273],["EAES154","지구환경과학실험II",1,8,1092],["ECON110","경제학개론",3,7,1365],["EGRN127","기초공학가상실험I",1,8,2321],["EGRN128","기초공학가상실험II",1,8,1604],["EGRN129","기초공학가상실험III",1,8,2321],["EGRN130","기초공학가상실험IV",1,8,1604],["EGRN400","공학도를위한기업가정신",3,7,1041],["ELED102","영화로읽는영미문학",3,7,1365],["ENGL101","영미단편강독",3,7,257],["ENGL120","영어통역과번역",3,7,1365],["ENGL121","기업영어실습(영강)",1,7,1365,1],["ENGL122","시사영어(영강)",3,7,1365,1],["ENGL123","영어읽기와토론Ⅰ(영강)",3,7,273,1],["ENGL124","영어읽기와토론Ⅱ(영강)",3,7,1092,1],["ENGL125","고급영문법(영강)",3,7,1361,1],["ENGL126","실용영어읽기와쓰기(영강)",3,7,1365,1],["ENGL157","심화영어독해Ⅰ(영강)",3,7,273,1],["ENGL158","심화영어독해Ⅱ(영강)",3,7,1092,1],["ENGL171","문화간영어커뮤니케이션(영강)",3,7,273,1],["ENGL172","국제영어교류(영강)",3,7,1092,1],["ENGL173","글로벌리터러시(영강)",3,7,273,1],["FRAN133","프랑스문화탐색",3,7,1365],["FRAN134","프랑스문학탐색",3,7,1360],["FRAN135","프랑스역사와사회탐색",3,7,1296],["FRAN136","프랑스공연예술탐색",3,7,1280],["FRAN137","프랑스영화탐색",3,7,1280],["FRAN141","교양프랑스어Ⅰ(외국어강의)",3,9,1365],["FRAN142","교양프랑스어Ⅱ(외국어강의)",3,9,1365],["FRAN143","프랑스어독해Ⅰ(외국어강의)",3,7,17],["FRAN144","프랑스어독해Ⅱ(외국어강의)",3,7,68],["FRAN145","불영번역연습(외국어강의)",3,7,17],["FRAN146","프랑스어작문(외국어강의)",3,7,68],["GECE013","철학에로의초대:초월,신,자아,인식",3,3,1109],["GECE025","정의론과시민윤리",3,3,256],["GECE058","ANCIENT CHINESE LAW AND PHILOSOPHY(영강)",3,3,1092,1],["GECE102","도덕철학의문제들",3,3,1024],["GECE105","법철학과유가사상",3,3,272],["GECE106","감정과삶",3,3,257],["GECT001","정보적사고",1,12,1220],["GEFC016","그림을통해본일본고전문학과문화",3,0,272],["GEFC054","동남아시아의지역성과문화",3,0,1092],["GEFC090","문학으로본동아시아문명",3,0,261],["GEFC091","종교와영화",3,0,255],["GEFC097","미국사회와세계의미국화",3,0,4],["GEFC099","일본의문화콘텐츠와전통문화",3,0,1364],["GEFC100","번역을통해본근대동아시아문화의형성",3,0,1281],["GEFC103","슬라브세계의이해",3,0,1092],["GEFC105","이슬람문화의이해",3,0,1],["GEHI033","삼국유사의세계",3,1,273],["GEHI041","환경문명사",3,1,273],["GEHI051","라틴아메리카의생성과확장",3,1,4],["GEHI079","역사는어떻게서술되는가?",3,1,4],["GEHI081","전쟁과인간",3,1,1092],["GEHI084","대운하를통해본중국의정치경제사",3,1,4092],["GEHI087","대한민국헌법사",3,1,1],["GEHI089","도시로보는중국사",3,1,1361],["GEHI090","역사와공공문화",3,1,256],["GEHI094","한국근현대사와근대성의이해(영강)",3,1,64,1],["GEHI095","역사와기억문화",3,1,256],["GEHI096","서양근대건축사산책",3,1,1092],["GELA028","한문소설과야담",3,2,68],["GELA050","한국현대시산책",3,2,1365],["GELA053","한국시속에살아있는독일문학",3,2,1365],["GELA077","어떻게영화를읽을것인가",3,2,21],["GELA107","한국고전문학과배경사상",3,2,5],["GELA131","한국의젊은시인들",3,2,4093],["GELA132","현대음악의이해",3,2,1092],["GELA133","한시,영화와엮어읽기",3,2,256],["GELA134","클래식음악의이해와감상",3,2,273],["GELA140","동서양의사랑시",3,2,272],["GELA142","조선시대문학관의이해",3,2,257],["GELA143","문학으로젠더읽기",3,2,1],["GELA144","동아시아의미술과미학",3,2,16],["GELA145","책과독서의역사",3,2,1365],["GELA146","죽음에대한시적성찰",3,2,1092],["GELI006","학문세계의탐구II",3,10,4095],["GELI008","학문세계의탐구II",3,10,1365],["GEOG101","도시와국토",2,7,1365],["GEOG102","자연과인간생활",2,7,4],["GEOG104","관광의역사와문화",3,7,1028],["GEOG151","지리학입문",3,7,1365],["GEQR067","하이퍼텍스트와계산가능성",3,6,1041],["GEQR076","양자컴퓨터와계산",3,6,324],["GEQR082","디지털거버넌스",3,6,261],["GEQR084","인공지능과인간",3,6,1],["GEQR085","알고리즘의이해와해결(영강)",3,6,64,1],["GEQR088","디지털사유와정치경제",3,6,1349],["GEQR090","디지털인문학을위한데이터처리와분석",3,6,1365],["GEQR091","갈릴레이로부터아인슈타인까지(영강)",3,6,2,1],["GEQR092","웹툰,한류,그리고미래콘텐츠",3,6,1365],["GERM137","독일문학의탐색",3,7,1365],["GERM139","독일예술의이해",3,7,85],["GERM140","독일연극의이해",2,7,1365],["GERM141","독일문화와종교",3,7,337],["GERM146","게르만신화와문화콘텐츠",3,7,16],["GERM147","독일도시와문화",3,7,1104],["GERM148","유럽의동화와민담의상상력",3,7,16],["GERM161","교양독일어Ⅰ(외국어강의)",3,9,4095],["GERM162","교양독일어Ⅱ(외국어강의)",3,9,3548],["GERM164","독일어문법",3,7,21],["GERM165","영상독일어",3,7,21],["GERM173","독일어Ⅲ(외국어강의)",3,7,273],["GERM174","독일어Ⅳ(외국어강의)",3,9,1092],["GESO018","생활속의지적재산권",3,4,256],["GESO056","역사로보는환경",3,4,1365],["GESO064","히스패닉사회의이해",3,4,64],["GESO068","현대식품생산과소비의사회학",3,4,1025],["GESO101","범죄와사회",3,4,1365],["GESO108","일본과동아시아",3,4,341],["GESO110","행복의심리학",3,4,1028],["GESO114","국제사회와법,그리고한국(영강)",3,4,1026,1],["GESO119","현대사회와고등교육",3,4,1],["GESO123","여성학",3,4,68],["GESO126","마음·두뇌·교육의이해",3,4,1092],["GESO138","금융과보험",3,4,1092],["GESO139","체제전환기중국의정치및사회에대한이해",3,4,1092],["GESO142","정보사회와윤리(영강)",3,4,1024,1],["GESO143","중국의대외정책과동아시아국제관계",3,4,273],["GESO144","헌법과정의",3,4,341],["GESO152","한국회사제도의이해",3,4,272],["GESO155","사랑의심리학",3,4,257],["GESO157","미디어와민주주의(영강)",3,4,1365,1],["GESO158","글로벌사회와다양성(영강)",3,4,17,1],["GESO159","세계속의한국:세계화와사회변화(영강)",3,4,261,1],["GESO160","시대정신과인권",3,4,1089],["GESO161","행복학개론",3,4,1092],["GESO162","현대인의정신건강과회복탄력성(영강)",3,4,1361,1],["GESO163","인간관계와마음건강",3,4,1024],["GESO164","인간과해양:융합적사고와의식전환",3,4,1092],["GEST015","생명의이해",3,5,273],["GEST028","환경과사회",3,5,273],["GEST029","자연재해의이해",3,5,80],["GEST030","바이오산업과생명공학기술(영강)",3,5,16,1],["GEST044","생물자원의산업적응용(영강)",3,5,1092,1],["GEST045","인간과식량",3,5,340],["GEST071","생활속의생물학",3,5,1],["GEST087","생명공학에서바라본인체의신비(영강)",3,5,341,1],["GEST123","뇌영상의이해와활용(영강)",3,5,1024,1],["GEST136","미생물과미래융합기술",3,5,16],["GEST137","생물다양성과진화",3,5,1361],["GEST146","움직임과건강",3,5,1365],["GEST150","발명과창업",3,5,16],["GEST152","과학적어리석음으로부터의탈출(영강)",3,5,1,1],["GEST156","기후위기와지속가능발전",3,5,80],["GEST157","영화속환경과학",3,5,1092],["GEST158","토양과문명",3,5,1285],["GEST159","파이썬기초알고리즘",3,5,1],["GEST160","인간기억과효율적인외국어학습",3,5,337],["GEST161","Python Basics in English(영강)",3,5,4,1],["GEST162","생성형AI의이해와활용",3,5,16],["HANM110","동양의지혜",3,7,3453,1],["HANM120","생활한자",3,7,4095],["HANM133","교양한문Ⅰ",3,7,273],["HANM134","교양한문Ⅱ",3,7,1092],["HANM141","초급한문",3,9,1361],["HANM142","중급한문",3,9,1364],["HEED101","청년발달과자기이해",3,7,273],["HEED102","부모되기교육",3,7,273],["HEED123","대학생을위한바른식생활",3,7,273],["HEED124","패션과미디어",3,7,1365,1],["HEED126","패션스타일링과커뮤니케이션",3,7,1344],["HEED131","한국전통복식의이해와활용",3,7,1365,1],["HEED197","결혼과가족",3,7,1092],["HISE102","근대화와동아시아세계",2,7,5],["HISE103","쟁점으로보는한국사",2,7,4],["HISE112","근대화와동아시아세계",3,7,336],["HISE113","쟁점으로보는한국사",3,7,336],["HISE114","전통시대동양의법과사회",3,7,336],["HISE132","중국역사와문화입문",2,7,5],["HISE133","일본역사와문화입문",2,7,5],["HISE134","서양문화사입문",2,7,1],["HISE135","서양사회사입문",2,7,4],["HISE141","한국역사와문화입문",3,7,1360],["HISE142","중국역사와문화입문",3,7,1360],["HISE143","일본역사와문화입문",3,7,336],["HISE144","서양문화사입문",3,7,272],["HISE145","서양사회사입문",3,7,1088],["HOEW101","동아시아문명사",3,7,273],["HOEW115","유럽지성사",3,7,273],["HOEW116","서양기독교사",3,7,1092],["HOEW125","한일교류의역사",3,7,341],["HOEW128","서양문명사산책",3,7,273],["HOEW131","서양문화의전통과유산",3,7,1301],["HOEW132","라틴어",3,7,1365],["HOEW133","동아시아20세기국제관계사",3,7,1024],["HOEW134","유목제국의세계",3,7,1365],["HOEW137","동아시아사의재조명",3,7,1365],["HOEW138","중국의역사와인물",3,7,1365],["HOEW139","중국근현대의개혁과혁명(외국어강의)",3,7,1297],["HOEW140","새로보는서양의역사",3,7,1301],["HOKA101","과학과기술로본한국사",3,7,1349],["HOKA103","한국전통문화의이해",3,7,1],["HOKA112","한국인의역사인식",3,7,1361],["HOKA114","한국근현대민족운동사",3,7,1365],["HOKA115","한국역사의국제적환경",3,7,1],["HOKA118","한국역사상의전쟁과평화",3,7,5],["HOKA119","미래를생각하는한국사",3,7,1365],["HOKA120","서울의역사와문화",3,7,340],["HOKA121","한국의전통과문화유산",3,7,1360],["HOKA122","조선왕조실록의세계",3,7,1365],["HOKA123","한국사의국제적환경",3,7,1364],["HOKA124","인물로본한국사",3,7,1364],["HOKA125","한국사속의가족과여성",3,7,340],["HOKA153","한국사와개혁운동",3,7,341],["HOKA155","한국의신분과사회상",3,7,1],["IFLS108","한국어초급Ⅰ",3,7,1365],["IFLS109","한국어초급Ⅱ",3,7,1365],["IFLS110","한국어중급Ⅰ",3,7,1365],["IFLS111","한국어중급Ⅱ",3,7,1365],["IFLS112","한국어고급Ⅰ",3,7,1365],["IFLS240","한국어초급말하기I",2,7,1365],["IFLS241","한국어초급말하기II",2,7,1365],["IFLS242","한국어중급말하기",2,7,1365],["IFLS243","한국어중급읽기",2,7,1365],["IFLS245","한국어초급쓰기",2,7,1365],["IFLS246","한국어중급쓰기",2,7,1365],["IFLS400","한국어고급Ⅱ",3,7,1365],["IFLS401","한국어초급읽기",2,7,1365],["IFLS801","Academic English II(영강)",2,11,4095,1],["IFLS802","고급영어토론(영강)",3,7,1365,1],["IFLS803","한국전문가과정인턴십Ⅰ",3,7,1092],["IFLS804","한국전문가과정인턴십Ⅱ",3,7,273],["IFLS805","학술영작문-인문사회계(영강)",3,7,1365,1],["IFLS806","학술영작문-자연계(영강)",3,7,1365,1],["IFLS807","미디어영어(영강)",3,7,1365,1],["IFLS808","비즈니스영어(영강)",3,7,1365,1],["IFLS809","영어발표와연설(영강)",3,7,1365,1],["IFLS810","영어를통한비판적사고(영강)",3,7,1365,1],["IFLS811","학문목적영어(영강)",3,7,1365,1],["IFLS812","한국어전문가과정미디어한국어",3,7,1092],["IFLS813","한국어전문가과정미디어분석",3,7,273],["IFLS814","고급한국어프로젝트수업",3,7,1365],["IFLS815","졸업요구조건대체영어",0,7,2730],["IFLS816","일의세계:진화하는직장에서살아남기(영강)",3,7,1364,1],["IFLS817","음모론,논쟁,미스터리탐구(영강)",3,7,1364,1],["IFLS818","성능향상:스포츠과학및영양학적연구(영강)",3,7,1364,1],["IFLS819","문학속의디스토피아와유토피아:극단의불가능성(영강)",3,7,1364,1],["IFLS820","중급영어토론(영강)",3,7,1364,1],["IFLS821","서울:학제간통찰과도시역학(영강)",3,7,1364,1],["IFLS822","창의적인산문만들기:창의적글쓰기과정(영강)",3,7,1364,1],["IFLS823","무대와대본:연극을통한영어탐구(영강)",3,7,1364,1],["IFLS824","논리와웅변:토론마스터과정(영강)",3,7,1364,1],["IFLS825","학업성공을위한초급영어(영강)",3,7,1364,1],["JAPN113","교양일본어Ⅰ(외국어강의)",3,9,1535],["JAPN114","교양일본어Ⅱ(외국어강의)",3,9,3967],["JAPN132","대중문화로보는일본문화론",3,7,1365],["JAPN133","디지털인문학으로보는일본문화와사회",3,7,1344],["JAPN253","일본어와일본문화",3,7,1365],["JAPN280","시사일본어(외국어강의)",3,7,5],["JAPN281","영상일본어(외국어강의)",3,7,1365],["JAPN282","비즈니스일본어(외국어강의)",3,7,1297],["JAPN283","기초일본어작문Ⅰ(외국어강의)",3,7,5],["JAPN284","기초일본어작문Ⅱ(외국어강의)",3,7,1],["JAPN285","기초일본어독해Ⅰ(외국어강의)",3,7,1365],["JAPN286","기초일본어독해Ⅱ(외국어강의)",3,7,1365],["JAPN289","지역문화와투어리즘일본어(외국어강의)",3,7,1360],["JAPN290","기초일본어작문(외국어강의)",3,7,1360],["JAPN291","뉴미디어일본어(외국어강의)",3,7,1360],["JAPN292","AI와일본어(외국어강의)",3,7,1360],["JAPN293","서브컬처로보는일본어(외국어강의)",3,7,1360],["JAPN390","일본문학으로보는기업가정신",3,7,1365],["JAPN391","일본문학속의4차산업혁명과인간",3,7,1365],["JURA105","규범적논증과추론",3,7,320],["JURA106","디지털사회와법",3,7,68],["JURA109","분석적독해와LegalMind",3,7,1024],["JURA150","법학통론",3,7,1373],["KORE107","한국고전의세계",3,7,273],["KORE117","비교문학의이해",3,7,256],["KORE119","한국문학과세계문학",3,7,1365],["KORE128","한국근대문학과영화",3,7,273],["KORE129","한국민요와대중가요",3,7,273],["KORE134","아동청소년문학의이해",3,7,272],["KORE135","세계속의한국어",3,7,1092],["KORE137","학업한국어말하기",2,7,1365],["KORE138","학업한국어강독",2,7,1365],["KORE139","학업한국어듣기",3,7,1365],["KORE140","학업한국어작문",2,7,1365],["KORE141","한국어의역사",3,7,272],["KORE142","근대매체와한국문학",3,7,1348],["KORE143","한국근대문학과역사적기억",3,7,1092],["KORE146","한국어의사소통능력과리더십",3,7,1365],["KORE151","한국의언어와문학",3,7,1092],["KORE152","대중서사장르의이해",3,7,1092],["KORE153","한국현대문학의쟁점들",3,7,273],["KORE154","한국고전문학과역사기행",3,7,1092],["KORE155","문학과여성",3,7,1365],["KORE156","한국어어문규범의이해와적용",3,7,273],["KORE157","한국근대문학과도시",3,7,273],["KORE158","한국의미디어언어",3,7,1092],["KORE159","남북의언어비교",3,7,1092],["KORE160","한국현대시의미학",3,7,1092],["KORE162","북한의문학과문화",3,7,256],["KORE163","한국현대비평읽기",3,7,1344],["LIBS150","생명과학",3,8,4061],["LIBS151","일반생물학및연습I",3,8,3003,1],["LIBS152","일반생물학및연습II",3,8,1262,1],["LIBS153","일반생물학실험I",1,8,305],["LIBS154","일반생물학실험Ⅱ",1,8,1262],["LIET102","산림과문화",2,7,1088],["LIET151","화학의기초및연습Ⅰ",3,8,2457,1],["LIET152","화학의기초및연습Ⅱ",3,8,1638,1],["LIET153","생물통계학",3,8,4027],["LIET155","화학의기초실험Ⅰ",1,8,273],["LIET156","화학의기초실험Ⅱ",1,8,1092],["LING101","언어의이해",3,7,80],["LING103","언어와인지",3,7,1040],["LING106","세계언어의이해",3,7,64],["LING122","언어와언어병리",3,7,273],["LING141","기호학의이해",3,7,1089],["LING142","언어와시각커뮤니케이션",3,7,1365],["LING144","언어와미디어연구",3,7,5],["LING146","언어의응용",3,7,17],["MATH161","미적분학및연습I",3,8,4095,1],["MATH162","미적분학및연습II",3,8,4095,1],["MOBI106","스마트모빌리티미적분학및연습",3,7,272],["MOBI107","스마트모빌리티물리학및연습(영강)",3,7,272,1],["PAPP111","정부와나",3,7,1361],["PAPP120","창의적기획과문제해결",3,7,1105],["PHEK101","축구",1,7,1],["PHEK102","호신술",1,7,1],["PHEK103","수영",1,7,1],["PHEK104","스쿼시",1,7,1],["PHEK105","테니스",1,7,1],["PHEK106","소프트볼",1,7,1],["PHEK107","골프",1,7,1],["PHEK108","볼링",1,7,1],["PHEK114","빙상",1,7,1],["PHEK118","농구",1,7,1],["PHEK120","배드민턴",1,7,1],["PHEK123","요가",1,7,1],["PHEK124","암벽등반",1,7,1],["PHEK126","피트니스앤헬스",1,7,1],["PHEK128","탁구",1,7,1],["PHEK130","현대인의몸과문화",1,7,1],["PHEK131","캠핑과안전",1,7,1],["PHEK133","댄스스포츠",1,7,1],["PHEK800","축구",1,7,1364],["PHEK801","호신술",1,7,1364],["PHEK802","수영",1,7,1364],["PHEK803","스쿼시",1,7,1364],["PHEK804","테니스",1,7,1364],["PHEK805","소프트볼",1,7,1364],["PHEK806","골프",1,7,1364],["PHEK807","볼링",1,7,1364],["PHEK808","빙상",1,7,1364],["PHEK809","농구",1,7,1364],["PHEK810","배드민턴",1,7,1364],["PHEK811","요가",1,7,1364],["PHEK812","암벽등반",1,7,1364],["PHEK813","피트니스앤헬스",1,7,1364],["PHEK814","탁구",1,7,1364],["PHEK815","현대인의몸과문화",1,7,1364],["PHEK816","캠핑과안전",1,7,1364],["PHEK817","댄스스포츠",1,7,1364],["PHIL101","문학과철학",3,7,341],["PHIL103","경제와윤리",3,7,16],["PHIL104","성과욕망의철학",3,7,1365],["PHIL109","철학이란무엇인가?",3,7,1365],["PHIL114","현대철학의탐구",3,7,1361],["PHIL115","서양고전의이해",3,7,1360],["PHIL116","동양고전의이해",3,7,1364],["PHIL120","그리스신화와비극",3,7,1365],["PHIL121","한국사상산책(영강)",3,7,320,1],["PHIL122","문화의철학적이해",3,7,1365],["PHIL124","현대사회의윤리적쟁점들",3,7,1365],["PHIL129","영상예술의철학적이해",3,7,1365],["PHIL131","희랍어",3,7,1365],["PHIL140","미학입문",3,7,1365],["PHIL145","불교와현대사회",3,7,1365],["PHIL147","서양철학입문",3,7,1503],["PHIL148","동양철학입문",3,7,1495],["PHIL149","비판적사고와논리",3,7,1365],["PHIL150","동양철학토픽코스",3,7,256],["PHYS151","일반물리학및연습Ⅰ(영강)",3,8,1365,1],["PHYS152","일반물리학및연습Ⅱ",3,8,1358,1],["PHYS161","일반물리학실험Ⅰ",1,8,273,1],["PHYS162","일반물리학실험Ⅱ",1,8,1092,1],["PHYS183","생명물리학및연습",3,8,1],["POLI105","현대민주주의의미래",3,7,336],["POLI107","한국정치의이해",3,7,85],["POLI109","현대정치의철학적이해",3,7,1],["POLI152","정치학의기본탐구",3,7,1],["PSYC110","심리학의이해",3,7,85],["RUSS103","러시아문화의이해",3,7,1088],["RUSS121","러시아공연예술",3,7,257],["RUSS124","러시아명작의이해",3,7,256],["RUSS131","교양러시아어I(외국어강의)",3,9,1361],["RUSS132","교양러시아어II(외국어강의)",3,9,1092],["SOCI111","현대사회와가족",3,7,1092],["SOCI112","사회문제의이해",2,7,1092],["SOCI113","사회복지의이해",3,7,273],["SOCI114","정보사회론",3,7,273],["SOCI115","현대사회와NGO",3,7,256],["SOCI116","성과사회",3,7,1024],["SOCI123","한국현대사회의이해",3,7,1092],["SOCI124","여가와사회",3,7,1365],["SOCI125","생애주기의이해",3,7,273],["SOCI126","사회학입문",3,7,1365],["SPAN103","스페인문화의이해",3,7,273],["SPAN104","환상문학의세계",3,7,341],["SPAN105","라틴아메리카의이해",3,7,273],["SPAN121","교양스페인어Ⅰ(외국어강의)",3,9,1367],["SPAN122","교양스페인어Ⅱ(외국어강의)",3,9,1533],["SPAN123","스페인어회화(외국어강의)",1,7,1365],["SPAN124","스페인어작문(외국어강의)",1,7,1365],["SPAN125","스페인어독해(외국어강의)",1,7,1365],["SPAN126","스페인어문법Ⅰ(외국어강의)",1,7,1365],["SPAN127","스페인어문법Ⅱ(외국어강의)",1,7,341],["SPAN131","중급스페인어회화(외국어강의)",3,7,273],["SPFL107","말레이인도네시아의언어와문화",3,7,1],["SPFL117","포르투갈-브라질의언어와문화",3,7,5],["SPFL131","심화글쓰기",2,7,1375],["SPGE107","낭만파음악산책",2,7,1361],["SPGE108","판소리의이해",2,7,1365],["SPGE113","이슬람문화와역사",3,7,1365],["SPGE129","사회봉사의이론과실제",2,7,1365],["SPGE166","기초음악작곡법",3,7,1365],["SPGE176","한국의역사와문화(영강)",3,7,1365,1],["SPGE208","생애설계와자기이해",1,7,1365],["SPGE209","한국음악의세계",3,7,1365],["SPGE215","인권의이해",3,7,1365],["SPGE217","스타트업소셜이노베이션",3,7,1365],["SPGE218","스타트업글로벌시장진출전략",3,7,1300],["SPGE220","스타트업CampusCEO2.0(I)",3,7,1365],["SPGE221","스타트업CAMPUSCEO2.0(II)",3,7,1365],["SPGE223","다양성과미래사회",3,7,1365],["SPGE225","합창음악과발성법의이해",3,7,1365],["SPGE226","앙상블연주",3,7,1360],["SPGE230","현장실습Ⅰ",3,7,4095],["SPGE231","현장실습Ⅱ",6,7,4095],["SPGE232","현장실습III",9,7,1365],["SPGE233","현장실습IV",12,7,1364],["SPGE234","메타버스한국어",2,7,1365],["SPGE235","직업세계와직업탐색",2,7,1365],["SPGE236","현장실습Ⅰ-2",3,7,4002],["SPGE237","현장실습Ⅰ-3",3,7,2752],["SPGE238","현장실습Ⅰ-4",3,7,3072],["SPGE239","현장실습Ⅰ-5",3,7,2048],["SPGE240","현장실습Ⅰ-6",3,7,2048],["SPGE241","현장실습Ⅱ-2",6,7,3072],["SPGE242","현장실습Ⅱ-3",6,7,2048],["SPGE244","오페라의이해와실현",3,7,1281],["SPGE245","극음악의이해",3,7,320],["SPGE246","클래식음악의대중화",3,7,341],["SPGE247","기초아랍어Ⅰ",3,7,341],["SPGE248","기초아랍어Ⅱ",3,7,260],["SPGE250","공간디자인의이해(영강)",3,7,1,1],["SPGE251","동아시아지리와지역",3,7,1361],["SPGE252","연극의이해",3,7,1365],["SPGE253","아프리카바로이해하기",3,7,1301],["SPGE254","사회봉사의기획과실천",2,7,1365],["SPGE255","인물로보는중동사",3,7,1360],["SPGE256","현대중동의이해",3,7,1301],["SPGE257","음악의기초이론",3,7,1365],["SPGE258","화성의이해",3,7,1365],["SPGE259","한국대중음악과매체",3,7,1365,1],["SPGE260","대중음악장르탐색",3,7,1109],["SPGE261","클래식음악장르탐구(영강)",3,7,1364,1],["SPGE262","클래식작곡가탐구(영강)",3,7,1364,1],["SPGE263","영상예술의이해",3,7,1364],["SPGE400","갈릴레이로부터아인슈타인까지(영강)",3,7,2660,1],["SPGE401","과학적어리석음으로부터의탈출(영강)",3,7,752,1],["SPGE406","Korean Constitutional Law & Politics(영강)",3,7,1364,1],["SPGE407","AI활용글쓰기",3,7,1364],["SPGE408","현대기술의문화사",3,7,1024],["SPGE409","이슬람문화의이해",3,7,20],["SPGE410","인공지능과인간",3,7,68],["SPGE411","라이프아카데미",3,7,4],["SPGE412","물리학에숨겨진지혜의아름다움(영강)",3,7,2204,1],["SPGE413","동아시아고령사회에대한이해(외국어강의)",3,7,1300],["SPGE414","데이터로보는미중관계이야기(영강)",3,7,1364,1],["UNIV100","한국학을통해배우는한국어",3,7,1360],["UNIV101","콘텐츠로배우는한국문화와한국어",3,7,1360,1],["UNIV102","AI로배우는한국어",3,7,1344],["UNIV200","마음의중요성:건강과마음챙김(영강)",3,7,1360,1],["UNIV201","KU라운드테이블:심층토론과지식나눔(영강)",3,7,1344,1],["UNIV202","영어로배우는글로벌이슈(영강)",3,7,1344,1],["UNIV203","영어로배우는협상역량개발(영강)",3,7,1344,1],["UNIV204","지구대인간:지속가능한실천과환경인식(영강)",3,7,1344,1],["UNIV205","NGOs:사회변화를위한언어(영강)",3,7,1344,1],["UNIV206","소프트파워의세계:언어,문화및글로벌관점(영강)",3,7,1280,1],["UNIV302","K-컬처로읽는한국사회",3,7,1024],["UNIV304","인공지능의세계:AI와함께사는시대",3,7,1024],["UNIV306","전공한국어",3,7,1024],["UNIV400","피클볼",1,7,1280],["UNIV401","한국문화와춤",1,7,1360],["UNIV402","건강관리와육상",1,7,1360],["UNIV500","실습연계직무교육I",3,7,32],["UNIV503","헌법과한국현대사",3,7,272],["UNIV505","손해보험개론",3,7,16],["UNIV506","디지털사회혁신",3,7,1040],["UNIV507","창업실습",1,7,768],["UNIV508","인공지능윤리와안전",3,7,1360],["UNIV509","데이터로보는국제분쟁이야기(영강)",3,7,1360,1],["UNIV510","법적사고와방법",3,7,272],["UNIV511","지속가능성,이론과적용",3,7,336],["UNIV512","스타트업법률",3,7,1360],["UNIV513","현대미술의이해",3,7,1344],["UNIV514","디자인과문화",3,7,272],["UNIV515","한중일시각에서바라본한국노인돌봄(외국어강의)",3,7,1040],["UNIV516","현장실습V",15,7,1344],["UNIV518","자유·정의·진리의여정",1,7,3840],["UNIV519","창의연구프로젝트",1,7,1088],["UNIV520","창의연구심화프로젝트",2,7,1280],["UNIV521","체인지메이커스",2,7,1344],["UNIV522","아이디어에서사업화까지AI로창업하기(영강)",3,7,1344,1],["UNIV523","자유와정의",3,7,1344],["UNIV524","평화&국제법(영강)",3,7,1344,1],["UNIV525","고령사회에대한다학제적이해",3,7,1088],["UNIV527","범죄와인권",3,7,1344],["UNIV528","와인과문화",2,7,256],["UNIV529","이태석리더십과세계시민교육",3,7,256],["UNIV530","기초미적분학",3,7,1280],["UNIV531","콘텐츠기반글쓰기",3,7,1280],["UNIV533","자기성찰적글쓰기",3,7,1280],["UNIV534","물리학X(영강)",3,7,1280,1],["UNIV535","물리학Y(영강)",3,7,1280,1],["UNIV536","창업실습I",1,7,3072],["UNIV537","창업실습II",1,7,3072],["UNIV538","로봇및피지컬AI",3,7,1024],["UNIV540","AI시대의문제해결기법",3,7,1024],["GEST153","숲의이해와관리",3,7,0],["SPGE243","현장실습Ⅲ-2",9,7,0]];
+
+
+/* ═══════════ 2전공 요건 정의 (수집: 2026-09-26) ═══════════
+   공통 규칙: 다른 융합·이중전공은 학점·과목 요건만. 공인영어/포트폴리오/실기 등은 제외(공거리만 예외).
+   과목 매칭: list(지정 과목) 또는 prefix(학수번호 앞 4자리) */
+const MAJORS = {
+  /* ── 경영 심화 (경영대 교과과정, 2026학번) ── 제1전공 39 + 심화 전공선택 27 = 전공 66, 영강 10과목 */
+  'BIZ_DEEP': { type:'심화', title:'경영학과 심화', short:'심화', source:'https://biz.korea.ac.kr/undergraduate/curriculum.html',
+    deep:{ majorTotal:66, reqCr:24, selCr:42, eng:10 } },
+
+  /* ── 공공거버넌스와리더십 (기존 앱 로직 그대로) ── */
+  'GGL': { type:'융합', title:'공공거버넌스와리더십', short:'공거리', total:36, extra:['공인영어성적'],
+    dual:{ cap:6, overThreshold:30, note:'융합전공 이수학점 중 30학점 초과분, 제1전공 교과목과 최대 6학점 중복인정' } /* 영역·과목은 기존 CONV_POOL */ },
+
+  /* ── 경제학과 이중전공 (졸업요구조건표 24~25학번 + 정경대 조건표: 16학번~ 전공필수 5과목) ── */
+  'ECON_DOUBLE': { type:'이중', title:'경제학과', short:'경제', total:39, source:'졸업요구조건표(25학번까지)_경제학과.pdf',
+    reqs:[
+      { k:'전공필수', need:15, list:[['ECON171','경제원론Ⅰ'],['ECON172','경제원론Ⅱ'],['ECON201','미시경제이론'],['ECON202','거시경제이론'],['ECON174','경제의통계분석']] },
+      { k:'전공선택', need:24, prefix:['ECON'], exclude:'전공필수' } ],
+    dual:{ cap:6, overThreshold:0, note:'제1전공과 최대 6학점 중복인정 (사용자 결정)' } },
+
+  /* ── 패션디자인 및 머천다이징 융합전공 (전공내규 2025.1 개편) ── */
+  'FADM': { type:'융합', title:'패션디자인 및 머천다이징', short:'패션', total:36, source:'https://fadm.korea.ac.kr/kufadm/subject/sub02.do',
+    dual:{ cap:6, overThreshold:0, note:'제1전공과 6학점까지 중복인정' },
+    deptMin:{ min:6, depts:[['HEED','가정교육과'],['ARDE','디자인조형학부'],['BUSS','경영학과']], note:'참여학과별 각 6학점 이상 (전공필수 포함)' },
+    reqs:[
+      { k:'전공필수', need:9, list:[['HEED174','패션소재'],['ARDE158','디자인론'],['BUSS205','마케팅원론']] },
+      { k:'전공선택', need:27, list:[
+        ['FADM303','패션저널리즘'],['FADM304','비주얼머천다이징'],['FADM305','패션액세서리디자인'],['FADM401','테크니컬디자인'],['FADM402','패션포트폴리오제작및현장연구'],
+        ['HEED436','패션정보및상품기획'],['HEED223','소비자학'],['BUSS342','소비자행동'],['PSYC353','소비자광고심리학'],['JMCO268','소비자의이해'],
+        ['BUSS238','광고론'],['JMCO267','광고의이해'],['HEED217','패션산업과지속가능발전'],['HEED233','의복구성의원리'],['HEED234','교사를위한의류학및실습'],
+        ['HEED334','K-패션디자인및실습'],['HEED336','복식사회심리학'],['HEED338','패션마케팅및머천다이징'],['HEED339','글로벌복식문화사'],['HEED417','글로벌패션비지니스'],
+        ['HEED421','패션사회적기업과창업'],['HEED427','디지털패션의상창작'],['ARDE117','미디어와예술언어'],['ARDE437','조형론'],['ARDE200','2D기초조형'],
+        ['ARDE212','디자인표현기법'],['ARDE225','디자인과발상'],['ARDE235','종이&섬유'],['ARDE270','기초디자인-2D'],['ARDE275','기초디자인-3D'],
+        ['ARDE288','기초매체연구'],['ARDE291','회화STUDIOⅡ'],['ARDE313','디자인인간요소'],['ARDE314','디자인마케팅'],['ARDE320','디자인사고'],
+        ['PSYC202','심리학의기초Ⅱ'],['PSYC231','성격심리학'],['PSYC241','산업심리학'],['PSYC277','사회심리학'],['PSYC321','인지심리학'],
+        ['PSYC350','창의디자인',1.5],['PSYC371','문화의형성과이해',1.5],['PSYC472','소비자트랜드분석실습'],['BUSS252','마케팅조사론'],['BUSS362','유통관리'],
+        ['BUSS363','마케팅전략'],['BUSS407','신상품개발과마케팅'],['BUSS454','제품및브랜드관리'],['BUSS475','인터넷마케팅'],['JMCO203','미디어학입문'],
+        ['JMCO252','미디어테크놀로지와문화'],['JMCO266','설득커뮤니케이션'],['JMCO360','대중문화연구'],['JMCO376','PR사례연구'],['COOP031','현장실습A1']],
+        note:'권장: 조형이론 3 · 조형실기 6 · 소비자행동 6 · 의류학 6 · 마케팅 3 (필수 아님)' } ] },
+
+  /* ── 금융공학 융합전공 (학과규정) ── 36학점 전부 전공선택, 학과(영역)별 최대 4과목·12학점까지만 인정 */
+  'FINENG': { type:'융합', title:'금융공학', short:'금융공학', total:36, source:'https://fineng.korea.ac.kr/fineng/major/rules.do',
+    dual:{ cap:6, overThreshold:30, note:'30학점 초과분, 제1전공 교과목에 한해 6학점까지 중복인정' },
+    areaCap:{ cr:12, n:4, by:'prefix', note:'각 영역(학과) 4과목·12학점 초과 이수분은 불인정' },
+    reqs:[ { k:'전공선택', need:36, list:[
+      ['FNEG211','사회과학도를위한계량금융'],['FNEG310','파생금융상품론'],
+      ['MATH211','해석학Ⅰ및연습'],['MATH212','해석학Ⅱ및연습'],['MATH221','선형대수Ⅰ및연습'],['MATH222','선형대수Ⅱ및연습'],['MATH240','미분방정식및연습'],
+      ['MATH315','복소해석학'],['MATH342','수치해석및연습'],['MATH343','확률과통계및연습'],['MATH344','확률과정개론'],['MATH453','실해석학'],['MATH481','편미분방정식및연습'],['MATH483','금융수학'],['MATH484','보험수학'],
+      ['BUSS207','재무관리'],['BUSS254','투자론'],['BUSS344','국제금융론'],['BUSS367','국제재무관리'],['BUSS384','기업재무'],['BUSS386','선물옵션'],['BUSS414','채권론'],['BUSS416','기업가치평가'],['BUSS417','고급투자론'],['BUSS382','보험과위험관리'],['BUSS415','위험관리'],
+      ['ECON173','경제수학'],['ECON174','경제의통계분석'],['ECON201','미시경제이론'],['ECON202','거시경제이론'],['ECON301','계량경제학Ⅰ'],['ECON302','계량경제학Ⅱ'],['ECON331','화폐금융론'],['ECON335','국제금융론'],['ECON354','재무경제학'],
+      ['STAT180','통계계산소프트웨어'],['STAT221','확률론입문'],['STAT232','수리통계학'],['STAT302','시계열분석'],['STAT342','회귀분석'],['STAT344','보험통계학'],['STAT401','다변량통계분석'],['STAT413','금융통계학'],
+      ['IMEN216','OR-I및실습'],['IMEN319','OR-Ⅱ및실습'],['IMEN320','최적화응용'] ] } ] }
+};
+
+/* 경제학과 2026학년도 개설과목 (26-1·26-2 시간표 PDF에서 추출). [학수번호, 과목명, 개설학기, 이수구분] — 영강 여부는 분반마다 달라 과목 추가 시 직접 선택 */
+const ECON_CATALOG = [
+ ['ECON171','경제원론Ⅰ',[1,2],'필'],['ECON172','경제원론Ⅱ',[1,2],'필'],['ECON173','경제수학',[1,2],'선'],['ECON174','경제의통계분석',[1,2],'필'],
+ ['ECON201','미시경제이론',[1,2],'필'],['ECON202','거시경제이론',[1,2],'필'],['ECON207','시장경제의이해',[2],'선'],['ECON240','산업조직론',[1,2],'선'],
+ ['ECON244','노동시장론',[1,2],'선'],['ECON301','계량경제학Ⅰ',[1,2],'선'],['ECON302','계량경제학Ⅱ',[2],'선'],['ECON324','전략과정보의경제학',[1],'선'],
+ ['ECON329','한국경제사',[2],'선'],['ECON330','정보의비대칭성과유인설계',[2],'선'],['ECON331','화폐금융론',[1,2],'선'],['ECON333','재정학',[1,2],'선'],
+ ['ECON334','조세론',[1],'선'],['ECON335','국제금융론',[1,2],'선'],['ECON336','국제무역론',[1,2],'선'],['ECON339','경제발전론',[1],'선'],
+ ['ECON354','재무경제학',[1,2],'선'],['ECON358','서양경제사',[1],'선'],['ECON359','경제변동성장론',[1],'선'],['ECON361','도시공공경제학',[1,2],'선'],
+ ['ECON366','법경제학',[2],'선'],['ECON371','비주류의경제학',[1],'선'],['ECON376','정치와경제',[2],'선'],['ECON379','보건의료경제학',[2],'선'],
+ ['ECON380','실증미시경제학',[1],'선'],['ECON384','국제금융세미나',[2],'선'],['ECON434','한국경제론',[1,2],'선'],['ECON435','동아시아경제사',[1,2],'선'],
+ ['ECON436','동태적거시경제학연구',[2],'선'],['ECON439','한국거시경제분석',[1],'선'],['ECON450','화폐금융세미나',[2],'선'],['ECON452','노동경제세미나',[1],'선'],
+ ['ECON460','고급이론세미나',[1],'선'],['ECON463','중급계량경제학',[1],'선'],['ECON465','행동금융학',[1],'선'],['ECON492','응용경제연습',[2],'선'],
+ ['ECON493','인공지능기반경제분석',[2],'선']];
+
+const LEET_DATA = {"scales":{"old":{"eoneo":{"m":50,"s":10,"q":35},"churi":{"m":50,"s":10,"q":35}},"old2019":{"eoneo":{"m":50,"s":10,"q":30},"churi":{"m":50,"s":10,"q":40}},"new":{"eoneo":{"m":45,"s":9,"q":30},"churi":{"m":60,"s":12,"q":40}}},"years":{"2026":{"scale":"new","src":"환산표","eoneo":{"m":17.19,"sd":4.104,"t":{"30":[73.1,100.0],"29":[70.9,100.0],"28":[68.7,100.0],"27":[66.5,99.8],"26":[64.3,99.2],"25":[62.1,98.2],"24":[59.9,96.2],"23":[57.7,92.9],"22":[55.5,88.0],"21":[53.3,81.5],"20":[51.2,73.5],"19":[49.0,64.6],"18":[46.8,55.4],"17":[44.6,46.1],"16":[42.4,37.2],"15":[40.2,28.3],"14":[38.0,19.4],"13":[35.8,10.5],"12":[33.6,1.6],"11":[31.4,0.0],"10":[29.2,0.0]}},"churi":{"m":22.83,"sd":5.217,"t":{"40":[99.5,100.0],"39":[97.2,100.0],"38":[94.9,100.0],"37":[92.6,100.0],"36":[90.3,99.9],"35":[88.0,99.7],"34":[85.7,99.3],"33":[83.4,98.6],"32":[81.1,97.3],"31":[78.8,95.3],"30":[76.5,92.5],"29":[74.2,88.7],"28":[71.9,83.6],"27":[69.6,77.5],"26":[67.3,70.9],"25":[65.0,63.8],"24":[62.7,56.7],"23":[60.4,49.6],"22":[58.1,42.5],"21":[55.8,35.4],"20":[53.5,28.3]}}},"2025":{"scale":"new","src":"환산표","eoneo":{"m":17.03,"sd":4.099,"t":{"30":[73.5,100.0],"29":[71.3,100.0],"28":[69.1,99.9],"27":[66.9,99.7],"26":[64.7,99.1],"25":[62.5,98.0],"24":[60.3,96.2],"23":[58.1,93.3],"22":[55.9,89.0],"21":[53.7,83.1],"20":[51.5,75.5],"19":[49.3,66.4],"18":[47.1,57.3],"17":[44.9,46.4],"16":[42.7,35.5],"15":[40.5,24.5],"14":[38.3,13.6],"13":[36.2,3.2],"12":[34.0,0.0],"11":[31.8,0.0],"10":[29.6,0.0]}},"churi":{"m":25.08,"sd":5.68,"t":{"40":[91.5,100.0],"39":[89.4,100.0],"38":[87.3,99.8],"37":[85.2,99.4],"36":[83.1,98.7],"35":[81.0,97.5],"34":[78.9,95.8],"33":[76.7,93.2],"32":[74.6,89.6],"31":[72.5,85.4],"30":[70.4,80.4],"29":[68.3,74.4],"28":[66.2,67.7],"27":[64.1,60.5],"26":[61.9,53.2],"25":[59.8,45.8],"24":[57.7,39.4],"23":[55.6,32.8],"22":[53.5,26.4],"21":[51.4,20.5],"20":[49.3,15.2]}}},"2024":{"scale":"new","src":"환산표","eoneo":{"m":15.25,"sd":3.702,"t":{"30":[80.9,100.0],"29":[78.4,100.0],"28":[76.0,100.0],"27":[73.6,100.0],"26":[71.1,99.9],"25":[68.7,99.6],"24":[66.3,99.4],"23":[63.8,98.6],"22":[61.4,97.1],"21":[59.0,94.8],"20":[56.5,90.3],"19":[54.1,84.3],"18":[51.7,77.2],"17":[49.3,69.1],"16":[46.8,60.2],"15":[44.4,50.8],"14":[42.0,41.4],"13":[39.5,32.3],"12":[37.1,23.8],"11":[34.7,16.2],"10":[32.2,9.8]}},"churi":{"m":22.2,"sd":5.7,"t":{"40":[97.5,100.0],"39":[95.4,100.0],"38":[93.3,100.0],"37":[91.2,99.9],"36":[89.1,99.8],"35":[86.9,99.4],"34":[84.8,99.1],"33":[82.7,98.3],"32":[80.6,96.9],"31":[78.5,94.2],"30":[76.4,91.4],"29":[74.3,88.7],"28":[72.2,83.6],"27":[70.1,78.4],"26":[68.0,73.3],"25":[65.9,66.6],"24":[63.8,60.0],"23":[61.7,53.4],"22":[59.6,46.8],"21":[57.5,40.2],"20":[55.4,33.6]}}},"2023":{"scale":"new","src":"환산표","eoneo":{"m":16.94,"sd":4.271,"t":{"30":[72.5,99.9],"29":[70.4,99.8],"28":[68.3,99.0],"27":[66.2,98.0],"26":[64.1,97.3],"25":[62.0,95.3],"24":[59.9,92.3],"23":[57.8,87.9],"22":[55.7,82.3],"21":[53.6,75.7],"20":[51.5,67.8],"19":[49.3,58.8],"18":[47.2,49.8],"17":[45.1,40.7],"16":[43.0,32.1],"15":[40.9,24.5],"14":[38.8,17.5],"13":[36.7,13.2],"12":[34.6,12.4],"11":[32.5,8.2],"10":[30.4,5.2]}},"churi":{"m":23.14,"sd":5.816,"t":{"40":[94.8,99.8],"39":[92.7,99.7],"38":[90.7,99.5],"37":[88.6,99.3],"36":[86.5,98.0],"35":[84.5,97.7],"34":[82.4,96.0],"33":[80.4,94.3],"32":[78.3,91.6],"31":[76.2,88.1],"30":[74.1,83.9],"29":[72.1,78.8],"28":[70.0,73.1],"27":[68.0,66.9],"26":[65.9,60.5],"25":[63.8,53.9],"24":[61.8,47.3],"23":[59.7,40.9],"22":[57.7,34.8],"21":[55.6,29.3],"20":[53.5,23.9]}}},"2022":{"scale":"new","eoneo":{"m":16.6,"sd":4.43},"churi":{"m":22.7,"sd":5.66},"src":"추정"},"2021":{"scale":"new","eoneo":{"m":15.2,"sd":4.0},"churi":{"m":21.9,"sd":5.97},"src":"추정"},"2020":{"scale":"new","eoneo":{"m":16.8,"sd":4.33},"churi":{"m":24.0,"sd":5.94},"src":"추정"},"2019":{"scale":"old2019","eoneo":{"m":17.1,"sd":4.16},"churi":{"m":25.3,"sd":6.2},"src":"추정"},"2018":{"scale":"old","eoneo":{"m":21.1,"sd":4.94},"churi":{"m":20.6,"sd":5.26},"src":"추정"},"2017":{"scale":"old","eoneo":{"m":21.8,"sd":5.31},"churi":{"m":21.4,"sd":5.2},"src":"추정"},"2016":{"scale":"old","eoneo":{"m":23.21,"sd":5.12},"churi":{"m":19.07,"sd":4.58},"src":"추정"},"2015":{"scale":"old","eoneo":{"m":24.0,"sd":5.28},"churi":{"m":21.4,"sd":4.67},"src":"추정"},"2014":{"scale":"old","eoneo":{"m":25.1,"sd":5.27},"churi":{"m":22.4,"sd":4.86},"src":"추정"},"2013":{"scale":"old","eoneo":{"m":18.48,"sd":4.32},"churi":{"m":18.86,"sd":4.22},"src":"추정"},"2012":{"scale":"old","eoneo":{"m":20.33,"sd":4.24},"churi":{"m":19.86,"sd":4.06},"src":"추정"},"2027":{"scale":"new","src":"환산표","eoneo":{"m":17.88,"sd":4.119,"t":{"30":[71.5,100.0],"29":[69.3,99.9],"28":[67.1,99.8],"27":[64.9,99.4],"26":[62.7,98.5],"25":[60.6,96.8],"24":[58.4,94.0],"23":[56.2,89.8],"22":[54.0,84.0],"21":[51.8,77.0],"20":[49.7,68.3],"19":[47.5,58.7],"18":[45.3,49.1],"17":[43.1,39.8],"16":[40.9,30.9],"15":[38.7,22.0],"14":[36.5,13.1],"13":[34.3,4.2],"12":[32.1,0.5],"11":[30.0,0.0],"10":[27.8,0.0]}},"churi":{"m":23.77,"sd":5.777,"t":{"40":[93.8,100.0],"39":[91.7,100.0],"38":[89.5,99.9],"37":[87.5,99.7],"36":[85.4,99.4],"35":[83.3,98.6],"34":[81.2,97.4],"33":[79.2,95.7],"32":[77.1,93.2],"31":[75.0,90.0],"30":[72.9,86.0],"29":[70.9,81.1],"28":[68.8,75.6],"27":[66.7,69.3],"26":[64.6,62.6],"25":[62.6,55.7],"24":[60.5,49.0],"23":[58.4,42.4],"22":[56.3,35.7],"21":[54.3,29.0],"20":[52.2,22.3]}}}}};
+
+
+/* ═══════════════════════════════════════════════════════════════
+   고경에서 고로까지 v3 — 핵심 로직
+   · 제1전공 경영 고정 + 2전공 프로필(심화/이중/융합/미정)
+   · 과목 단위 중복인정 배정 (전공별 한도·조건)
+   ═══════════════════════════════════════════════════════════════ */
+const APP_V = 3;
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => { n = Math.round(n*10)/10; return Number.isInteger(n) ? String(n) : n.toFixed(1); };
+const pct = (a,b) => b ? Math.min(100, a/b*100) : 0;
+const g2 = v => v==null ? '–' : v.toFixed(2);
+const up = s => String(s||'').trim().toUpperCase().replace(/\s+/g,'');
+
+/* ── 성적 ── */
+const GRADES = {"A+":4.5,"A0":4.0,"B+":3.5,"B0":3.0,"C+":2.5,"C0":2.0,"D+":1.5,"D0":1.0,"F":0,"P":null,"NP":null,"수강중":null,"계획":null};
+const GRADE_ALIAS = {"A":4.0,"B":3.0,"C":2.0,"D":1.0,"A-":4.0,"B-":3.0,"C-":2.0,"D-":1.0,"NP":null,"NR":null,"S":null,"U":null,"PASS":null};
+function gp(gr){ const raw=String(gr==null?'':gr).trim(); if(raw in GRADES) return GRADES[raw];
+  const k=raw.toUpperCase(); if(k in GRADE_ALIAS) return GRADE_ALIAS[k]; return null; }
+const crOf = c => { const v=parseFloat(c.cr); return isFinite(v)&&v>0 ? v : 0; };
+const isIng = c => c.gr==='수강중';
+const isPlan = c => c.gr==='계획';
+let PLAN_VIEW = false;   // '계획 포함해서 보기' 스위치
+const isFail = c => c.gr==='F' || up(c.gr)==='NP';
+
+/* ── 학기 ── */
+const TERM_ORD = {"1":1,"S":2,"2":3,"W":4}, TERM_LBL = {"1":"1학기","S":"여름계절","2":"2학기","W":"겨울계절"};
+function semIdx(s){ const a=String(s||'9-9').split('-'); return (Number(a[0])||9)*10 + (TERM_ORD[String(a[1]||'').toUpperCase()]||9); }
+function semLabel(s){ const a=String(s||'').split('-'); return (a[0]||'?')+'학년 '+(TERM_LBL[String(a[1]||'').toUpperCase()]||a[1]||''); }
+const sortedSems = () => S.sems.slice().sort((a,b)=>semIdx(a)-semIdx(b));
+
+/* ── 경영 제1전공 요건 (26학번) ── */
+const MAJOR_REQ = ["BUSS205","BUSS207","BUSS211","BUSS213","BUSS215","BUSS311","BUSS313","BUSS402"];
+const BASIC_REQ = ["BUSS152","BUSS154","BUSS164","BUSS166"];
+const ECON_REQ  = ["ECON171","ECON172"];
+/* 핵심교양: 2024학번부터 졸업요건 아님, 수강 시 교양선택으로 인정 (출처: 교양교육원 수강신청 유의사항 https://ge.korea.ac.kr/_res/eduinfo/etc/info_caution_cultural.pdf · 확인 2026-11-08)
+   → 새로 넣을 땐 고를 수 없게 빼고, 예전에 '핵심교양'으로 저장된 과목은 그대로 두되 계산은 교양선택처럼 */
+const CATS = ["학문의기초","교양필수","교양선택","경제학필수","전공필수","전공선택","2전공","일반선택"];
+const BIZ_MAJOR_CATS = ["학문의기초","경제학필수","전공필수","전공선택"];   // 2전공과 겹칠 수 있는 경영 쪽 영역
+const LIB_CATS = ["교양필수","핵심교양","교양선택","학문의기초"];
+
+/* ── 공거리 요건을 MAJORS 형식으로 보강 ── */
+MAJORS.GGL.reqs = [
+  { k:'전공필수 (법학)', need:9, list:CONV_POOL["융전-전공필수"], req:true },
+  { k:'교양선택필수', need:3, list:CONV_POOL["융전-교양선택필수"], capAt:3, note:'법학관련 핵심교양 / JURA 입문과목 중 1과목 이상' },
+  { k:'1영역 법학', need:6, list:CONV_POOL["융전-1영역"], area:true, minN:2 },
+  { k:'2영역 행정학', need:6, list:CONV_POOL["융전-2영역"], area:true, minN:2 },
+  { k:'3영역 경제학', need:6, list:CONV_POOL["융전-3영역"], area:true, minN:2 } ];
+MAJORS.GGL.selTotal = { need:24, n:8 };
+
+const MAJOR_CHOICES = {
+  '이중': [['ECON_DOUBLE','경제학과','이중전공 · 39학점']],
+  '융합': [['GGL','공공거버넌스와리더십','융합전공 · 36학점'],['FADM','패션디자인 및 머천다이징','융합전공 · 36학점'],['FINENG','금융공학','융합전공 · 36학점']],
+  '심화': [['BIZ_DEEP','경영학과 심화','전공 66학점 · 영강 10과목']],
+  '미정': [[null,'아직 안 정했어요','경영 요건만 먼저 볼래요']] };
+function s2Def(){ const m = S.profile && S.profile.major; return m && MAJORS[m] && MAJORS[m].type!=='심화' ? MAJORS[m] : null; }
+const isDeep = () => S.profile && S.profile.major==='BIZ_DEEP';
+function profileLabel(){ const m=S.profile&&S.profile.major; if(!m) return '경영 (2전공 미정)'; if(m==='BIZ_DEEP') return '경영 심화'; return '경영 + '+MAJORS[m].title; }
+
+/* ── 과목 DB (검색·자동 분류) ── */
+const DB = []; const DBI = {};
+function dbAdd(o){ const k=up(o.code); if(DBI[k]){ Object.keys(o).forEach(x=>{ if(DBI[k][x]==null) DBI[k][x]=o[x]; }); return DBI[k]; } o.code=k; DB.push(o); DBI[k]=o; return o; }
+BIZ.forEach(c=>dbAdd({code:c.code,name:c.name,cat:c.cat,cr:c.cr,eng:c.eng,sem:c.sem}));
+dbAdd({code:"ECON171",name:"경제원론Ⅰ",cat:"경제학필수",cr:3});
+dbAdd({code:"ECON172",name:"경제원론Ⅱ",cat:"경제학필수",cr:3});
+GEN_REQ.forEach(([code,name,cr])=>dbAdd({code,name,cat:"교양필수",cr}));
+BIZ_ALT.forEach(([code,name])=>{ const d=dbAdd({code,name,cat:"전공선택",cr:3}); d.bizAlt=true; if(d.cat!=='경제학필수') d.cat='전공선택'; });
+GYO.forEach(([code,name,cr,ga,tm,eng])=>{ const d=dbAdd({code,name,cat:"교양선택",cr}); d.ga=ga; d.tm=tm; if(eng) d.geng=1; });
+ECON_CATALOG.forEach(([code,name,sem])=>dbAdd({code,name,cat:"2전공",cr:3,sem}));
+Object.values(CONV_POOL).forEach(arr=>arr.forEach(([code,name])=>dbAdd({code,name,cat:/^GE|^HANM|^PHIL|^HOEW|^JURA10/.test(code)?"교양선택":"2전공",cr:3})));
+['FADM','FINENG'].forEach(m=>MAJORS[m].reqs.forEach(r=>r.list.forEach(([code,name,cr])=>dbAdd({code,name,cat:/^BUSS/.test(code)?"전공선택":"2전공",cr:cr||3}))));
+const bizCatOf = code => { const d=DBI[up(code)]; if(!d) return /^BUSS/.test(up(code)) ? '전공선택' : null; return d.cat; };
+const nameOf = code => (DBI[up(code)]||{}).name || code;
+
+/* ── 과목명 비교용 정규화: 공백·[진로·창업]·(영강)·로마숫자 표기 차이 무시 ── */
+const ROMAN = {'Ⅰ':'I','Ⅱ':'II','Ⅲ':'III','Ⅳ':'IV','Ⅴ':'V'};
+function normName(n){ return String(n||'').replace(/\[[^\]]*\]/g,'').replace(/\((영강|영어강의)\)/g,'').replace(/[ⅠⅡⅢⅣⅤ]/g,m=>ROMAN[m]).replace(/[\s·,\-_:]/g,'').toUpperCase(); }
+const GYO_SET = new Set(GYO.map(x=>up(x[0])));
+
+/* ── 2전공 소속 판정 ── */
+function inReq(r, code){ const k=up(code); if(!k) return false;
+  if(r.list && r.list.some(x=>up(x[0])===k)) return true;
+  if(r.prefix && r.prefix.some(p=>k.startsWith(p)) && !GYO_SET.has(k)) return true;   // 교양 과목(예: ECON110 경제학개론)은 전공 아님
+  return false; }
+function inReqEx(def, r, code){ if(r.exclude){ const ex=def.reqs.find(x=>x.k===r.exclude); if(ex && inReq(ex,code)) return false; } return inReq(r,code); }
+function s2Member(def, code){ return !!def && def.reqs.some(r=>inReqEx(def,r,code)); }
+function s2Required(def, code){ return !!def && def.reqs.some(r=>(r.req || /전공필수/.test(r.k)) && inReq(r,code)); }
+
+/* ── 이수 과목 정리: 재수강은 마지막 성적만, 학수번호 중복 제거 ── */
+function latestByCode(list){
+  const best = {};
+  list.forEach(c=>{ const k = up(c.code) || ('#'+normName(c.name));
+    const prev = best[k]; if(!prev || semIdx(c.sem) >= semIdx(prev.sem)) best[k] = c; });
+  return Object.values(best); }
+const takenAll = () => latestByCode(S.courses.filter(c=>!isIng(c) && !isPlan(c))).filter(c=>!isFail(c));   // 학점 인정 과목
+const planCourses = () => S.courses.filter(isPlan);
+/* 계획 포함 보기: 수강중·계획 과목도 들었다고 치고 계산 (같은 과목이면 가장 늦은 학기 것) */
+const countedAll = () => PLAN_VIEW ? latestByCode(S.courses).filter(c=>!isFail(c)) : takenAll();
+const ingCourses = () => S.courses.filter(isIng);
+/* 요건 과목 이수 여부: 학수번호가 같거나, 과목명이 같으면 인정 (교양필수는 실제 학수번호가 학기마다 달라서) */
+function findCourse(code, name, list){ const k=up(code), n=normName(name);
+  return list.find(c=>(k && up(c.code)===k) || (n && normName(c.name)===n)); }
+function reqStatus(code, name){
+  const t = findCourse(code, name, takenAll()); if(t) return {st:'y', id:t.id};
+  const i = findCourse(code, name, ingCourses()); if(i) return {st:'i', id:i.id};
+  const p = findCourse(code, name, planCourses()); if(p) return {st:'p', id:p.id};
+  return {st:'', id:null}; }
+const hasCode = (code, name) => reqStatus(code, name).st==='y';
+const ingCode = (code, name) => reqStatus(code, name).st==='i';
+/* 교양체육(PHEK)은 3학점(1학점 3과목)까지만 인정
+   출처: 교양교육원 수강신청 유의사항 https://ge.korea.ac.kr/_res/eduinfo/etc/info_caution_cultural.pdf · 확인 2026-11-08 */
+const PE_CAP = 3;
+const isPE = c => /^PHEK/.test(up(c.code));
+const sumCr = list => list.reduce((s,c)=>s+crOf(c),0);
+const peOver = list => Math.max(0, sumCr(list.filter(isPE)) - PE_CAP);
+const capSum = list => sumCr(list) - peOver(list);      // 체육 초과분 뺀 학점
+const totalCredits = () => capSum(takenAll());
+const ingCredits = () => { const t = takenAll(); const add = latestByCode(ingCourses()).filter(c=>!findCourse(c.code,c.name,t));
+  return capSum(t.concat(add)) - capSum(t); };
+const planCredits = () => { const t = takenAll(), i = latestByCode(ingCourses()).filter(c=>!findCourse(c.code,c.name,t)), base = t.concat(i);
+  const add = latestByCode(planCourses()).filter(c=>!findCourse(c.code,c.name,base)); return capSum(base.concat(add)) - capSum(base); };
+
+/* ── 재수강: 같은 과목 n번째 수강 → 최고 성적 상한 (2번째 A0, 3번째 B+, 4번째 B0 …) ── */
+const courseKey = c => up(c.code) || ('#'+normName(c.name));
+function attempts(){
+  const g = {}; S.courses.forEach(c=>{ (g[courseKey(c)] = g[courseKey(c)] || []).push(c); });
+  const info = {};
+  Object.values(g).forEach(list=>{ list.sort((a,b)=>semIdx(a.sem)-semIdx(b.sem) || String(a.id).localeCompare(String(b.id)));
+    list.forEach((c,i)=>{ info[c.id] = { n:i+1, total:list.length, cap: i ? Math.max(1.0, 4.5 - 0.5*i) : 4.5, replaced: i < list.length-1 }; }); });
+  return info; }
+let ATT = {};
+const capLabel = v => Object.keys(GRADES).find(k=>GRADES[k]===v) || v.toFixed(1);
+function gpEff(c){ const g = gp(c.gr); if(g==null) return null; const a = ATT[c.id]; return a ? Math.min(g, a.cap) : g; }
+/* 요건 칩: [학수번호, 과목명, 상태, 과목id] */
+const chip = (code, name) => { const r = reqStatus(code, name); return [code, name, r.st, r.id]; };
+const mineChips = list => list.map(c=>[c.code, c.name, isIng(c)?'i':isPlan(c)?'p':'y', c.id]);
+
+/* ═══════════ 계산 엔진 ═══════════ */
+function compute(){
+  ATT = attempts();
+  const def = s2Def(), deep = isDeep();
+  const taken = countedAll();
+  /* 1) 겹치는 과목 찾기 */
+  const rows = taken.map(c=>{
+    const biz = BIZ_MAJOR_CATS.includes(c.cat) ? c.cat : null;
+    const s2  = s2Member(def, c.code);
+    return { c, biz, s2, overlap: !!(biz && s2) };
+  });
+  /* 2) 중복인정 배정 — 양쪽 필수 > 한쪽 필수 > 먼저 들은 과목 순 */
+  const cap = def && def.dual ? def.dual.cap||0 : 0;
+  const bizReq = r => r.biz==='전공필수' || r.biz==='경제학필수' || r.biz==='학문의기초';
+  const prio = r => (bizReq(r)?1:0) + (s2Required(def,r.c.code)?1:0);
+  const cand = rows.filter(r=>r.overlap && (!r.c.side || r.c.side==='auto'))
+    .sort((a,b)=> prio(b)-prio(a) || semIdx(a.c.sem)-semIdx(b.c.sem) || String(a.c.id).localeCompare(String(b.c.id)));
+  let left = cap; const dualIds = new Set();
+  cand.forEach(r=>{ const v=crOf(r.c); if(v>0 && left>=v){ dualIds.add(r.c.id); left-=v; } });
+  /* 3) 나머지 겹치는 과목은 한쪽에만 — 직접 고른 쪽 > 필수인 쪽 > 더 많이 모자란 쪽 */
+  const bizHave = {}; const s2Have = { v:0 }; const areaHave = {};
+  const addS2 = c => { s2Have.v += crOf(c); const a=up(c.code).slice(0,4); areaHave[a]=(areaHave[a]||0)+crOf(c); };
+  rows.forEach(r=>{ if(!r.overlap || dualIds.has(r.c.id)){ if(r.biz) bizHave[r.biz]=(bizHave[r.biz]||0)+crOf(r.c); if(r.s2) addS2(r.c); } });
+  rows.filter(r=>r.overlap && !dualIds.has(r.c.id)).sort((a,b)=>semIdx(a.c.sem)-semIdx(b.c.sem)).forEach(r=>{
+    let side;
+    if(r.c.side==='biz' || r.c.side==='s2') side = r.c.side;
+    else if(bizReq(r)) side = 'biz';
+    else if(s2Required(def, r.c.code)) side = 's2';
+    else {
+      /* 2전공은 지정 과목이 필요하고 경영 전공선택은 BUSS 아무 과목으로 채울 수 있으니, 2전공이 덜 찼으면 2전공 우선.
+         단 금융공학처럼 학과별 상한(12학점)이 있으면 꽉 찬 학과 과목은 경영으로 */
+      const a = up(r.c.code).slice(0,4);
+      const areaFull = def.areaCap && (areaHave[a]||0) + crOf(r.c) > def.areaCap.cr;
+      side = ((def.total||0) - s2Have.v > 0 && !areaFull) ? 's2' : 'biz'; }
+    if(side==='biz') bizHave[r.biz]=(bizHave[r.biz]||0)+crOf(r.c); else addS2(r.c);
+    r.side = side;
+  });
+  rows.forEach(r=>{
+    if(!r.overlap){ r.toBiz = !!r.biz; r.toS2 = r.s2; return; }
+    if(dualIds.has(r.c.id)){ r.toBiz = r.toS2 = true; r.dual = true; return; }
+    r.toBiz = r.side==='biz'; r.toS2 = r.side==='s2';
+  });
+  const bizSet = rows.filter(r=>r.toBiz).map(r=>r.c), s2Set = rows.filter(r=>r.toS2).map(r=>r.c);
+  const s2Raw = rows.filter(r=>r.s2).reduce((s,r)=>s+crOf(r.c),0);
+  const dualList = rows.filter(r=>r.dual).map(r=>r.c);
+  const dualUsed = dualList.reduce((s,c)=>s+crOf(c),0);
+  const th = def && def.dual ? def.dual.overThreshold||0 : 0;
+  const ing = PLAN_VIEW ? [] : S.courses.filter(c=>isIng(c)||isPlan(c));   // 아직 안 센 과목 (칩으로만 표시)
+
+  /* 4) 경영 */
+  const inCat = cat => bizSet.filter(c=>c.cat===cat);
+  const cr = cat => inCat(cat).reduce((s,c)=>s+crOf(c),0);
+  const libCr = cat => taken.filter(c=>c.cat===cat).reduce((s,c)=>s+crOf(c),0);
+  const genNeed = GEN_REQ.reduce((s,g)=>s+g[2],0);
+  const engList = taken.filter(c=>c.eng && /^BUSS/i.test(c.code||''));
+  const selPool = BIZ.filter(c=>c.cat==='전공선택').map(c=>[c.code,c.name]).concat(BIZ_ALT.map(x=>[x[0],x[1]+' (타학과 인정)']));
+  const withIng = (list, cat) => mineChips(list.concat(ing.filter(c=>c.cat===cat && !findCourse(c.code,c.name,list))));
+  const biz = [
+    { k:'교양필수', got:libCr('교양필수'), need:genNeed, items:GEN_REQ.map(g=>chip(g[0], g[1].replace(/\[[^\]]*\]\s*/,''))), all:true },
+    { k:'학문의기초', got:cr('학문의기초'), need:12, items:BASIC_REQ.map(c=>chip(c,nameOf(c))), all:true },
+    { k:'전공필수', got:cr('전공필수'), need:24, items:MAJOR_REQ.map(c=>chip(c,nameOf(c))), all:true },
+    { k:'전공선택', got:cr('전공선택'), need:deep?42:15, note:deep?'심화: 제1전공 15 + 심화 27':'BUSS 전공선택 + 타학과 인정과목', mine:withIng(inCat('전공선택'),'전공선택'), pool:selPool },
+    { k:'경제학 필수', got:cr('경제학필수'), need:6, items:ECON_REQ.map(c=>chip(c,nameOf(c))), all:true },
+    { k:'영어강의', got:engList.length, need:deep?10:8, unit:'과목', note:'학수번호 BUSS 영어강의만 인정', mine:mineChips(engList), pool:BIZ.filter(c=>c.eng).map(c=>[c.code,c.name+' (영강 분반 있음)']) } ];
+  if(deep) biz.push({ k:'전공 합계 (심화)', got:cr('전공필수')+cr('전공선택'), need:66, note:'전공필수 24 + 전공선택 42', mine:mineChips(inCat('전공필수').concat(inCat('전공선택'))) });
+  const okSt = x => PLAN_VIEW ? !!x[2] : x[2]==='y';
+  biz.forEach(r=>{ r.done = r.all ? (r.items.every(okSt) && r.got>=r.need) : r.got>=r.need; });
+
+  /* 5) 2전공 */
+  let s2 = null;
+  if(def) s2 = evalS2(def, s2Set, ing);
+  if(s2){ s2.dual = { used:dualUsed, cap, list:dualList, raw:s2Raw, th, confirmed: th ? s2Raw > th : true, note:def.dual.note }; }
+
+  /* 6) 평점 */
+  const graded = latestByCode(S.courses.filter(c=>{ const g=gp(c.gr); return g!=null && crOf(c)>0; }));
+  const avg = list => { let p=0,t=0; list.forEach(c=>{ p+=gpEff(c)*crOf(c); t+=crOf(c); }); return t? {avg:p/t, cr:t, n:list.length} : {avg:null, cr:0, n:0}; };
+  const rowOf = c => rows.find(x=>x.c.id===c.id);
+  const gpa = {
+    all: avg(graded),
+    biz: avg(graded.filter(c=>{ if(c.cat!=='전공필수' && c.cat!=='전공선택') return false; const r=rowOf(c); return !r || !r.overlap || r.toBiz; })),
+    lib: avg(graded.filter(c=>LIB_CATS.includes(c.cat))),
+    s2 : def ? avg(graded.filter(c=>{ if(!s2Member(def,c.code)) return false; const r=rowOf(c); return !r || !r.overlap || r.toS2; })) : null };
+  const peTaken = sumCr(taken.filter(isPE)), peIng = PLAN_VIEW ? 0 : sumCr(latestByCode(ingCourses()).filter(c=>isPE(c) && !findCourse(c.code,c.name,taken)));
+  return { def, deep, biz, s2, gpa, total: capSum(taken), pe:{ got:peTaken, ing:peIng }, done: totalCredits(), ing: ingCredits(), plan: planCredits(), engN: engList.length, rows };
+}
+
+function evalS2(def, set, ing){
+  const inR = (r,c) => inReqEx(def, r, c.code);
+  const crIn = (r, list=set) => list.filter(c=>inR(r,c)).reduce((s,c)=>s+crOf(c),0);
+  const nIn  = (r, list=set) => list.filter(c=>inR(r,c)).length;
+  const mineOf = (r, list=set) => mineChips(list.filter(c=>inR(r,c)).concat(ing.filter(c=>inR(r,c) && !findCourse(c.code,c.name,set))));
+  const poolOf = r => r.list ? r.list.map(x=>[x[0],x[1]]) : r.prefix ? DB.filter(d=>inReqEx(def,r,d.code)).map(d=>[d.code,d.name]) : null;
+  const out = { title:def.title, short:def.short, type:def.type, need:def.total, reqs:[] };
+
+  if(def===MAJORS.GGL){
+    const [nec, lib, a1, a2, a3] = def.reqs;
+    const necCr = crIn(nec), libCr = Math.min(crIn(lib),3);
+    const areas = [a1,a2,a3].map(a=>({ r:a, cr:crIn(a), n:nIn(a) }));
+    const selTot = areas.reduce((s,a)=>s+a.cr,0), selN = areas.reduce((s,a)=>s+a.n,0);
+    const areaOK = areas.every(a=>a.cr>=6 && a.n>=2);
+    out.got = necCr + libCr + selTot;
+    out.reqs.push({ k:nec.k, got:necCr, need:9, items:nec.list.map(x=>chip(x[0],x[1])), all:true });
+    out.reqs.push({ k:lib.k, got:libCr, need:3, note:lib.note, mine:mineOf(lib), pool:poolOf(lib) });
+    out.reqs.push({ k:'전공선택 합계', got:selTot, need:24, note:`${selN}과목 / 8과목 · ${areaOK?'영역별 최소요건 충족':'1·2·3영역 각 6학점(2과목) 이상 필요'}`,
+      done: selTot>=24 && selN>=8 && areaOK, mine:mineChips(set.filter(c=>[a1,a2,a3].some(a=>inR(a,c)))) });
+    areas.forEach(a=>out.reqs.push({ k:a.r.k, got:a.cr, need:6, note:`${a.n}과목 이수 · 최소 2과목`, mine:mineOf(a.r), pool:poolOf(a.r), done:a.cr>=6 && a.n>=2 }));
+    out.extra = '추가 졸업요건: 공인영어성적 제출 (TOEIC 750 / TOEFL iBT 80 / TEPS 285 / IELTS 6.0 / TOSEL(A) 620)';
+  }
+  else if(def===MAJORS.FINENG){
+    /* 영역(학과)별 최대 4과목·12학점까지만 인정 — 먼저 들은 과목부터 */
+    const r = def.reqs[0]; const byArea = {};
+    set.filter(c=>inR(r,c)).sort((a,b)=>semIdx(a.sem)-semIdx(b.sem)).forEach(c=>{
+      const a = up(c.code).slice(0,4); const o = byArea[a] = byArea[a] || {cr:0,n:0,over:0};
+      if(o.n < def.areaCap.n && o.cr + crOf(c) <= def.areaCap.cr){ o.cr += crOf(c); o.n++; } else o.over += crOf(c); });
+    const got = Object.values(byArea).reduce((s,o)=>s+o.cr,0);
+    out.got = got;
+    out.reqs.push({ k:'전공선택 합계', got, need:36, note:'지정 교과목 · 학과(영역)별 최대 4과목·12학점까지만 인정', mine:mineOf(r), pool:poolOf(r) });
+    const AREA_NM = {FNEG:'금융공학',MATH:'수학',BUSS:'경영',ECON:'경제',STAT:'통계',IMEN:'산업경영공학'};
+    Object.keys(AREA_NM).forEach(a=>{ const o=byArea[a]||{cr:0,n:0,over:0};
+      const sub = { list: r.list.filter(x=>up(x[0]).startsWith(a)) };
+      out.reqs.push({ k:AREA_NM[a]+' 영역', got:o.cr, need:12, cap:true, note:`${o.n}과목 인정 · 최대 12학점${o.over?` · 초과 ${fmt(o.over)}학점 불인정`:''}`,
+        mine:mineChips(set.filter(c=>inReq(sub,c.code)).concat(ing.filter(c=>inReq(sub,c.code)))), pool:sub.list }); });
+  }
+  else {
+    let got = 0;
+    def.reqs.forEach(r=>{
+      const c = crIn(r); got += Math.min(c, r.need);
+      const small = r.list && r.list.length<=10;
+      out.reqs.push(small ? { k:r.k, got:c, need:r.need, note:r.note, items:r.list.map(x=>chip(x[0],x[1])), all:true }
+                          : { k:r.k, got:c, need:r.need, note:r.note, mine:mineOf(r), pool:poolOf(r) });
+    });
+    if(def.deptMin){
+      const allList = def.reqs.flatMap(r=>r.list||[]);
+      def.deptMin.depts.forEach(([p,nm])=>{ const sub = { list: allList.filter(x=>up(x[0]).startsWith(p)) };
+        out.reqs.push({ k:nm+' 이수', got:crIn(sub), need:def.deptMin.min, note:`${p} 과목 · 참여학과별 최소 6학점 (전공필수 포함)`, mine:mineOf(sub), pool:sub.list }); }); }
+    out.got = got;
+  }
+  out.reqs.forEach(r=>{ if(r.done===undefined) r.done = r.cap ? false : r.all ? (r.items.every(x=>PLAN_VIEW ? !!x[2] : x[2]==='y') && r.got>=r.need) : r.got>=r.need; });
+  return out;
+}
+
+/* ── 학기별 성적 ── */
+function semStats(){
+  return sortedSems().map(sm=>{
+    const idx = semIdx(sm), inSem = S.courses.filter(c=>c.sem===sm);
+    let p=0,t=0; inSem.forEach(c=>{ const g=gpEff(c), v=crOf(c); if(g!=null && v>0){ p+=g*v; t+=v; } });
+    let cp=0, ct=0;
+    latestByCode(S.courses.filter(c=>semIdx(c.sem)<=idx && gp(c.gr)!=null && crOf(c)>0)).forEach(c=>{ cp+=gpEff(c)*crOf(c); ct+=crOf(c); });
+    const ing = inSem.some(isIng);
+    return { sem:sm, label:semLabel(sm), n:inSem.length, gpa:t? p/t : null, cum: ct? cp/ct : null,
+      earned: inSem.filter(c=>!isIng(c) && !isPlan(c) && !isFail(c)).reduce((a,c)=>a+crOf(c),0),
+      enrolled: inSem.filter(c=>!isPlan(c)).reduce((a,c)=>a+crOf(c),0), ing, plan: inSem.length>0 && inSem.every(isPlan) };
+  });
+}
+/* 학점 환산 (4.5 만점 기준) */
+const to100 = v => Math.max(0, Math.min(100, v*10 + 55));
+const to43  = v => Math.max(0, v - 0.2);
+
+/* ═══════════════════════════════════════════════════════════════
+   접근키 · 클라우드 동기화 (아이폰 홈 화면 앱 대응)
+   · 요청마다 8초 제한, 실패하면 자동 재시도 (영구 오프라인 상태 없음)
+   · 앱으로 돌아올 때마다 서버 최신본 확인 → 편집 시각(ts)이 더 최신인 쪽 채택
+   · 백그라운드로 갈 때는 keepalive 로 즉시 저장
+   ═══════════════════════════════════════════════════════════════ */
+const SUPABASE_URL  = 'https://znzdldmaezkxdphcfypz.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_Ue5D-FLBXiEwDWYVvu3oWg_BTssEV6A';
+const LS_NS = 'kugrad3', LS_LAST = LS_NS + ':lastkey';
+let KEY = null;
+const SYNC = { dirty:false, busy:false, state:'off', msg:'', lastErr:'', lastOk:0, retry:0, timer:null };
+
+function blankState(){ return { v:APP_V, ts:0, profile:{ set:false, major:null, leet:false },
+  sems:["1-1","1-2","2-1","2-2","3-1","3-2","4-1","4-2"], courses:[], leet:{ recs:[] } }; }
+function normalize(d){
+  if(!d || d.v !== APP_V || !Array.isArray(d.sems) || !Array.isArray(d.courses)) return null;   // 이전 버전 데이터는 쓰지 않음
+  const b = blankState();
+  return { v:APP_V, ts:+d.ts||0, profile:Object.assign(b.profile, d.profile||{}), sems:d.sems, courses:d.courses,
+    leet:{ recs: (d.leet && Array.isArray(d.leet.recs)) ? d.leet.recs : [] } };
+}
+const pack = () => ({ v:APP_V, ts:S.ts, profile:S.profile, sems:S.sems, courses:S.courses, leet:S.leet });
+const lsKey = () => LS_NS + ':' + (KEY || 'local');
+function lsLoad(){ try{ return normalize(JSON.parse(localStorage.getItem(lsKey())||'null')); }catch(e){ return null; } }
+function lsSave(){ try{ localStorage.setItem(lsKey(), JSON.stringify(pack())); }catch(e){} }
+
+async function rpc(fn, body, opt={}){
+  const ctl = new AbortController(); const to = setTimeout(()=>ctl.abort(), opt.timeout||8000);
+  try{
+    const r = await fetch(SUPABASE_URL + '/rest/v1/rpc/' + fn, { method:'POST', keepalive: !!opt.keepalive, signal: ctl.signal,
+      headers:{ 'apikey':SUPABASE_ANON, 'Authorization':'Bearer '+SUPABASE_ANON, 'Content-Type':'application/json' },
+      body: JSON.stringify(body) });
+    if(!r.ok) throw new Error('서버 응답 ' + r.status + (r.status>=500 ? ' (Supabase 일시정지 여부 확인)' : ''));
+    return await r.json();
+  }catch(e){
+    if(e.name==='AbortError') throw new Error('응답 없음 (8초 초과)');
+    if(e instanceof TypeError) throw new Error('네트워크 연결 실패 · ' + (e.message||''));
+    throw e;
+  }finally{ clearTimeout(to); }
+}
+
+function setSync(state, msg){ SYNC.state = state; SYNC.msg = msg; const e=document.getElementById('sync');
+  if(e){ e.className = 'sync ' + state; e.querySelector('span').textContent = msg; } }
+
+/* 편집할 때마다 호출 */
+function touch(){ S.ts = Date.now(); lsSave(); if(!KEY) return; SYNC.dirty = true; setSync('busy','저장 중…');
+  clearTimeout(SYNC.timer); SYNC.timer = setTimeout(push, 800); }
+
+async function push(opt={}){
+  if(!KEY || !SYNC.dirty) return;
+  if(SYNC.busy && !opt.keepalive) return;
+  SYNC.busy = true;
+  try{
+    const r = await rpc('kg_save', { p_key:KEY, p_data:pack() }, { keepalive:!!opt.keepalive });
+    if(r && r.ok){ SYNC.dirty = false; SYNC.retry = 0; SYNC.lastOk = Date.now(); SYNC.lastErr=''; setSync('ok','저장됨'); }
+    else { SYNC.lastErr = '서버가 이 키를 거부함'; setSync('err','키 확인 필요'); }
+  }catch(e){ SYNC.lastErr = e.message; setSync('err','오프라인 · 자동 재시도'); scheduleRetry(); }
+  finally{ SYNC.busy = false; }
+}
+function scheduleRetry(){ const waits=[2000,5000,15000,30000,60000]; clearTimeout(SYNC.timer);
+  SYNC.timer = setTimeout(()=>{ pull().then(()=>push()); }, waits[Math.min(SYNC.retry++, waits.length-1)]); }
+
+/* 서버 최신본 확인: 편집 시각이 더 최신인 쪽을 쓴다 */
+async function pull(){
+  if(!KEY) return;
+  try{
+    const r = await rpc('kg_login', { p_key:KEY });
+    if(!r || !r.ok){ SYNC.lastErr='서버가 이 키를 거부함'; setSync('err','키 확인 필요'); return; }
+    const remote = normalize(r.data);
+    if(remote && remote.ts > (S.ts||0)){ S = remote; lsSave(); SYNC.dirty = false; renderAll(); }
+    else if(!remote || (S.ts||0) > remote.ts){ if(S.ts) SYNC.dirty = true; }
+    SYNC.retry = 0; SYNC.lastErr = ''; SYNC.lastOk = Date.now();
+    if(SYNC.dirty) await push(); else setSync('ok','저장됨');
+  }catch(e){ SYNC.lastErr = e.message; setSync('err','오프라인 · 자동 재시도'); scheduleRetry(); }
+}
+
+document.addEventListener('visibilitychange', ()=>{
+  if(!KEY) return;
+  if(document.visibilityState==='hidden'){ if(SYNC.dirty) push({keepalive:true}); }
+  else pull(); });
+window.addEventListener('pageshow', e=>{ if(e.persisted && KEY) pull(); });
+window.addEventListener('online', ()=>{ if(KEY) pull(); });
+window.addEventListener('pagehide', ()=>{ if(KEY && SYNC.dirty) push({keepalive:true}); });
+
+/* ── 로그인 ── */
+async function tryLogin(key){
+  let lastErr = null;
+  for(const wait of [0, 1200, 3000]){           // 첫 요청이 자주 실패하는 아이폰 대응: 3번까지
+    if(wait) await new Promise(r=>setTimeout(r, wait));
+    try{ return await rpc('kg_login', { p_key:key }); }catch(e){ lastErr = e; }
+  }
+  throw lastErr;
+}
+async function doLogin(raw){
+  raw = String(raw||'').trim().toUpperCase();
+  if(!raw){ gateMsg('접근키를 입력해 주세요','err'); return; }
+  gateBusy(true); gateMsg('확인 중…','');
+  try{
+    const r = await tryLogin(raw);
+    if(!r || !r.ok){ gateMsg('사용할 수 없는 접근키예요. 다시 확인해 주세요.','err'); try{ localStorage.removeItem(LS_LAST); }catch(e){} return; }
+    KEY = raw; try{ localStorage.setItem(LS_LAST, KEY); }catch(e){}
+    const remote = normalize(r.data), local = lsLoad();
+    if(remote && (!local || remote.ts >= local.ts)){ S = remote; }
+    else if(local){ S = local; SYNC.dirty = true; }
+    else S = blankState();
+    lsSave(); SYNC.lastOk = Date.now(); setSync('ok','저장됨');
+    afterLogin();
+    if(SYNC.dirty) push();
+  }catch(e){
+    /* 네트워크 문제: 이 기기에 기록이 있으면 일단 열고 뒤에서 계속 재시도 */
+    KEY = raw; const local = lsLoad();
+    if(local){ S = local; try{ localStorage.setItem(LS_LAST, KEY); }catch(_){} SYNC.lastErr = e.message;
+      afterLogin(); setSync('err','오프라인 · 자동 재시도'); scheduleRetry(); }
+    else { KEY = null; gateMsg('서버에 연결하지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요. ('+e.message+')','err'); }
+  }finally{ gateBusy(false); }
+}
+function logout(){
+  if(SYNC.dirty) push({keepalive:true});
+  if(!confirm('다른 접근키로 로그인할까요?\n이 기기에 저장된 기록은 그대로 남아요.')) return;
+  try{ localStorage.removeItem(LS_LAST); }catch(e){} location.reload();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   화면
+   ═══════════════════════════════════════════════════════════════ */
+let S = blankState();
+let SEG = 1, APP_MODE = 'grad';
+const OPEN = new Set(), SEM_OPEN = new Set();
+const $ = id => document.getElementById(id);
+const chevSvg = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>';
+
+/* 교양필수는 학기마다 학수번호가 달라 임시 코드(GEN0xx)로 관리 → 저장할 땐 비워서 과목명으로 매칭 */
+const isFakeCode = c => /^GEN0\d\d$/.test(up(c));
+/* ── 요건 한 줄 (누르면 펼쳐짐) ── */
+let ROWREG = {};
+const chipHTML = ([code,name,st,id]) => `<span class="${st}" onclick="event.stopPropagation();chipTap('${esc(code)}','${id||''}')">${st==='y'?'✓ ':st==='i'?'수강중 · ':st==='p'?'계획 · ':'+ '}${esc(name)}</span>`;
+function chipTap(code, id, plan){ if(id) openCourse({id}); else openCourse({code, plan: plan || PLAN_VIEW}); }
+function reqRow(r, key, idx){
+  const id = 'rq-'+key+idx; ROWREG[id] = r;
+  const done = r.done, left = Math.max(0, r.need - r.got);
+  let sub = r.cap ? r.note : done ? (PLAN_VIEW ? '계획대로면 채워요' : '완료했어요') : (r.note ? r.note : `${fmt(left)}${r.unit||'학점'} ${PLAN_VIEW?'부족해요':'남았어요'}`);
+  const pg = r.planGot!=null && r.planGot > r.got ? r.planGot : null;
+  if(pg!=null && !done) sub += ` · 계획 포함 ${fmt(pg)}${r.unit||''}`;
+  const itemsHTML = r.items ? `<div class="tags">${r.items.map(chipHTML).join('')}</div><div class="hint2">과목을 누르면 ${'바로 추가·수정'}할 수 있어요</div>` : '';
+  const mineHTML = r.mine ? (r.mine.length ? `<div class="dlab">인정된 과목</div><div class="tags">${r.mine.map(chipHTML).join('')}</div>` : `<div class="mut s">아직 인정된 과목이 없어요</div>`) : '';
+  const poolHTML = r.pool ? `<button class="linkbtn" onclick="event.stopPropagation();showPool('${id}')">인정 과목 ${r.pool.length}개 보기 · 눌러서 추가</button>` : '';
+  const has = !!(r.items || r.mine || r.pool);
+  return `<div class="row ${done?'done':''} ${r.cap?'capr':''} ${OPEN.has(id)?'open':''}" ${has?`onclick="togRow('${id}')" role="button" aria-expanded="${OPEN.has(id)}"`:''} id="${id}-h">
+    <div class="ic">${done?'✓':Math.round(pct(r.got,r.need))+'%'}</div>
+    <div class="m"><b>${esc(r.k)}</b><small>${esc(sub)}</small><div class="pb"><i style="width:${pct(r.got,r.need)}%"></i>${pg!=null?`<i class="pl" style="width:${Math.max(0,pct(pg,r.need)-pct(r.got,r.need))}%"></i>`:''}</div></div>
+    <div class="r">${fmt(r.got)}<small>/ ${r.need}${r.unit||''}</small></div>${has?chevSvg:''}</div>
+    ${has?`<div class="detail ${OPEN.has(id)?'on':''}" id="${id}">${itemsHTML}${mineHTML}${poolHTML}</div>`:''}`;
+}
+function togRow(id){ OPEN.has(id)?OPEN.delete(id):OPEN.add(id); const e=$(id), h=$(id+'-h'); if(e) e.classList.toggle('on'); if(h) h.classList.toggle('open'); }
+let LAST = null;
+function filterPool(v){ v=up(v).toLowerCase(); document.querySelectorAll('#plist .pi').forEach(e=>{ e.style.display = !v || e.textContent.replace(/\s/g,'').toLowerCase().includes(v) ? '' : 'none'; }); }
+function showPool(id){
+  const r = ROWREG[id]; if(!r || !r.pool) return;
+  const html = r.pool.map(([code,name])=>{ const q = reqStatus(code, name);
+    return `<div class="pi ${q.st}" onclick="closeSheet();chipTap('${esc(code)}','${q.id||''}')"><small>${esc(code)}</small><span>${esc(name)}</span><em>${q.st==='y'?'✓ 이수':q.st==='i'?'수강중':'+ 추가'}</em></div>`; }).join('');
+  openSheet(`<h3>${esc(r.k)} 인정 과목</h3><p class="mut s">과목을 누르면 바로 추가(이미 있으면 수정)할 수 있어요</p>
+    ${r.pool.length>12?`<div class="search">🔍<input placeholder="과목명·학수번호로 찾기" oninput="filterPool(this.value)"></div>`:''}<div class="plist" id="plist">${html}</div>`);
+}
+
+/* ═══════════ 졸업요건 화면 ═══════════ */
+function renderGrad(){
+  ROWREG = {};
+  /* 계획 포함 계산을 한 번 더 해서 줄마다 '계획 포함 N' 표시 */
+  let RP = null;
+  if(!PLAN_VIEW && S.courses.some(c=>isIng(c)||isPlan(c))){ PLAN_VIEW = true; RP = compute(); PLAN_VIEW = false; }
+  const R = LAST = compute(), solo = !R.s2;
+  if(RP){ R.biz.forEach((r,i)=>r.planGot = RP.biz[i] && RP.biz[i].got); if(R.s2 && RP.s2) R.s2.reqs.forEach((r,i)=>r.planGot = RP.s2.reqs[i] && RP.s2.reqs[i].got); }
+  document.body.classList.toggle('solo', solo);
+  if(solo && SEG==2) SEG = 1;
+  document.body.dataset.seg = SEG;
+  const left = Math.max(0, 130 - R.done), afterIng = Math.max(0, left - R.ing), afterPlan = Math.max(0, afterIng - R.plan);
+  const short = PLAN_VIEW ? R.biz.concat(R.s2 ? R.s2.reqs : []).filter(r=>!r.done && !r.cap) : [];
+  $('hero').innerHTML = `<div class="k">${PLAN_VIEW?'계획대로 들으면':'졸업까지'}</div>
+    <h1>${PLAN_VIEW
+        ? (afterPlan ? `<em>${fmt(afterPlan)}학점</em> 더 필요해요` : `<em>130학점</em> 채워요`) + (short.length ? `<br>채워야 할 요건 ${short.length}개` : afterPlan ? '' : '<br>요건도 다 채워요 🎓')
+        : (left? `<em>${fmt(left)}학점</em> 남았어요` : '<em>130학점</em> 다 채웠어요') + (R.ing?`<br>이번 학기 끝나면 ${fmt(afterIng)}학점`:'')}</h1>
+    <div class="big-pb"><i style="width:${pct(R.done,130)}%"></i><i class="ing" style="width:${pct(R.ing,130)}%"></i><i class="pl" style="width:${pct(R.plan,130)}%"></i></div>
+    <div class="legend"><span>이수 ${fmt(R.done)}</span>${R.ing?`<span class="ing">수강중 ${fmt(R.ing)}</span>`:''}${R.plan?`<span class="pl">계획 ${fmt(R.plan)}</span>`:''}<span class="plain">평점 기준 1.75 이상</span></div>
+    ${short.length?`<div class="shortlist">${short.map(r=>`<span>${esc(r.k)} <b>${fmt(Math.max(0,r.need-r.got))}${r.unit||'학점'}</b></span>`).join('')}</div>`:''}
+    <label class="plansw" onclick="togglePlanView()"><span><b>계획 포함해서 보기</b><small>수강중·계획 과목을 들었다고 치고 계산</small></span><span class="set-sw ${PLAN_VIEW?'on':''}"></span></label>`;
+  renderRemain(R);
+  const G = R.gpa;
+  $('nums').innerHTML = `
+    <div><small>전체 평점</small><b>${g2(G.all.avg)}</b><em>${G.all.avg!=null?'100점 '+to100(G.all.avg).toFixed(1):'성적 입력 필요'}</em></div>
+    <div><small>경영 평점</small><b>${g2(G.biz.avg)}</b><em>전공필수·전공선택</em></div>
+    ${solo ? `<div><small>교양 평점</small><b>${g2(G.lib.avg)}</b><em>학문의기초 포함</em></div>`
+           : `<div><small>${esc(R.s2.short)} 평점</small><b>${g2(G.s2&&G.s2.avg)}</b><em>2전공 인정 과목</em></div>`}`;
+  $('seg').innerHTML = (solo?[[1,R.deep?'경영 (심화)':'경영'],[4,'교양'],[3,'성적 추이']]:[[1,'경영'],[2,R.s2.short],[4,'교양'],[3,'성적 추이']])
+    .map(([k,l])=>`<button class="${SEG==k?'on':''}" onclick="SEG=${k};renderGrad()">${esc(l)}</button>`).join('');
+  $('box1').innerHTML = `<h2>경영학과 ${R.deep?'<span class="tag">심화</span>':''}<span class="sp"></span><small>26학번 · ${R.deep?'전공 66':'전공 39'}</small></h2>${R.biz.map((r,i)=>r.k==='교양필수'?'':reqRow(r,'a',i)).join('')}`;
+  renderLib(R);
+  const b2 = $('box2');
+  if(R.deep){ b2.innerHTML=''; b2.style.display='none'; }
+  else if(solo){ b2.style.display=''; b2.innerHTML = `<div class="none2"><b>2전공을 아직 안 골랐어요</b>정하면 여기에 요건이 떠요.<br>오른쪽 위 ⋮ → 전공 구성 바꾸기</div>`; }
+  else {
+    b2.style.display='';
+    const D = R.s2.dual;
+    const dualTxt = D.cap ? `중복인정 <b>${fmt(D.used)}/${D.cap}학점</b>${D.list.length?' · '+D.list.map(c=>esc(c.name)).join(', '):''}<br>${esc(D.note)}${D.th?` · 지금 ${fmt(D.raw)}학점 → ${D.confirmed?'확정':D.th+'학점 넘으면 확정'}`:''}` : '';
+    b2.innerHTML = `<h2>${esc(R.s2.title)} <span class="tag">${R.s2.type}전공</span><span class="sp"></span><small>${fmt(R.s2.got)} / ${R.s2.need}</small></h2>
+      <div class="tot"><div class="big-pb sm"><i style="width:${pct(R.s2.got,R.s2.need)}%"></i></div></div>
+      ${R.s2.reqs.map((r,i)=>reqRow(r,'b',i)).join('')}
+      ${dualTxt?`<div class="dualline">${dualTxt}</div>`:''}${R.s2.extra?`<div class="dualline">${esc(R.s2.extra)}</div>`:''}`;
+  }
+  $('boxT').innerHTML = trendHTML('m'); $('boxT2').innerHTML = trendHTML('d');
+  wireTrend('m'); wireTrend('d');
+  renderSems();
+}
+
+/* ═══════════ 교양 탭 (B안: 130학점 쪼개기 + 교양필수 + 둘러보기 / C안: 교양 고르기 시트) ═══════════ */
+const gyoAreaLabel = d => /^PHEK/.test(up(d.code)) ? '체육' : d.ga!=null ? GYO_AREAS[d.ga] : '교양';
+/* 다음 정규학기: 9~2월이면 1학기, 3~8월이면 2학기 */
+const nextTermKind = () => { const m = new Date().getMonth()+1; return (m>=9 || m<=2) ? 1 : 2; };
+const tmHas = (tm, y, k) => !!(tm & (1 << ((y-2024)*4 + k)));        // k: 0=1학기 1=여름 2=2학기 3=겨울
+const tmPop = tm => { let n=0; for(let x=tm; x; x>>>=1) n += x&1; return n; };
+/* 그 학기에 열릴 가능성: 2026년 같은 학기에 열렸거나 2024·2025 둘 다 열림 (추정) */
+const gyoLikely = (tm, kind) => { const k = kind===1 ? 0 : 2; return tmHas(tm,2026,k) || (tmHas(tm,2024,k) && tmHas(tm,2025,k)); };
+function gyoTermText(tm){
+  if(!tm) return '개설정보 없음';
+  const yrs = [2024,2025,2026], h1 = yrs.filter(y=>tmHas(tm,y,0)).length, h2 = yrs.filter(y=>tmHas(tm,y,2)).length, hs = yrs.some(y=>tmHas(tm,y,1)||tmHas(tm,y,3));
+  let t = h1===3 && h2===3 ? '매학기' : [h1?'1학기':'', h2?'2학기':''].filter(Boolean).join('·');
+  if(hs) t = (t ? t+'·' : '') + '계절';
+  if(![0,1,2,3].some(k=>tmHas(tm,2026,k))) t += ' · 2026 미개설';
+  return t; }
+function lawList(){ const def = s2Def(); if(def!==MAJORS.GGL) return null; const r = def.reqs.find(x=>x.k==='교양선택필수'); return r ? r.list : null; }
+function gyoCatalog(){
+  const law = lawList(), lawSet = new Set((law||[]).map(x=>up(x[0])));
+  const items = GYO.map(([code,name,cr,ga,tm,eng])=>({ code, name, cr, ga, tm, eng:!!eng, law:lawSet.has(code), pe:/^PHEK/.test(code), cat:(DBI[code]||{}).cat }));
+  if(law) law.forEach(([code,name])=>{ const k = up(code); if(!items.some(x=>x.code===k)) { const d = DBI[k]||{};
+    items.push({ code:k, name, cr:d.cr||3, ga:null, tm:0, eng:false, law:true, pe:false, cat:d.cat }); } });
+  return items; }
+
+function renderLib(R){
+  const el = $('box3'); if(!el) return;
+  const gen = R.biz.find(r=>r.k==='교양필수'); if(!gen){ el.innerHTML=''; return; }
+  const major = R.biz.filter(r=>r.k==='전공필수' || r.k==='전공선택'), base = R.biz.filter(r=>r.k==='학문의기초' || r.k==='경제학 필수');
+  const need = rs => rs.reduce((s,r)=>s+r.need,0), used = rs => rs.reduce((s,r)=>s+Math.min(r.got,r.need),0);
+  /* 130학점 = 경영 + 학문기초·경제 + 2전공(중복인정 최대치 뺀 만큼) + 교양필수 + 자유학점 */
+  const s2 = R.s2, cap = s2 && s2.dual ? (s2.dual.cap||0) : 0, s2Need = s2 ? Math.max(0, s2.need - cap) : 0;
+  const free = Math.max(0, 130 - (need(major) + need(base) + s2Need + gen.need));
+  const usedReq = used(major) + used(base) + Math.min(gen.got, gen.need) + (s2 ? Math.min(s2.got, s2.need) - (s2.dual ? s2.dual.used||0 : 0) : 0);
+  const filled = Math.max(0, Math.min(free, R.total - usedReq)), left = free - filled;
+  const segs = [['경영 전공', need(major), 'var(--brand)'], ['학문기초·경제', need(base), '#c9566f']]
+    .concat(s2 ? [[s2.short + (cap ? ' (중복 제외)' : ''), s2Need, 'var(--blue)']] : [])
+    .concat([['교양필수', gen.need, '#8b95a1'], ['자유 · 채움', filled, 'var(--ok)'], ['자유 · 남음', left, 'var(--line2)']]);
+  const pe = R.pe || {got:0, ing:0};
+  const peNote = pe.got > PE_CAP
+    ? `<div class="lnote warn">교양체육을 ${fmt(pe.got)}학점 들었는데 <b>${PE_CAP}학점까지만</b> 졸업학점에 들어가요 · ${fmt(pe.got-PE_CAP)}학점은 빠져요</div>`
+    : `<div class="lnote">교양체육은 <b>${PE_CAP}학점까지만</b> 졸업학점에 들어가요 · 지금 ${fmt(pe.got)}학점${pe.ing?` (수강중 ${fmt(pe.ing)})`:''}</div>`;
+  const libReq = s2 ? s2.reqs.find(r=>r.k==='교양선택필수') : null;
+  const lawNote = libReq ? `<div class="lnote">${esc(s2.short)} 교양선택필수 <b>${fmt(libReq.got)} / ${libReq.need}학점</b>${libReq.done?' · 채웠어요':` · <span class="alltog" onclick="openGyo('law')">법학 관련 교양 고르기 ›</span>`}</div>` : '';
+  const G = R.gpa && R.gpa.lib;
+  const box1 = `<div class="box"><div class="lkpi">${PLAN_VIEW?'계획대로 들으면 · ':''}마음대로 고를 수 있는 학점<h1>${left>0?`<em>${fmt(left)}학점</em> 남았어요`:'<em>자유학점</em> 다 채웠어요'}</h1></div>
+    <div class="stack" role="img" aria-label="졸업 130학점 구성">${segs.filter(s=>s[1]>0).map(s=>`<i style="flex:${s[1]};background:${s[2]}" title="${esc(s[0])} ${fmt(s[1])}"></i>`).join('')}</div>
+    <div class="leg2">${segs.map(s=>`<span><i style="background:${s[2]}${s[2]==='var(--line2)'?';border:1px solid var(--bd)':''}"></i>${esc(s[0])}<b>${fmt(s[1])}</b></span>`).join('')}</div>
+    ${peNote}${lawNote}
+    <div class="gcount">자유학점 = 130 − 필수 요건 · 교양선택·일반선택·요건 넘친 학점으로 채워져요${G && G.avg!=null?` · 교양 평점 <b style="color:var(--ink)">${g2(G.avg)}</b>`:''}</div></div>`;
+  const nY = gen.items.filter(x=>x[2]==='y').length;
+  const box2 = `<div class="box"><h2>교양필수 <span class="sp"></span><small>${nY} / ${gen.items.length}과목 · ${fmt(gen.got)}/${gen.need}학점</small></h2>
+    ${gen.items.map(([code,name,st,id])=>{ const g = GEN_REQ.find(x=>x[0]===code);
+      return `<div class="gchk" onclick="chipTap('${esc(code)}','${id||''}')"><span class="d ${st}">${st==='y'?'✓':''}</span><span class="n">${esc(name)}</span>${
+        st==='i'?'<span class="st">수강중</span>':st==='p'?'<span class="st p">계획</span>':st==='y'?`<span class="c">${g?g[2]:''}학점</span>`:'<span class="st add">+ 추가</span>'}</div>`; }).join('')}</div>`;
+  /* 둘러보기 미리보기: 다음 학기에 열릴 만한, 안 들은 과목 3개 (공거리면 법학 관련 먼저) */
+  const kind = nextTermKind(), law = lawList();
+  const pool = gyoCatalog().filter(it=>!reqStatus(it.code,it.name).st && (!it.tm || gyoLikely(it.tm, kind)));
+  const lawFirst = !!(libReq && !libReq.done);
+  const picks = pool.filter(it=>it.law && lawFirst).slice(0,2);
+  pool.filter(it=>it.ga!=null && it.ga<7 && !picks.includes(it)).sort((a,b)=>tmPop(b.tm)-tmPop(a.tm) || a.name.localeCompare(b.name,'ko')).slice(0, 3-picks.length).forEach(it=>picks.push(it));
+  const chips = [['all','전체']].concat(law?[['law','공거리 인정']]:[], GYO_AREAS.slice(0,7).map((a,i)=>[String(i),a]));
+  const box3 = `<div class="box"><h2>교양 둘러보기 <span class="sp"></span><small>${GYO.length}과목</small></h2>
+    <div class="gchips">${chips.map(([k,l])=>`<button class="${k==='law'?'law':''}" onclick="openGyo('${k}')">${esc(l)}</button>`).join('')}</div>
+    ${picks.map(it=>gyoRow(it)).join('')}
+    <button class="gmore" onclick="openGyo('all')">전체 보기 · ${kind}학기에 열릴 과목</button></div>`;
+  el.innerHTML = box1 + box2 + box3;
+}
+
+/* 교양 고르기 (전체 화면 시트) */
+const GYF = { q:'', area:'all', next:true, eng:false, hide:true, n:60 };
+function gyoRow(it, back){
+  const q = reqStatus(it.code, it.name);
+  const areaL = it.pe ? '체육' : it.ga!=null ? GYO_AREAS[it.ga] : '교양';
+  const tags = [it.law ? '<span class="l">공거리 인정</span>' : '', it.ga!=null && it.ga<7 ? `<span class="a">${esc(areaL)}</span>` : (it.law && it.ga==null ? '' : esc(areaL))].filter(Boolean).join(' · ');
+  const extra = it.cat && it.cat!=='교양선택' && it.cat!=='2전공' ? ' · ' + esc(it.cat==='전공선택' ? '경영 전공선택 인정' : it.cat) : '';
+  const btn = q.st ? `<button class="add ${q.st}" onclick="closeSheet();openCourse({id:'${q.id}'${back?",back:'gyo'":''}})">${q.st==='y'?'✓ 이수':q.st==='i'?'수강중':'계획'}</button>`
+                   : `<button class="add" onclick="closeSheet();openCourse({code:'${esc(it.code)}',plan:true${back?",back:'gyo'":''}})" aria-label="${esc(it.name)} 수강계획에 담기">+</button>`;
+  return `<div class="gcr"><div class="n"><b>${esc(it.name)}</b><small>${tags} · ${fmt(it.cr)}학점 · ${esc(gyoTermText(it.tm))}${it.eng?' · 영강':''}${extra}</small></div>${btn}</div>`; }
+function gyoMatch(it, f, kind){
+  const a = f.area;
+  if(a==='law' && !it.law) return false;
+  if(a==='pe' && !it.pe) return false;
+  if(a==='etc' && !(it.ga>=10)) return false;
+  if(/^\d+$/.test(a) && (it.pe || it.ga!==+a)) return false;
+  if(f.next && it.tm && !gyoLikely(it.tm, kind)) return false;
+  if(f.eng && !it.eng) return false;
+  if(f.hide && reqStatus(it.code, it.name).st==='y') return false;
+  if(f.q){ const q = normName(f.q); if(q && !normName(it.name).includes(q) && !it.code.includes(q)) return false; }
+  return true; }
+function gyoChips(){ document.querySelectorAll('#gchips button').forEach(b=>b.classList.toggle('on', b.dataset.k===GYF.area)); }
+function gyoList(){
+  const el = $('glist'); if(!el) return;
+  const kind = nextTermKind(), f = GYF;
+  $('gfil').innerHTML = [['next',`${kind}학기에 열릴 과목만`],['eng','영강 분반 있는 과목'],['hide','들은 과목 숨기기']]
+    .map(([k,l])=>`<button class="${f[k]?'on':''}" onclick="GYF.${k}=!GYF.${k};GYF.n=60;gyoList()">${f[k]?'✓ ':''}${l}</button>`).join('');
+  const rank = it => (it.law && f.area==='all' && lawList() ? 0 : 2) + (it.ga!=null && it.ga<7 ? 0 : 1);
+  const all = gyoCatalog().filter(it=>gyoMatch(it, f, kind)).sort((a,b)=>rank(a)-rank(b) || tmPop(b.tm)-tmPop(a.tm) || a.name.localeCompare(b.name,'ko'));
+  el.innerHTML = all.length
+    ? all.slice(0, f.n).map(it=>gyoRow(it, true)).join('')
+      + (all.length > f.n ? `<button class="gmore" onclick="GYF.n+=60;gyoList()">더 보기 · ${all.length-f.n}과목 남음</button>` : '')
+      + `<div class="gcount">${all.length}과목${f.next?` · ${kind}학기 개설은 2026년에 열렸거나 2024·2025년 연속으로 열린 과목 기준 추정이에요. 실제 개설은 수강편람에서 확인하세요.`:''}<br>출처: 수강신청시스템 과목조회 (2024-1 ~ 2026-겨울, 2026-11-08 수집)</div>`
+    : '<div class="lempty">조건에 맞는 과목이 없어요</div>'; }
+function openGyo(area){
+  if(area!=null){ GYF.area = String(area); GYF.n = 60; }
+  const law = lawList(); if(GYF.area==='law' && !law) GYF.area = 'all';
+  const chips = [['all','전체']].concat(law?[['law','공거리 인정']]:[], GYO_AREAS.slice(0,7).map((a,i)=>[String(i),a]),
+    [['7','교양선택'],['8','기초과학'],['9','외국어'],['pe','체육'],['etc','기타']]);
+  openSheet(`<h3>교양 고르기<span style="flex:1"></span><button class="gx sm" onclick="closeSheet()" aria-label="닫기">✕</button></h3>
+    <div class="search">🔍<input id="gq" placeholder="과목명 · 학수번호 검색" value="${esc(GYF.q)}" autocomplete="off" oninput="GYF.q=this.value;GYF.n=60;gyoList()"></div>
+    <div class="gchips" id="gchips">${chips.map(([k,l])=>`<button data-k="${k}" class="${k==='law'?'law':''} ${GYF.area===k?'on':''}" onclick="GYF.area='${k}';GYF.n=60;gyoChips();gyoList()">${esc(l)}</button>`).join('')}</div>
+    <div class="gfil" id="gfil"></div><div id="glist"></div>`, 'tall');
+  gyoList();
+  const on = document.querySelector('#gchips button.on'); if(on) on.scrollIntoView({inline:'center', block:'nearest'});
+}
+
+/* ── 수강 내역 ── */
+function renderSems(){
+  const R = LAST, rowsById = {}; R.rows.forEach(r=>rowsById[r.c.id]=r);
+  if(!SEM_OPEN.__init){ SEM_OPEN.__init = true; sortedSems().forEach(s=>{ if(S.courses.some(c=>c.sem===s && isIng(c))) SEM_OPEN.add(s); }); }
+  $('sems').innerHTML = sortedSems().map(s=>{
+    const cs = S.courses.filter(c=>c.sem===s), st = semStats().find(x=>x.sem===s), on = SEM_OPEN.has(s);
+    const season = /-(S|W)$/.test(s);
+    return `<div class="sem ${on?'open':''}" id="sem-${s}">
+      <div class="h" onclick="semTog('${s}')"><b>${semLabel(s)}</b><small>${cs.length? cs.length+'과목 · '+fmt(cs.reduce((a,c)=>a+crOf(c),0))+'학점':'비어 있음'}</small><span class="sp"></span>
+        ${st.gpa!=null?`<span class="g">${st.gpa.toFixed(2)}</span>`:st.ing?'<span class="ingb">수강중</span>':st.plan?'<span class="planb">계획</span>':''}${chevSvg}</div>
+      ${cs.length?`<div class="peek">${cs.map(c=>esc(c.name)).join(' · ')}</div>`:''}
+      <div class="body"><div>
+        ${cs.map(c=>{ const r=rowsById[c.id]; const tag = r && r.overlap ? (r.dual?' · 중복인정':r.toS2?' · 2전공으로':' · 경영으로') : '';
+          const a = ATT[c.id] || {n:1}; const g = gp(c.gr), capped = g!=null && a.n>1 && g > a.cap;
+          const rt = a.replaced ? '<em class="rt old">재수강으로 대체됨</em>' : a.n>1 ? `<em class="rt">${a.n===2?'재수강':a.n+'번째 수강'} · 최고 ${capLabel(a.cap)}</em>` : '';
+          return `<div class="co ${a.replaced?'replaced':''}" onclick="openCourse({id:'${c.id}'})"><div class="n">${esc(c.name)} ${rt}<small>${esc(c.cat==='2전공' && s2Def() ? s2Def().short : c.cat)} · ${fmt(crOf(c))}학점${c.eng?' · 영강':''}${tag}</small></div>
+            <span class="gr ${isIng(c)?'ing':isPlan(c)?'plan':''}">${capped?`<s>${esc(c.gr)}</s> ${capLabel(a.cap)}`:esc(c.gr)}</span></div>`; }).join('')}
+        ${cs.some(isPlan)?`<button class="convbtn" onclick="planToIng('${s}')">이 학기 계획 과목 → 수강중으로 바꾸기</button>`:''}
+        <div class="semact"><button class="addc" onclick="openCourse({sem:'${s}', plan:isFutureSem('${s}')})">+ ${semLabel(s)}에 ${isFutureSem(s)?'계획 과목 담기':'과목 추가'}</button>
+          <button class="delsem" onclick="delSem('${s}')" title="학기 삭제">학기 삭제</button></div>
+      </div></div></div>`; }).join('');
+  $('alltog').textContent = sortedSems().every(s=>SEM_OPEN.has(s)) ? '모두 접기' : '모두 펼치기';
+}
+function semTog(k){ SEM_OPEN.has(k)?SEM_OPEN.delete(k):SEM_OPEN.add(k); const e=$('sem-'+k); if(e) e.classList.toggle('open');
+  $('alltog').textContent = sortedSems().every(s=>SEM_OPEN.has(s)) ? '모두 접기' : '모두 펼치기'; }
+function allTog(){ const all = sortedSems().every(s=>SEM_OPEN.has(s)); sortedSems().forEach(s=> all? SEM_OPEN.delete(s) : SEM_OPEN.add(s)); renderSems(); }
+function addSem(){
+  const reg = sortedSems().filter(s=>/-(1|2)$/.test(s)); const last = reg[reg.length-1] || "0-2";
+  let [y,t] = last.split('-').map(Number); if(t===1) t=2; else { y++; t=1; }
+  S.sems.push(y+'-'+t); touch(); renderGrad(); }
+function addSeason(){
+  openSheet(`<h3>계절학기 추가</h3>
+    <div class="frow"><label>학년<select id="ssY">${[1,2,3,4,5].map(y=>`<option value="${y}">${y}학년</option>`).join('')}</select></label>
+    <label>계절<select id="ssT"><option value="S">여름계절</option><option value="W">겨울계절</option></select></label></div>
+    <button class="savebtn" onclick="saveSeason()">추가</button>`); }
+function saveSeason(){ const s = $('ssY').value+'-'+$('ssT').value;
+  if(S.sems.includes(s)){ alert('이미 있는 학기예요'); return; } S.sems.push(s); SEM_OPEN.add(s); closeSheet(); touch(); renderGrad(); }
+function delSem(s){
+  const n = S.courses.filter(c=>c.sem===s).length;
+  if(!confirm(n? `${semLabel(s)}과 그 안의 과목 ${n}개를 지울까요?` : `${semLabel(s)}을 지울까요?`)) return;
+  S.sems = S.sems.filter(x=>x!==s); S.courses = S.courses.filter(c=>c.sem!==s); touch(); renderGrad(); }
+
+/* ── 수강계획 도우미 ── */
+function lastActiveSem(){ const act = sortedSems().filter(s=>S.courses.some(c=>c.sem===s && !isPlan(c))); return act[act.length-1] || null; }
+function isFutureSem(s){ const a = lastActiveSem(); return !!a && semIdx(s) > semIdx(a); }
+function nextSem(){ const a = lastActiveSem(); const reg = sortedSems().filter(s=>/-(1|2)$/.test(s));
+  return (a ? reg.find(s=>semIdx(s) > semIdx(a)) : reg[0]) || (addSemSilently()); }
+function addSemSilently(){ const reg = sortedSems().filter(s=>/-(1|2)$/.test(s)); const last = reg[reg.length-1] || "0-2";
+  let [y,t] = last.split('-').map(Number); if(t===1) t=2; else { y++; t=1; } const n=y+'-'+t; S.sems.push(n); return n; }
+function planToIng(s){ const n = S.courses.filter(c=>c.sem===s && isPlan(c)).length;
+  if(!confirm(`${semLabel(s)} 계획 과목 ${n}개를 수강중으로 바꿀까요?`)) return;
+  S.courses.forEach(c=>{ if(c.sem===s && isPlan(c)) c.gr='수강중'; }); touch(); renderGrad(); }
+function togglePlanView(){ PLAN_VIEW = !PLAN_VIEW; try{ localStorage.setItem(LS_NS+':planview', PLAN_VIEW?'1':''); }catch(e){} renderGrad(); }
+/* 남은 필수과목 (계획 포함 보기에서만) */
+function renderRemain(R){
+  const el = $('boxR'); if(!el) return;
+  if(!PLAN_VIEW){ el.style.display='none'; el.innerHTML=''; return; }
+  const groups = [];
+  R.biz.filter(r=>r.items).forEach(r=>{ const miss = r.items.filter(x=>!x[2]); if(miss.length) groups.push([(r.k==='교양필수'?'':'경영 ')+r.k, miss]); });
+  if(R.s2) R.s2.reqs.filter(r=>r.items).forEach(r=>{ const miss = r.items.filter(x=>!x[2]); if(miss.length) groups.push([R.s2.short+' '+r.k, miss]); });
+  el.style.display='';
+  el.innerHTML = `<h2>남은 필수과목 <span class="sp"></span><small>${groups.reduce((a,g)=>a+g[1].length,0)}개</small></h2>`
+    + (groups.length ? groups.map(([t,a])=>`<div class="grp"><div class="dlab">${esc(t)}</div><div class="tags">${a.map(x=>`<span onclick="chipTap('${esc(x[0])}','',true)">+ ${esc(x[1])}</span>`).join('')}</div></div>`).join('')
+       + '<div class="hint2">누르면 다음 학기 계획으로 담겨요. 학기는 담을 때 바꿀 수 있어요.</div>'
+       : '<div class="mut s">필수과목은 계획까지 포함해서 다 채웠어요 👍</div>');
+}
+
+/* ── 과목 추가/수정 ── */
+let EDIT = null, EDIT_BACK = null;
+function openCourse(o={}){
+  EDIT_BACK = o.back || null;
+  const c = o.id ? S.courses.find(x=>x.id===o.id) : null;
+  const d = o.code ? DBI[up(o.code)] : null;
+  const curSem = sortedSems().find(s=>S.courses.some(x=>x.sem===s && isIng(x))) || sortedSems()[0];
+  EDIT = c ? Object.assign({}, c) : { id:null, name:d?d.name:'', code:d&&!isFakeCode(d.code)?d.code:'', cat:d?d.cat:'교양선택', cr:d?d.cr:3, gr:o.plan?'계획':'A+', sem:o.sem||(o.plan?nextSem():curSem), eng:false, side:'auto' };
+  openSheet(`<h3>${c?'과목 수정':'과목 추가'}</h3>
+    ${c?'':`<div class="search">🔍<input id="cq" placeholder="과목명 또는 학수번호 (예: 마케팅원론, ECON201)" autocomplete="off" oninput="searchCourse()"></div><div class="res" id="cres"></div>`}
+    <div class="frow"><label>과목명<input id="cName" value="${esc(EDIT.name)}"></label><label class="w120">학수번호<input id="cCode" value="${esc(EDIT.code)}" oninput="EDIT.code=this.value;updOverlap();updNotes()"></label></div>
+    <div class="frow"><label>이수구분<select id="cCat" onchange="EDIT.cat=this.value;updOverlap()">${(CATS.includes(EDIT.cat)?CATS:CATS.concat([EDIT.cat])).map(x=>`<option ${x===EDIT.cat?'selected':''}>${x}</option>`).join('')}</select></label>
+      <label class="w84">학점<input id="cCr" type="number" step="0.5" min="0" value="${EDIT.cr}" inputmode="decimal"></label></div>
+    <div class="frow"><label>성적<select id="cGr">${Object.keys(GRADES).map(g=>`<option ${g===EDIT.gr?'selected':''}>${g}</option>`).join('')}</select></label>
+      <label>학기<select id="cSem" onchange="EDIT.sem=this.value;updNotes()">${sortedSems().map(s=>`<option value="${s}" ${s===EDIT.sem?'selected':''}>${semLabel(s)}</option>`).join('')}</select></label></div>
+    <div id="cNotes"></div>
+    <label class="chk"><input type="checkbox" id="cEng" ${EDIT.eng?'checked':''}> 영어강의로 들었어요</label><div class="hint2" id="cEngHint">${d&&(d.eng||d.geng)?'이 과목은 영어강의 분반이 있어요. 영강 분반이었으면 체크하세요.':''}</div>
+    <div id="cOv"></div>
+    <button class="savebtn" onclick="saveCourse()">저장</button>
+    ${c?`<button class="delbtn" onclick="delCourse('${c.id}')">이 과목 삭제</button>`:''}`);
+  updOverlap(); updNotes();
+  if(!c) setTimeout(()=>{ try{ $('cq').focus(); }catch(e){} }, 250);
+}
+/* 재수강·선수과목 안내 */
+const PREREQ = { BUSS254:'BUSS207', BUSS384:'BUSS207', BUSS386:'BUSS207', ECON201:'ECON171', ECON202:'ECON172',
+  BUSS238:'BUSS205', BUSS252:'BUSS205', BUSS342:'BUSS205', BUSS362:'BUSS205', BUSS363:'BUSS205', BUSS407:'BUSS205', BUSS454:'BUSS205', BUSS475:'BUSS205' };
+function updNotes(){
+  const el = $('cNotes'); if(!el || !EDIT) return; const out = [];
+  const nm = ($('cName')||{}).value || EDIT.name, key = up(EDIT.code) || ('#'+normName(nm));
+  const prev = S.courses.filter(c=>c.id!==EDIT.id && courseKey(c)===key && semIdx(c.sem) < semIdx(EDIT.sem));
+  if(prev.length){ const n = prev.length+1, cap = Math.max(1.0, 4.5-0.5*(n-1));
+    out.push(`<div class="note rt">${prev.map(c=>semLabel(c.sem)+' '+esc(c.gr)).join(', ')}에 이미 들었어요 → <b>${n===2?'재수강':n+'번째 수강'}</b>으로 저장돼요 · 최고 <b>${capLabel(cap)}</b>까지 인정</div>`); }
+  const pre = PREREQ[up(EDIT.code)];
+  if(pre){ const ok = S.courses.some(c=>up(c.code)===pre && !isFail(c) && semIdx(c.sem) < semIdx(EDIT.sem));
+    if(!ok) out.push(`<div class="note warn">선수과목 <b>${esc(nameOf(pre))}</b>을 이 학기 전에 들어야 해요</div>`); }
+  el.innerHTML = out.join(''); }
+function updOverlap(){
+  const el = $('cOv'); if(!el) return; const def = s2Def();
+  const ov = def && BIZ_MAJOR_CATS.includes(EDIT.cat) && s2Member(def, EDIT.code);
+  el.innerHTML = ov ? `<div class="ovbox"><b>경영이랑 ${esc(def.short)}에 둘 다 해당하는 과목이에요</b>
+    <small>중복인정 한도(${def.dual.cap}학점) 안이면 양쪽 다 인정되고, 넘으면 한쪽에만 들어가요.</small>
+    <div class="mini-seg wide">${[['auto','자동'],['biz','경영에만'],['s2',def.short+'에만']].map(([k,l])=>`<button class="${(EDIT.side||'auto')===k?'on':''}" onclick="EDIT.side='${k}';updOverlap()">${esc(l)}</button>`).join('')}</div></div>` : '';
+}
+function searchCourse(){
+  const v = up($('cq').value).toLowerCase(); const el = $('cres');
+  if(!v){ el.innerHTML=''; return; }
+  const def = s2Def();
+  const hit = DB.filter(d=>d.name.replace(/\s/g,'').toLowerCase().includes(v) || d.code.toLowerCase().includes(v)).slice(0,40);
+  el.innerHTML = hit.length ? hit.map(d=>{ const s2 = s2Member(def, d.code);
+    const catL = d.cat==='2전공'&&def ? def.short : d.cat==='교양선택' && d.ga!=null ? gyoAreaLabel(d) : d.cat;
+    return `<div onclick="pickCourse('${d.code}')"><small>${isFakeCode(d.code)?'교양필수':d.code}</small><span>${esc(d.name)}</span><em>${esc(catL)}${s2&&d.cat!=='2전공'?' · '+esc(def.short):''}</em></div>`; }).join('')
+    : `<div class="none">목록에 없어요. 아래에 직접 적어도 돼요.</div>`;
+}
+function pickCourse(code){ const d = DBI[code]; if(!d) return;
+  EDIT.name=d.name; EDIT.code=isFakeCode(d.code)?'':d.code; EDIT.cat=d.cat; EDIT.cr=d.cr||3; EDIT.eng=false;
+  $('cName').value=d.name; $('cCode').value=EDIT.code; $('cCat').value=d.cat; $('cCr').value=EDIT.cr; $('cEng').checked=false; $('cEngHint').textContent = (d.eng||d.geng) ? '이 과목은 영어강의 분반이 있어요. 영강 분반이었으면 체크하세요.' : '';
+  $('cres').innerHTML=''; $('cq').value=''; updOverlap(); updNotes(); }
+function saveCourse(){
+  const name = $('cName').value.trim(); if(!name){ alert('과목명을 입력해 주세요'); return; }
+  const o = { id: EDIT.id || ('c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5)),
+    name, code: up($('cCode').value).replace(/[^A-Z0-9]/g,''), cat: $('cCat').value, cr: parseFloat($('cCr').value)||0,
+    gr: $('cGr').value, sem: $('cSem').value, eng: $('cEng').checked, side: EDIT.side||'auto' };
+  const i = S.courses.findIndex(x=>x.id===o.id); if(i>=0) S.courses[i]=o; else S.courses.push(o);
+  SEM_OPEN.add(o.sem); closeSheet(); touch(); renderGrad(); if(EDIT_BACK==='gyo') openGyo(); }
+function delCourse(id){ if(!confirm('이 과목을 지울까요?')) return; S.courses = S.courses.filter(c=>c.id!==id); closeSheet(); touch(); renderGrad(); if(EDIT_BACK==='gyo') openGyo(); }
+
+/* ── 성적 추이 차트 (학기 평점 / 누적 평점 · 학기별 학점) ── */
+const C_SEM = '#b3123f', C_CUM = '#3182f6';
+let trendMode = 'gpa';
+function trendRows(){ return semStats().filter(r=>r.gpa!=null || r.ing); }
+function trendHTML(uid){
+  const rows = trendRows(), done = rows.filter(r=>r.gpa!=null), last = done[done.length-1];
+  const ingR = rows.find(r=>r.ing && r.gpa==null);
+  const head = !rows.length ? '' : trendMode==='gpa'
+    ? `<div class="kpi2"><b>${last? last.cum.toFixed(2) : '–'}</b><span>누적 평점${last?' · 직전 학기 '+last.gpa.toFixed(2):''}</span></div>`
+    : `<div class="kpi2"><b>${fmt(totalCredits())}<i>/130</i></b><span>누적 취득학점${ingR?' · 이번 학기 '+fmt(ingR.enrolled)+'학점 수강중':''}</span></div>`;
+  return `<h2>성적 추이 <span class="sp"></span><span class="mini-seg"><button class="${trendMode==='gpa'?'on':''}" onclick="trendMode='gpa';renderGrad()">평점</button><button class="${trendMode==='cr'?'on':''}" onclick="trendMode='cr';renderGrad()">학점</button></span></h2>
+    ${head}${trendMode==='gpa' && done.length?`<div class="lg"><span><i style="background:${C_SEM}"></i>학기 평점</span><span><i class="dash" style="color:${C_CUM}"></i>누적 평점</span></div>`:''}
+    <div class="chart" id="ch-${uid}"></div>
+    ${rows.length?`<details class="tbl"><summary>표로 보기</summary><table><thead><tr><th>학기</th><th>평점</th><th>누적</th><th>취득</th></tr></thead><tbody>
+      ${rows.map(r=>`<tr><td>${r.label}</td><td>${r.gpa==null?'수강중':r.gpa.toFixed(2)}</td><td>${r.cum==null?'–':r.cum.toFixed(2)}</td><td>${fmt(r.earned)}</td></tr>`).join('')}</tbody></table></details>`:''}`;
+}
+function wireTrend(uid){
+  const box = $('ch-'+uid); if(!box || !box.offsetParent) return;
+  const rows = trendRows(), n = rows.length;
+  if(!n){ box.innerHTML = '<div class="lempty">성적을 입력하면 학기별 추이가 그려져요</div>'; return; }
+  const W = Math.max(280, box.clientWidth), H = W<420?210:240, L=32, Rr=10, T=22, B=30;
+  const x = i => L + (W-L-Rr)*(i+.5)/n;
+  const lab = r => { const a=r.sem.split('-'); return a[0]+'-'+({1:'1',2:'2',S:'여름',W:'겨울'}[a[1]]||a[1]); };
+  let svg = '';
+  if(trendMode==='gpa'){
+    const pts = rows.filter(r=>r.gpa!=null);
+    if(!pts.length){ box.innerHTML = '<div class="lempty">성적이 나온 학기가 아직 없어요</div>'; return; }
+    const vals = pts.flatMap(r=>[r.gpa,r.cum]); const lo = Math.max(0, Math.floor((Math.min(...vals)-.25)*2)/2), hi = 4.5;
+    const y = v => T + (H-T-B)*(1-(v-lo)/(hi-lo));
+    for(let v=lo; v<=hi+1e-9; v+=.5) svg += `<line x1="${L}" x2="${W-Rr}" y1="${y(v)}" y2="${y(v)}" class="gl"/><text x="${L-7}" y="${y(v)+4}" class="ax" text-anchor="end">${v.toFixed(1)}</text>`;
+    const path = k => pts.map((r,i)=>`${i?'L':'M'}${x(rows.indexOf(r))},${y(r[k])}`).join(' ');
+    const dots = (k,c) => pts.map(r=>`<circle cx="${x(rows.indexOf(r))}" cy="${y(r[k])}" r="4.5" fill="${c}" style="stroke:var(--card)" stroke-width="2"/>`).join('');
+    const Lp = pts[pts.length-1], li = rows.indexOf(Lp), close = Math.abs(y(Lp.gpa)-y(Lp.cum))<16, upr = y(Lp.gpa)<=y(Lp.cum);
+    svg += `<path d="${path('cum')}" fill="none" stroke="${C_CUM}" stroke-width="2" stroke-dasharray="5 4"/><path d="${path('gpa')}" fill="none" stroke="${C_SEM}" stroke-width="2" stroke-linejoin="round"/>${dots('cum',C_CUM)}${dots('gpa',C_SEM)}
+      <text x="${Math.min(x(li),W-Rr-16)}" y="${y(Lp.gpa)+(upr?-12-(close?8:0):18+(close?8:0))}" class="dl" text-anchor="middle">${Lp.gpa.toFixed(2)}</text>
+      ${pts.length>1?`<text x="${Math.min(x(li),W-Rr-16)}" y="${y(Lp.cum)+(upr?18+(close?8:0):-12-(close?8:0))}" class="dl mut" text-anchor="middle">${Lp.cum.toFixed(2)}</text>`:''}`;
+  } else {
+    const hi = Math.ceil(Math.max(24, ...rows.map(r=>Math.max(r.earned, r.enrolled)))/6)*6, y = v => T + (H-T-B)*(1-v/hi), bw = Math.min(40,(W-L-Rr)/n*.5), rr=4;
+    for(let v=0; v<=hi; v+=6) svg += `<line x1="${L}" x2="${W-Rr}" y1="${y(v)}" y2="${y(v)}" class="gl${v===0?' base':''}"/><text x="${L-7}" y="${y(v)+4}" class="ax" text-anchor="end">${v}</text>`;
+    rows.forEach((r,i)=>{ const v = r.gpa==null ? r.enrolled : r.earned; if(!v) return; const x0=x(i)-bw/2, top=y(v), b=y(0);
+      const d=`M${x0},${b} V${top+rr} Q${x0},${top} ${x0+rr},${top} H${x0+bw-rr} Q${x0+bw},${top} ${x0+bw},${top+rr} V${b} Z`;
+      svg += r.gpa==null ? `<path d="${d}" fill="none" stroke="${C_SEM}" stroke-width="1.5" stroke-dasharray="4 3"/>` : `<path d="${d}" fill="${C_SEM}"/>`;
+      if(i===n-1) svg += `<text x="${x(i)}" y="${top-8}" class="dl" text-anchor="middle">${fmt(v)}</text>`; });
+  }
+  const every = Math.ceil(n / Math.max(1, Math.floor((W-L-Rr)/44)));
+  rows.forEach((r,i)=>{ if(i%every===0 || i===n-1) svg += `<text x="${x(i)}" y="${H-9}" class="ax" text-anchor="middle">${lab(r)}</text>`; });
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="학기별 성적 추이"><line class="xh" x1="0" x2="0" y1="${T}" y2="${H-B}" style="visibility:hidden"/>${svg}</svg><div class="tip"></div>`;
+  const sv = box.querySelector('svg'), tip = box.querySelector('.tip'), xh = sv.querySelector('.xh');
+  const move = ev => {
+    const rc = sv.getBoundingClientRect(), px = (ev.clientX-rc.left)/rc.width*W;
+    let i = Math.round((px-L)/((W-L-Rr)/n) - .5); i = Math.max(0, Math.min(n-1, i)); const d = rows[i];
+    xh.setAttribute('x1',x(i)); xh.setAttribute('x2',x(i)); xh.style.visibility='visible';
+    tip.textContent=''; const h=document.createElement('div'); h.className='th'; h.textContent=d.label; tip.appendChild(h);
+    const line=(c,val,lb,dash)=>{ const e=document.createElement('div'); e.className='tr2'; const k=document.createElement('i'); if(dash){k.className='dash'; k.style.color=c;} else k.style.background=c;
+      const b=document.createElement('b'); b.textContent=val; const s=document.createElement('span'); s.textContent=lb; e.append(k,b,s); tip.appendChild(e); };
+    if(d.gpa==null) line(C_SEM, fmt(d.enrolled)+'학점', '수강중 · 성적 미확정');
+    else { line(C_SEM, d.gpa.toFixed(2), '학기 평점'); line(C_CUM, d.cum.toFixed(2), '누적 평점', true); line('#8b95a1', fmt(d.earned)+'학점', '취득'); }
+    tip.style.display='block'; const tw=tip.offsetWidth; tip.style.left = Math.max(4, Math.min(rc.width-tw-4, x(i)/W*rc.width - tw/2))+'px'; };
+  sv.addEventListener('pointermove', move); sv.addEventListener('pointerdown', move);
+  sv.addEventListener('pointerleave', ()=>{ tip.style.display='none'; xh.style.visibility='hidden'; });
+}
+
+/* ═══════════ 시트 (폰: 아래에서 올라옴 / 컴퓨터: 가운데 창) ═══════════ */
+function openSheet(html, cls){ $('sheetIn').className = 'sheet' + (cls ? ' '+cls : ''); $('sheetIn').innerHTML = '<div class="grab"></div>' + html; $('sheet').classList.add('on'); document.body.classList.add('noscroll'); }
+function closeSheet(){ $('sheet').classList.remove('on'); document.body.classList.remove('noscroll'); }
+function openMenu(){
+  openSheet(`<h3>설정</h3>
+    <div class="menu-i" onclick="closeSheet();openGate(2)"><div class="m">전공 구성 바꾸기<small>지금: ${esc(profileLabel())}</small></div><span class="go">›</span></div>
+    <div class="menu-i" style="cursor:default"><div class="m">화면 모드<small>자동이면 기기 설정을 따라가요</small></div>
+      <span class="mini-seg">${[['auto','자동'],['light','라이트'],['dark','다크']].map(([k,l])=>`<button class="${themePref()===k?'on':''}" onclick="setTheme('${k}')">${l}</button>`).join('')}</span></div>
+    <div class="menu-i" onclick="toggleLeet()"><div class="m">LEET 기능<small>켜면 위에 졸업 | LEET 전환이 생겨요</small></div><span class="set-sw ${S.profile.leet?'on':''}"></span></div>
+    <div class="menu-i" onclick="openSyncInfo()"><div class="m">동기화 상태<small>${esc(SYNC.msg||'-')}${SYNC.lastOk?' · 마지막 성공 '+new Date(SYNC.lastOk).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):''}</small></div><span class="go">›</span></div>
+    <div class="menu-i" onclick="exportJSON()"><div class="m">내보내기<small>JSON 파일로 백업</small></div><span class="go">›</span></div>
+    <div class="menu-i" onclick="$('imp').click()"><div class="m">불러오기<small>백업 파일로 복원</small></div><span class="go">›</span></div>
+    <div class="menu-i" onclick="logout()"><div class="m">다른 키로 로그인<small>${esc(KEY||'')}</small></div><span class="go">›</span></div>
+    <div class="menu-i danger" onclick="resetAll()"><div class="m">모든 기록 지우기</div></div>`); }
+function openSyncInfo(){
+  openSheet(`<h3>동기화 상태</h3>
+    <div class="syncbox ${SYNC.state}"><b>${esc(SYNC.msg)}</b>
+      <small>${SYNC.lastOk?'마지막 성공: '+new Date(SYNC.lastOk).toLocaleString('ko-KR'):'아직 서버와 연결된 적 없음'}</small>
+      ${SYNC.lastErr?`<small class="err">최근 오류: ${esc(SYNC.lastErr)}</small>`:''}
+      <small>${SYNC.dirty?'서버에 아직 안 올라간 변경이 있어요 (자동 재시도 중)':'이 기기와 서버가 같은 상태예요'}</small></div>
+    <p class="mut s">홈 화면 앱은 사파리와 저장공간이 따로라 처음 한 번은 키로 다시 로그인해야 해요. 이후엔 앱을 열 때마다 서버 최신본을 자동으로 확인해요.</p>
+    <button class="savebtn" onclick="SYNC.dirty=true;pull().then(()=>openSyncInfo())">지금 동기화</button>`); }
+function setTheme(k){ try{ localStorage.setItem('kugrad3:theme', k); }catch(e){} applyTheme(); openMenu(); if(APP_MODE==='leet') renderLeet(); else renderGrad(); }
+function toggleLeet(){ S.profile.leet = !S.profile.leet; touch(); if(!S.profile.leet) APP_MODE='grad'; renderAll(); openMenu(); }
+function exportJSON(){ const b = new Blob([JSON.stringify(pack(),null,1)],{type:'application/json'}); const a=document.createElement('a');
+  a.href=URL.createObjectURL(b); a.download='고경고로-백업-'+new Date().toISOString().slice(0,10)+'.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); }
+function importJSON(inp){ const f=inp.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=e=>{ try{ const o=normalize(JSON.parse(e.target.result)); if(!o) throw 0; if(!confirm('백업 파일로 지금 기록을 덮어쓸까요?')) return;
+    S = o; touch(); closeSheet(); renderAll(); }catch(err){ alert('이 앱(v3) 백업 파일이 아니에요'); } }; r.readAsText(f); inp.value=''; }
+function resetAll(){ if(!confirm('수강 기록과 LEET 기록을 모두 지울까요? 되돌릴 수 없어요.')) return;
+  const p = S.profile; S = blankState(); S.profile = p; touch(); closeSheet(); renderAll(); }
+
+/* ═══════════ 로그인 → 전공 고르기 ═══════════ */
+let G = { step:1, type:null, major:null };
+function openGate(step){
+  G.step = step;
+  if(step===2){ const m = S.profile.major; G.major = m; G.type = !S.profile.set ? null : m ? MAJORS[m].type : '미정'; }
+  $('gate').classList.remove('off'); renderGate(); }
+function gateMsg(t, cls){ const e=$('gmsg'); if(e){ e.className='gmsg '+(cls||''); e.textContent=t; } }
+function gateBusy(b){ const e=$('gbtn'); if(e){ e.disabled=b; e.textContent = b ? '확인 중…' : '다음'; } }
+function renderGate(){
+  const el = $('gin'), steps = `<div class="steps"><i class="on"></i><i class="${G.step>1?'on':''}"></i></div>`;
+  if(G.step===1){
+    let last=''; try{ last = localStorage.getItem(LS_LAST)||''; }catch(e){}
+    el.innerHTML = `<img class="g-logo" src="${TIGER}" alt="">${steps}
+      <h1>접근키를 입력해 주세요</h1><p class="s">키 하나가 곧 내 계정이에요.<br>폰·노트북 어디서 열어도 같은 기록이 보여요.</p>
+      <input id="gk" placeholder="GOGYEONG-XXXX-XXXX" value="${esc(last)}" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="24"
+        onkeydown="if(event.key==='Enter')doLogin(this.value)" oninput="gateMsg('')">
+      <div class="gmsg" id="gmsg"></div>
+      <div class="hint">비밀번호가 없으니 키를 다른 사람과 공유하지 마세요.</div>
+      <button class="g-btn" id="gbtn" onclick="doLogin($('gk').value)">다음</button>`;
+    return;
+  }
+  const list = G.type ? MAJOR_CHOICES[G.type] : [];
+  const ready = G.type==='미정' || (G.type && G.major);
+  const canClose = S.profile.set;
+  el.innerHTML = `${canClose?'<button class="gx" onclick="$(\'gate\').classList.add(\'off\')">✕</button>':''}<img class="g-logo" src="${TIGER}" alt="">${steps}
+    <h1>경영이랑<br>뭘 같이 하나요?</h1><p class="s">고른 전공에 맞춰 졸업요건을 계산해요.<br>나중에 ⋮ 설정에서 언제든 바꿀 수 있어요.</p>
+    <div class="types">${[['이중','이중전공','경제학과'],['융합','융합전공','공거리 · 패션 · 금융공학'],['심화','심화전공','경영만 깊게'],['미정','아직 몰라요','경영만 먼저 볼래요']]
+      .map(([k,t,s])=>`<button class="${G.type===k?'on':''}" onclick="G.type='${k}';G.major=${k==='심화'?"'BIZ_DEEP'":'null'};renderGate()"><b>${t}</b><small>${s}</small></button>`).join('')}</div>
+    ${G.type==='이중'||G.type==='융합' ? `<div class="mlist">${list.map(([k,n,s])=>`<div class="mi ${G.major===k?'on':''}" onclick="G.major='${k}';renderGate()"><div class="m"><b>${esc(n)}</b><small>${esc(s)}</small></div><span class="ck"></span></div>`).join('')}</div>` : ''}
+    <button class="g-btn" ${ready?'':'disabled'} onclick="finishGate()">${ready?(canClose?'저장':'시작하기'):'전공을 골라주세요'}</button>`;
+}
+function finishGate(){
+  S.profile.major = G.type==='미정' ? null : G.major; S.profile.set = true;
+  touch(); $('gate').classList.add('off'); SEG = 1; renderAll(); }
+function afterLogin(){
+  $('gate').classList.add('off');
+  if(!S.profile.set){ openGate(2); }
+  renderAll();
+}
+
+/* ═══════════ 공통 렌더 ═══════════ */
+function setMode(m){ APP_MODE = m; renderAll(); window.scrollTo(0,0); }
+function renderAll(){
+  const leetOn = !!S.profile.leet; if(!leetOn) APP_MODE = 'grad';
+  document.body.classList.toggle('leet-on', leetOn);
+  document.body.classList.toggle('m-leet', APP_MODE==='leet');
+  document.querySelectorAll('#modeSw button').forEach((b,i)=>b.classList.toggle('on', (i===1)===(APP_MODE==='leet')));
+  $('addd').style.visibility = APP_MODE==='leet' ? 'hidden' : '';
+  if(APP_MODE==='leet') renderLeet(); else renderGrad();
+}
+window.addEventListener('resize', ()=>{ clearTimeout(window.__rz); window.__rz = setTimeout(()=>{ if(APP_MODE==='leet') leetChart(); else { wireTrend('m'); wireTrend('d'); } }, 150); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+
+/* ── 시작 ── */
+(function init(){
+  try{ PLAN_VIEW = localStorage.getItem(LS_NS+':planview')==='1'; }catch(e){}
+  if(typeof DEMO!=='undefined' && DEMO){ S = DEMO_STATE(); $('gate').classList.add('off'); renderAll(); setSync('off','초안 미리보기 · 저장 안 됨'); return; }
+  let last = null; try{ last = localStorage.getItem(LS_LAST); }catch(e){}
+  renderGate();
+  if(last){ const loc = (KEY=last, lsLoad()); KEY = null;
+    if(loc){ S = loc; } doLogin(last); }
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'}).then(reg=>{
+        reg.update().catch(()=>{});
+        document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') reg.update().catch(()=>{}); });
+        reg.addEventListener('updatefound', ()=>{ const nw = reg.installing; if(!nw) return;
+          nw.addEventListener('statechange', ()=>{ if(nw.state==='activated' && navigator.serviceWorker.controller) location.reload(); }); });
+      }).catch(()=>{}); });
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   LEET (설정에서 켠 사람만)
+   · 기출: 학년도 + 회독 + 맞은 개수 → 표준점수·백분위 자동 계산
+       2023~2027 = 로연 환산표(표 밖 원점수는 표에서 역산한 평균·표편으로 외삽)
+       2012~2022 = 기존 확장프로그램 추정치 (2025 추리 표편 오류는 로연 표로 교체됨)
+   · 사설: 기관 성적표의 원점수·표점·백분위를 그대로 기록
+   ═══════════════════════════════════════════════════════════════ */
+const LEET_SUB = { eoneo:'언어이해', churi:'추리논증' };
+const LEET_ORGS = ['법률저널 LEET MASTER','메가로스쿨','시대인재'];
+function normCdf(z){ const t=1/(1+0.2316419*Math.abs(z)), d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274)))); return z>0?1-p:p; }
+function leetConv(year, sub, raw){
+  const y = LEET_DATA.years[year], sc = LEET_DATA.scales[y.scale][sub], p = y[sub];
+  const hit = p.t && p.t[String(raw)];
+  if(hit) return { std:hit[0], pct:hit[1], exact:true };
+  const z = (raw - p.m) / p.sd;
+  return { std: Math.round((sc.m + sc.s*z)*10)/10, pct: Math.round(Math.min(99.9, Math.max(0, normCdf(z)*100))*10)/10, exact:false };
+}
+const LEET_YEARS = Object.keys(LEET_DATA.years).sort((a,b)=>b-a);
+const leetQ = (year, sub) => LEET_DATA.scales[LEET_DATA.years[year].scale][sub].q;
+const L_COL = ['#b3123f','#3182f6','#0e9f6e','#d97706'];   // 명도·색각이상 대비 검증 통과 4색 (고정 순서)
+const LV = { mode:'past', metric:'std', subj:'sum' };
+let LF = { kind:'past', year:'2027', round:'', e:'', c:'', org:LEET_ORGS[0], orgFree:'', name:'', er:'', es:'', ep:'', cr:'', cs:'', cp:'', date:'' };
+const recs = () => (S.leet && S.leet.recs) || [];
+const f1 = v => v==null||isNaN(v) ? '–' : (Math.round(v*10)/10).toFixed(1);
+const sumStd = r => (r.e.std!=null && r.c.std!=null) ? r.e.std + r.c.std : null;
+function lval(r){
+  const m = LV.metric, pick = s => m==='std'? s.std : m==='pct'? s.pct : s.raw;
+  const a = pick(r.e), b = pick(r.c);
+  if(LV.subj==='eoneo') return a ?? null; if(LV.subj==='churi') return b ?? null;
+  if(a==null||b==null) return null; return m==='pct' ? (a+b)/2 : a+b; }
+const metricLabel = () => ({std:'표준점수',pct:'백분위',raw:'원점수'})[LV.metric] + (LV.subj==='sum' ? (LV.metric==='pct'?' 평균':' 합') : ' · '+LEET_SUB[LV.subj]);
+const recTitle = r => r.kind==='past' ? `${r.year}학년도 기출 · ${r.round}회독` : `${r.org} ${r.name||''}`.trim();
+
+function leetSeries(){
+  if(LV.mode==='past'){
+    const rs = recs().filter(r=>r.kind==='past'), years = [...new Set(rs.map(r=>r.year))].sort();
+    const rounds = [...new Set(rs.map(r=>+r.round))].sort((a,b)=>a-b);
+    return { labels: years.map(y=>"'"+String(y).slice(2)), full: years.map(y=>y+'학년도 기출'), connect:false,
+      series: rounds.slice(0,4).map((rd,i)=>({ name:rd+'회독', color:L_COL[i], data: years.map(y=>{ const r=rs.find(x=>x.year==y && +x.round===rd); return r? lval(r):null; }) })) };
+  }
+  const rs = recs().filter(r=>r.kind==='mock').sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  const labels = rs.map(r=>String(r.date||'').slice(5).replace('-','/')), full = rs.map(recTitle);
+  if(LV.mode==='org'){
+    const orgs = [...new Set(rs.map(r=>r.org))]; const main = orgs.slice(0,3), rest = orgs.slice(3);
+    const series = main.map((o,i)=>({ name:o, color:L_COL[i], data: rs.map(r=>r.org===o? lval(r):null) }));
+    if(rest.length) series.push({ name:'기타', color:L_COL[3], data: rs.map(r=>rest.includes(r.org)? lval(r):null) });
+    return { labels, full, connect:true, series };
+  }
+  const d = rs.map(lval), ok = d.filter(v=>v!=null);
+  return { labels, full, connect:true, avg: ok.length? ok.reduce((a,b)=>a+b,0)/ok.length : null, series:[{ name:'사설 전체', color:L_COL[0], data:d }] };
+}
+
+function leetChart(){
+  const box = $('lch'); if(!box || !box.offsetParent) return;
+  const Sx = leetSeries(), n = Sx.labels.length;
+  const W = Math.max(280, box.clientWidth), H = W<420? 220 : 270, L=34, R=12, T=22, B=30;
+  const all = Sx.series.flatMap(s=>s.data).filter(v=>v!=null);
+  if(!all.length){ box.innerHTML = `<div class="lempty">${LV.mode==='past'?'기출 기록을 추가하면':'사설 기록을 추가하면'} 추이가 그려져요</div>`; return; }
+  let lo = Math.min(...all), hi = Math.max(...all), pad = Math.max(2,(hi-lo)*.15);
+  const step = [1,2,5,10,20,25,50].find(s=>(hi-lo+2*pad)/s <= 5) || 50;
+  lo = Math.floor((lo-pad)/step)*step; hi = Math.ceil((hi+pad)/step)*step;
+  if(LV.metric==='pct'){ lo=Math.max(0,lo); hi=Math.min(100,hi); }
+  const x = i => L + (W-L-R)*(i+.5)/n, y = v => T + (H-T-B)*(1-(v-lo)/(hi-lo));
+  let g=''; for(let v=lo; v<=hi+1e-9; v+=step) g += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" class="gl"/><text x="${L-7}" y="${y(v)+4}" class="ax" text-anchor="end">${v}</text>`;
+  const every = Math.ceil(n / Math.max(1, Math.floor((W-L-R)/50)));
+  const xl = Sx.labels.map((l,i)=> i%every===0 || i===n-1 ? `<text x="${x(i)}" y="${H-9}" class="ax" text-anchor="middle">${esc(l)}</text>`:'').join('');
+  const placed = [];
+  const lines = Sx.series.map(s=>{
+    let d='', pen=false;
+    s.data.forEach((v,i)=>{ if(v==null){ if(!Sx.connect) pen=false; return; } d += (pen?'L':'M')+x(i)+','+y(v)+' '; pen=true; });
+    const dots = s.data.map((v,i)=> v==null?'':`<circle cx="${x(i)}" cy="${y(v)}" r="4.5" fill="${s.color}" style="stroke:var(--card)" stroke-width="2"/>`).join('');
+    let li=-1; s.data.forEach((v,i)=>{ if(v!=null) li=i; });
+    let lab='';
+    if(li>=0){ const lx = Math.min(x(li), W-R-18), ly = y(s.data[li]) - 12;          // 끝점 라벨 — 겹치면 생략(범례·툴팁으로 확인)
+      if(!placed.some(p=>Math.abs(p[0]-lx)<48 && Math.abs(p[1]-ly)<16)){ placed.push([lx,ly]); lab = `<text x="${lx}" y="${ly}" class="dl" text-anchor="middle">${f1(s.data[li])}</text>`; } }
+    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${dots}${lab}`;
+  }).join('');
+  const avg = Sx.avg!=null ? `<line x1="${L}" x2="${W-R}" y1="${y(Sx.avg)}" y2="${y(Sx.avg)}" stroke="#8b95a1" stroke-width="1.5" stroke-dasharray="4 4"/><text x="${L+4}" y="${y(Sx.avg)-6}" class="ax">평균 ${f1(Sx.avg)}</text>` : '';
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${metricLabel()} 추이">${g}${xl}${avg}<line class="xh" x1="0" x2="0" y1="${T}" y2="${H-B}" style="visibility:hidden"/>${lines}</svg><div class="tip"></div>`;
+  const sv = box.querySelector('svg'), tip = box.querySelector('.tip'), xh = sv.querySelector('.xh');
+  const move = ev => {
+    const rc = sv.getBoundingClientRect(), px = (ev.clientX-rc.left)/rc.width*W;
+    let i = Math.round((px-L)/((W-L-R)/n) - .5); i = Math.max(0, Math.min(n-1, i));
+    xh.setAttribute('x1',x(i)); xh.setAttribute('x2',x(i)); xh.style.visibility='visible';
+    tip.textContent=''; const h=document.createElement('div'); h.className='th'; h.textContent=Sx.full[i]; tip.appendChild(h);
+    Sx.series.forEach(s=>{ if(s.data[i]==null) return; const e=document.createElement('div'); e.className='tr2';
+      const k=document.createElement('i'); k.style.background=s.color; const b=document.createElement('b'); b.textContent=f1(s.data[i]);
+      const sp=document.createElement('span'); sp.textContent = Sx.series.length>1 ? s.name : metricLabel(); e.append(k,b,sp); tip.appendChild(e); });
+    tip.style.display='block'; const tw=tip.offsetWidth; tip.style.left = Math.max(4, Math.min(rc.width-tw-4, x(i)/W*rc.width - tw/2))+'px'; };
+  sv.addEventListener('pointermove', move); sv.addEventListener('pointerdown', move);
+  sv.addEventListener('pointerleave', ()=>{ tip.style.display='none'; xh.style.visibility='hidden'; });
+}
+
+function renderLeet(){
+  const all = recs(), past = all.filter(r=>r.kind==='past'), mock = all.filter(r=>r.kind==='mock');
+  const avg = a => { const v=a.map(sumStd).filter(x=>x!=null); return v.length? v.reduce((p,q)=>p+q,0)/v.length : null; };
+  const last = all.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).pop();
+  const sums = all.map(sumStd).filter(x=>x!=null);
+  $('lhero').innerHTML = last ? `<div class="k">최근 기록 · ${esc(recTitle(last))}</div>
+      <h1><em>${f1(sumStd(last))}</em> <span class="u">표점합</span></h1>
+      <div class="nums3"><div><small>기출 평균</small><b>${f1(avg(past))}</b></div><div><small>사설 평균</small><b>${f1(avg(mock))}</b></div><div><small>최고</small><b>${sums.length?f1(Math.max(...sums)):'–'}</b></div></div>`
+    : `<div class="k">LEET</div><h1 style="font-size:24px">첫 점수를 기록해 보세요</h1><p class="mut s">기출은 맞은 개수만 넣으면 표점·백분위가 자동으로 나와요.</p>`;
+  $('lseg').innerHTML = [['past','기출'],['org','사설 기관별'],['all','사설 전체']]
+    .map(([k,l])=>`<button class="${LV.mode===k?'on':''}" onclick="LV.mode='${k}';renderLeet()">${l}</button>`).join('');
+  const Sx = leetSeries();
+  const ctl = (key, opts) => `<span class="mini-seg">${opts.map(([k,l])=>`<button class="${LV[key]===k?'on':''}" onclick="LV.${key}='${k}';renderLeet()">${l}</button>`).join('')}</span>`;
+  const rounds = [...new Set(past.map(r=>+r.round))].sort((a,b)=>a-b).map(rd=>({rd, v:avg(past.filter(r=>+r.round===rd))}));
+  const roundKpi = LV.mode==='past' && rounds.length>1 ? `<div class="rk">${rounds.slice(0,4).map((o,i)=>`<span><i style="background:${L_COL[i]}"></i>${o.rd}회독 평균 <b>${f1(o.v)}</b>${i && o.v!=null && rounds[i-1].v!=null?`<em class="${o.v>=rounds[i-1].v?'up':'dn'}">${o.v>=rounds[i-1].v?'▲':'▼'} ${f1(Math.abs(o.v-rounds[i-1].v))}</em>`:''}</span>`).join('')}</div>` : '';
+  $('lchartBox').innerHTML = `<h2>${LV.mode==='past'?'기출 회독별 추이':LV.mode==='org'?'사설 기관별 추이':'사설 전체 추이'}</h2>
+    <div class="ctl">${ctl('metric',[['std','표점'],['pct','백분위'],['raw','원점수']])}${ctl('subj',[['sum','합산'],['eoneo','언어'],['churi','추리']])}</div>
+    ${roundKpi}${Sx.series.length>1 && !roundKpi?`<div class="lg">${Sx.series.map(s=>`<span><i style="background:${s.color}"></i>${esc(s.name)}</span>`).join('')}</div>`:''}
+    <div class="chart" id="lch"></div>
+    <p class="demo">${LV.mode==='past'?'가로축 = 기출 학년도 · 회독마다 선이 나뉘어요':'가로축 = 응시일 순서'} · ${metricLabel()}</p>`;
+  leetChart();
+  const list = all.filter(r=> LV.mode==='past' ? r.kind==='past' : r.kind==='mock').sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  $('llist').innerHTML = `<h2>${LV.mode==='past'?'기출 기록':'사설 기록'} <span class="sp"></span><small>${list.length}개</small></h2>`
+    + (list.length ? list.map(r=>`<div class="lrec"><div class="m"><b>${esc(recTitle(r))}</b>
+        <small>${esc(String(r.date||'').slice(5).replace('-','/'))} · 언어 ${r.e.raw??'–'} / 추리 ${r.c.raw??'–'}${r.kind==='past' && !(r.e.exact&&r.c.exact)?' · 일부 추정':''}</small></div>
+        <div class="r"><b>${f1(sumStd(r))}</b><small>${f1(r.e.std)} + ${f1(r.c.std)}</small></div>
+        <button class="x" onclick="delLeet('${r.id}')" title="삭제">✕</button></div>`).join('') : '<div class="mut s" style="padding:10px 0">아직 기록이 없어요</div>');
+  renderLeetForm();
+}
+function delLeet(id){ if(!confirm('이 기록을 지울까요?')) return; S.leet.recs = recs().filter(r=>r.id!==id); touch(); renderLeet(); }
+
+function renderLeetForm(){
+  const F = LF, el = $('lform'); if(!el) return;
+  if(!F.date) F.date = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  const kindSeg = `<span class="mini-seg wide">${[['past','기출'],['mock','사설 모의고사']].map(([k,l])=>`<button class="${F.kind===k?'on':''}" onclick="LF.kind='${k}';renderLeetForm()">${l}</button>`).join('')}</span>`;
+  let body = '';
+  if(F.kind==='past'){
+    const nextRound = 1 + Math.max(0, ...recs().filter(r=>r.kind==='past' && r.year==F.year).map(r=>+r.round));
+    const qe = leetQ(F.year,'eoneo'), qc = leetQ(F.year,'churi');
+    body = `<div class="frow"><label>학년도<select onchange="LF.year=this.value;LF.round='';renderLeetForm()">${LEET_YEARS.map(y=>`<option ${y===F.year?'selected':''}>${y}</option>`).join('')}</select></label>
+      <label>회독<input type="number" min="1" inputmode="numeric" value="${F.round||nextRound}" oninput="LF.round=this.value"></label></div>
+      <div class="frow"><label>언어 맞은 개수 <em>/${qe}</em><input type="number" inputmode="numeric" min="0" max="${qe}" value="${esc(F.e)}" oninput="LF.e=this.value;leetPreview()"></label>
+      <label>추리 맞은 개수 <em>/${qc}</em><input type="number" inputmode="numeric" min="0" max="${qc}" value="${esc(F.c)}" oninput="LF.c=this.value;leetPreview()"></label></div>
+      <div class="pv" id="lpv"></div>`;
+  } else {
+    const inp = (k, mode) => `<input inputmode="${mode}" value="${esc(F[k])}" oninput="LF.${k}=this.value">`;
+    body = `<div class="frow"><label>기관<select onchange="LF.org=this.value;renderLeetForm()">${LEET_ORGS.concat(['직접 입력']).map(o=>`<option ${o===F.org?'selected':''}>${o}</option>`).join('')}</select></label>
+      <label>회차<input placeholder="예: 5회" value="${esc(F.name)}" oninput="LF.name=this.value"></label></div>
+      ${F.org==='직접 입력'?`<div class="frow"><label>기관 이름<input value="${esc(F.orgFree)}" oninput="LF.orgFree=this.value"></label></div>`:''}
+      <table class="ftab"><thead><tr><th></th><th>원점수</th><th>표점</th><th>백분위</th></tr></thead><tbody>
+        <tr><td>언어</td><td>${inp('er','numeric')}</td><td>${inp('es','decimal')}</td><td>${inp('ep','decimal')}</td></tr>
+        <tr><td>추리</td><td>${inp('cr','numeric')}</td><td>${inp('cs','decimal')}</td><td>${inp('cp','decimal')}</td></tr></tbody></table>
+      <div class="pv muted">기관 성적표의 표점·백분위를 그대로 적어요. 사설은 응시자 집단이 실제 리트와 달라서 기출 환산표로 추정하지 않아요.</div>`;
+  }
+  el.innerHTML = `<h2>점수 기록 <span class="sp"></span><button class="gx sm" onclick="document.body.classList.remove('lf-open')">✕</button></h2>${kindSeg}${body}
+    <label class="dt">응시일<input type="date" value="${F.date}" onchange="LF.date=this.value"></label><button class="savebtn" onclick="saveLeet()">저장</button>`;
+  leetPreview();
+}
+function leetPreview(){
+  const F = LF, el = $('lpv'); if(!el) return;
+  const qe = leetQ(F.year,'eoneo'), qc = leetQ(F.year,'churi');
+  const ok = (v,q) => v!=='' && !isNaN(+v) && +v>=0 && +v<=q;
+  if(F.e==='' && F.c===''){ el.innerHTML = `<span class="muted">맞은 개수를 넣으면 ${F.year}학년도 기준 표점·백분위가 바로 나와요</span>`; return; }
+  const pe = ok(F.e,qe)? leetConv(F.year,'eoneo',+F.e):null, pc = ok(F.c,qc)? leetConv(F.year,'churi',+F.c):null;
+  const cell = (t,p) => p? `<div><small>${t}</small><b>${f1(p.std)}</b><em>백분위 ${f1(p.pct)}${p.exact?'':' · 추정'}</em></div>` : `<div><small>${t}</small><b>–</b></div>`;
+  el.innerHTML = `<div class="pvg">${cell('언어 표점',pe)}${cell('추리 표점',pc)}<div><small>표점합</small><b>${pe&&pc? f1(pe.std+pc.std):'–'}</b><em>${LEET_DATA.years[F.year].src==='환산표'?'로연 환산표 기준':'기존 추정치 기준'}</em></div></div>`;
+}
+function saveLeet(){
+  const F = LF, id = 'l'+Date.now().toString(36); const num = v => v===''||v==null||isNaN(+v) ? null : +v;
+  let rec;
+  if(F.kind==='past'){
+    const qe = leetQ(F.year,'eoneo'), qc = leetQ(F.year,'churi'), e=num(F.e), c=num(F.c);
+    if(e==null || c==null || e<0 || c<0 || e>qe || c>qc){ alert(`맞은 개수를 확인해 주세요 (언어 0~${qe}, 추리 0~${qc})`); return; }
+    const round = num(F.round) || (1 + Math.max(0, ...recs().filter(r=>r.kind==='past' && r.year==F.year).map(r=>+r.round)));
+    rec = { id, kind:'past', year:F.year, round, date:F.date, e:{raw:e, ...leetConv(F.year,'eoneo',e)}, c:{raw:c, ...leetConv(F.year,'churi',c)} };
+  } else {
+    const org = F.org==='직접 입력' ? F.orgFree.trim() : F.org;
+    if(!org){ alert('기관 이름을 적어 주세요'); return; }
+    rec = { id, kind:'mock', org, name:F.name.trim(), date:F.date, e:{raw:num(F.er), std:num(F.es), pct:num(F.ep)}, c:{raw:num(F.cr), std:num(F.cs), pct:num(F.cp)} };
+    if(rec.e.std==null && rec.e.raw==null && rec.c.std==null && rec.c.raw==null){ alert('점수를 하나 이상 입력해 주세요'); return; }
+  }
+  S.leet.recs = recs().concat([rec]); touch();
+  LV.mode = F.kind==='past' ? 'past' : LV.mode==='past' ? 'org' : LV.mode;
+  Object.assign(LF, { round:'', e:'', c:'', name:'', er:'', es:'', ep:'', cr:'', cs:'', cp:'' });
+  document.body.classList.remove('lf-open'); renderLeet(); }
+
 </script>
 </body>
 </html>
